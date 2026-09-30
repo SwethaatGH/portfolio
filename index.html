@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swetha Manivasagam — Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -24,9 +20,9 @@
             <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </div>
         <div class="menubar-menu-wrap">
-            <span class="menubar-item has-dropdown active" id="menu-about">About
+            <span class="menubar-item has-dropdown" id="menu-about">About
                 <div class="menubar-dropdown" id="dropdown-about">
-                    <div class="dropdown-item dropdown-title-item"><strong>Swetha's Portfolio</strong></div>
+                    <div class="dropdown-item dropdown-title-item">Swetha's Portfolio</div>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-item">Version 1.0</div>
                     <div class="dropdown-item">MS CS · GPA 4.0</div>
@@ -68,7 +64,7 @@
         </div>
         <div class="now-playing" id="now-playing">
             <div class="now-playing-bars"><span></span><span></span><span></span><span></span></div>
-            <span class="now-playing-text">Exploring Ruby</span>
+            <span class="now-playing-text">Exploring C++</span>
         </div>
         <div class="menubar-wifi">
             <svg width="14" height="11" viewBox="0 0 16 12" fill="currentColor" opacity="0.7"><path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM8 6a5.99 5.99 0 0 1 4.243 1.757l-1.415 1.415A4 4 0 0 0 8 8a4 4 0 0 0-2.828 1.172L3.757 7.757A5.99 5.99 0 0 1 8 6zm0-4a9.985 9.985 0 0 1 7.07 2.929l-1.413 1.415A7.99 7.99 0 0 0 8 4a7.99 7.99 0 0 0-5.657 2.344L.93 4.929A9.985 9.985 0 0 1 8 2z"/></svg>
@@ -85,7 +81,7 @@
     <div class="spotlight-modal">
         <div class="spotlight-bar">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><path d="m11 11 4 4"/></svg>
-            <input type="text" id="spotlight-input" placeholder="Search portfolio…" autocomplete="off" spellcheck="false">
+            <input type="text" id="spotlight-input" placeholder="Spotlight Search" autocomplete="off" spellcheck="false">
             <kbd class="spotlight-esc">esc</kbd>
         </div>
         <div class="spotlight-results" id="spotlight-results"></div>
@@ -98,69 +94,21 @@
     <!-- WIDGETS -->
     <div class="widgets-container">
         <div class="widget-row">
-            <div class="widget widget-medium name-widget">
-                <div class="holo-shine"></div>
-                <div class="widget-content">
-                    <div class="name-badge">CS · Research</div>
-                    <h2 class="name-title">Swetha Manivasagam</h2>
-                    <p class="name-subtitle">Graduate Student, NC State University</p>
-                    <p class="name-tagline">Clarity and detail</p>
-                </div>
-            </div>
-            <div class="widget widget-small profile-widget">
-                <div class="holo-shine"></div>
-                <div class="widget-content">
-                    <div class="profile-ring">
-                        <div class="profile-image">
-                            <img src="assets/profile_photo.png" alt="Swetha"
-                                 onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Swetha&backgroundColor=b6e3f4'">
-                        </div>
+            <div class="sticky-note-widget" id="sticky-note">
+                <div class="sticky-scroll" id="sticky-scroll">
+                    <div class="sticky-page sticky-page-text">
+                        <p class="sticky-heading">About me</p>
+                        <p class="sticky-body">I’m Swetha Manivasagam, a Master’s student in Computer Science at NC State, with a research background in spatio-temporal and geospatial deep learning. I value clarity and detail.</p>
+                        <p class="sticky-body">I co-authored a paper accepted at ACM ETRA 2025 on predicting gaze points from heatmap video, and I currently work on land surface temperature prediction models that beat baseline U-Nets by 28%, fusing satellite imagery, LiDAR and spectral data. </p>
+                        <p class="sticky-body">At CAMCORE, I maintained an AWS Lightsail hosted website and a 5TB+ climate database and built the pipelines that keep it updated automatically, work that now supports 300+ researchers. </p>
+                        <p class="sticky-body">I like the full stack of a problem: the model, the pipeline that feeds it and the system that puts it in front of people. Outside research, I build things for fun, a C++ multiplayer game engine, a Neo4j-based incident intelligence tool with a RAG chatbot, a food-waste platform with live notifications and smart matching. </p>
+                        <p class="sticky-body">I'm graduating in May 2027 and looking for new grad roles in software engineering or applied ML, ideally somewhere I can keep working across both.</p>
+                        <p class="sticky-body sticky-hint">Scroll for a photo ↓</p>
                     </div>
-                    <div class="profile-status">
-                        <span class="status-dot"></span>
-                        <span class="status-text">Seeking Summer Internships 2026</span>
+                    <div class="sticky-page sticky-page-photo">
+                        <img src="assets/profile_photo.jpg" alt="Swetha"
+                             onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Swetha&backgroundColor=b6e3f4'">
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="widget-row">
-            <!-- DATE & TIME → yellow colour -->
-            <div class="widget widget-small calendar-widget">
-                <div class="holo-shine"></div>
-                <div class="widget-header">Date &amp; Time</div>
-                <div class="widget-content cal-time-content">
-                    <div class="cal-date-block">
-                        <div class="calendar-month" id="calendar-month"></div>
-                        <div class="calendar-date" id="calendar-date"></div>
-                        <div class="calendar-day" id="calendar-day"></div>
-                    </div>
-                    <div class="cal-divider"></div>
-                    <div class="cal-time-block">
-                        <div class="clock-time" id="clock-time"></div>
-                        <div class="clock-ampm" id="clock-ampm"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- LOCATION → blue colour -->
-            <div class="widget widget-small weather-widget">
-                <div class="holo-shine"></div>
-                <div class="widget-header">Location</div>
-                <div class="widget-content">
-                    <div class="weather-city" id="weather-city">Raleigh, NC</div>
-                    <div class="weather-temp" id="weather-temp">—°</div>
-                    <div class="weather-desc" id="weather-desc">Loading…</div>
-                    <div class="weather-details" id="weather-details"></div>
-                </div>
-            </div>
-            <div class="widget widget-small countdown-widget">
-                <div class="holo-shine"></div>
-                <div class="widget-header">Graduation</div>
-                <div class="widget-content">
-                    <div class="countdown-number" id="countdown-days"></div>
-                    <div class="countdown-label">days to go</div>
-                    <div class="countdown-progress"><div class="countdown-bar" id="countdown-bar"></div></div>
-                    <div class="countdown-label" style="margin-top: 0.05cm;">May 2027</div>
                 </div>
             </div>
         </div>
@@ -174,24 +122,17 @@
                     <div class="reminder-list" id="reminder-list"></div>
                 </div>
             </div>
-            <div class="widget widget-small photo-widget">
-                <div class="holo-shine"></div>
-                <div class="widget-content photo-content">
-                    <img src="assets/quote.JPG" alt="Inspiration"
-                         onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop'">
-                </div>
-            </div>
         </div>
 
         <div class="tech-stack-row">
             <div class="tech-icons-wrapper" id="tech-icons-wrapper">
-                <div class="tech-icon-item"><div class="tech-icon-bg"><img src="assets/widget_tech/python.png" alt="Python"></div><span class="tech-icon-label">Python</span></div>
-                <div class="tech-icon-item"><div class="tech-icon-bg"><img src="assets/widget_tech/java.png" alt="Java"></div><span class="tech-icon-label">Java</span></div>
-                <div class="tech-icon-item"><div class="tech-icon-bg"><img src="assets/widget_tech/javascript.png" alt="JavaScript"></div><span class="tech-icon-label">JavaScript</span></div>
-                <div class="tech-icon-item"><div class="tech-icon-bg"><img src="assets/widget_tech/sql.png" alt="SQL"></div><span class="tech-icon-label">SQL</span></div>
-                <div class="tech-icon-item"><div class="tech-icon-bg"><img src="assets/widget_tech/bash.png" alt="Bash"></div><span class="tech-icon-label">Bash</span></div>
-                <div class="tech-icon-item"><div class="tech-icon-bg"><img src="assets/widget_tech/flask.webp" alt="Flask"></div><span class="tech-icon-label">Flask</span></div>
-                <div class="tech-icon-item"><div class="tech-icon-bg"><img src="assets/widget_tech/react.png" alt="React"></div><span class="tech-icon-label">React</span></div>
+                <div class="tech-icon-item" data-url="https://www.python.org/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" loading="lazy"><span class="tech-icon-label">Python</span></div>
+                <div class="tech-icon-item" data-url="https://www.java.com/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" loading="lazy"><span class="tech-icon-label">Java</span></div>
+                <div class="tech-icon-item" data-url="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy"><span class="tech-icon-label">JavaScript</span></div>
+                <div class="tech-icon-item" data-url="https://www.mysql.com/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy"><span class="tech-icon-label">SQL</span></div>
+                <div class="tech-icon-item" data-url="https://www.gnu.org/software/bash/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" alt="Bash" loading="lazy"><span class="tech-icon-label">Bash</span></div>
+                <div class="tech-icon-item" data-url="https://flask.palletsprojects.com/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" loading="lazy"><span class="tech-icon-label">Flask</span></div>
+                <div class="tech-icon-item" data-url="https://react.dev/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" loading="lazy"><span class="tech-icon-label">React</span></div>
             </div>
         </div>
     </div>
@@ -199,28 +140,24 @@
     <!-- DESKTOP ICONS (no My Journey) -->
     <div class="desktop-icons">
         <div class="desktop-icon folder-icon" id="professional-icon">
-            <div class="icon-image"><svg viewBox="0 0 64 64" fill="none"><defs><linearGradient id="f1bg" x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><path d="M4 20c0-3.3 2.7-6 6-6h12l4 4h28c3.3 0 6 2.7 6 6v24c0 3.3-2.7 6-6 6H10c-3.3 0-6-2.7-6-6V20z" fill="url(#f1bg)"/><path d="M4 26h56v18c0 3.3-2.7 6-6 6H10c-3.3 0-6-2.7-6-6V26z" fill="white" opacity="0.12"/><rect x="4" y="25" width="56" height="1.5" fill="white" opacity="0.2"/></svg></div>
+            <div class="icon-image"><img src="assets/folder.webp" alt="Folder" class="folder-img"></div>
             <div class="icon-label">Experience</div>
         </div>
         <div class="desktop-icon folder-icon" id="projects-icon">
-            <div class="icon-image"><svg viewBox="0 0 64 64" fill="none"><defs><linearGradient id="f2bg" x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><path d="M4 20c0-3.3 2.7-6 6-6h12l4 4h28c3.3 0 6 2.7 6 6v24c0 3.3-2.7 6-6 6H10c-3.3 0-6-2.7-6-6V26z" fill="url(#f2bg)"/><path d="M4 26h56v18c0 3.3-2.7 6-6 6H10c-3.3 0-6-2.7-6-6V26z" fill="white" opacity="0.12"/><rect x="4" y="25" width="56" height="1.5" fill="white" opacity="0.2"/></svg></div>
+            <div class="icon-image"><img src="assets/folder.webp" alt="Folder" class="folder-img"></div>
             <div class="icon-label">Projects</div>
         </div>
         <div class="desktop-icon folder-icon" id="research-icon">
-            <div class="icon-image"><svg viewBox="0 0 64 64" fill="none"><defs><linearGradient id="f3bg" x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><path d="M4 20c0-3.3 2.7-6 6-6h12l4 4h28c3.3 0 6 2.7 6 6v24c0 3.3-2.7 6-6 6H10c-3.3 0-6-2.7-6-6V26z" fill="url(#f3bg)"/><path d="M4 26h56v18c0 3.3-2.7 6-6 6H10c-3.3 0-6-2.7-6-6V26z" fill="white" opacity="0.12"/><rect x="4" y="25" width="56" height="1.5" fill="white" opacity="0.2"/></svg></div>
+            <div class="icon-image"><img src="assets/folder.webp" alt="Folder" class="folder-img"></div>
             <div class="icon-label">Research</div>
         </div>
         <div class="desktop-icon folder-icon" id="hackathons-icon">
-            <div class="icon-image"><svg viewBox="0 0 64 64" fill="none"><defs><linearGradient id="f4bg" x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><path d="M4 20c0-3.3 2.7-6 6-6h12l4 4h28c3.3 0 6 2.7 6 6v24c0 3.3-2.7 6-6 6H10c-3.3 0-6-2.7-6-6V26z" fill="url(#f4bg)"/><path d="M4 26h56v18c0 3.3-2.7 6-6 6H10c-3.3 0-6-2.7-6-6V26z" fill="white" opacity="0.12"/><rect x="4" y="25" width="56" height="1.5" fill="white" opacity="0.2"/></svg></div>
+            <div class="icon-image"><img src="assets/folder.webp" alt="Folder" class="folder-img"></div>
             <div class="icon-label">Hackathons</div>
         </div>
         <div class="desktop-icon" id="contact-icon">
             <div class="icon-image">
-                <svg viewBox="0 0 64 64" fill="none">
-                    <defs><linearGradient id="cig" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#60a5fa"/></linearGradient></defs>
-                    <rect x="4" y="14" width="56" height="38" rx="6" fill="url(#cig)" opacity="0.95"/>
-                    <path d="M4 20l28 18 28-18" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                </svg>
+                <img src="assets/contact.webp" alt="Contact" class="folder-img">
             </div>
             <div class="icon-label">Contact</div>
         </div>
@@ -287,7 +224,7 @@
         <iframe src="assets/resume.pdf" class="pdf-iframe" title="Resume Preview" type="application/pdf">
             <div class="pdf-placeholder">
                 <div class="pdf-icon-wrap">
-                    <svg width="72" height="72" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="pdfg2" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs><path d="M16 4h24l12 12v40c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V8c0-2.2 1.8-4 4-4z" fill="url(#pdfg2)"/><path d="M40 4v12h12L40 4z" fill="rgba(255,255,255,0.3)"/><text x="32" y="42" font-family="sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">PDF</text></svg>
+                    <svg width="72" height="72" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="pdfg2" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-3)"/></linearGradient></defs><path d="M16 4h24l12 12v40c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V8c0-2.2 1.8-4 4-4z" fill="url(#pdfg2)"/><path d="M40 4v12h12L40 4z" fill="rgba(255,255,255,0.3)"/><text x="32" y="42" font-family="sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">PDF</text></svg>
                 </div>
                 <p class="pdf-filename">Resume.pdf</p>
                 <p class="pdf-note">PDF preview not available in this browser</p>
@@ -302,56 +239,37 @@
 
 <!-- DOCK -->
 <div class="dock" id="dock">
-    <div class="dock-item" data-app="github" title="GitHub">
-        <div class="dock-icon-wrap dock-github"><svg viewBox="0 0 32 32"><path fill="white" d="M16 2C8.268 2 2 8.268 2 16c0 6.195 4.015 11.447 9.586 13.297.7.13.96-.304.96-.676 0-.336-.013-1.447-.02-2.626-3.897.846-4.72-1.653-4.72-1.653-.638-1.62-1.558-2.052-1.558-2.052-1.274-.87.097-.852.097-.852 1.408.099 2.15 1.446 2.15 1.446 1.252 2.143 3.285 1.524 4.087 1.165.127-.907.49-1.524.892-1.875-3.118-.355-6.394-1.56-6.394-6.945 0-1.534.548-2.788 1.446-3.77-.145-.354-.627-1.782.137-3.715 0 0 1.178-.377 3.86 1.44a13.415 13.415 0 0 1 3.516-.473c1.194.005 2.395.161 3.516.473 2.68-1.817 3.857-1.44 3.857-1.44.766 1.933.283 3.361.138 3.715.9.982 1.445 2.236 1.445 3.77 0 5.396-3.28 6.586-6.407 6.933.504.434.953 1.29.953 2.6 0 1.876-.017 3.39-.017 3.85 0 .375.256.812.968.675C25.988 27.442 30 22.193 30 16c0-7.732-6.268-14-14-14z"/></svg></div>
+    <div class="dock-item" data-app="github">
+        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/github.svg" alt="GitHub" class="dock-img"></div>
         <div class="dock-tooltip">GitHub</div>
         <div class="dock-dot"></div>
     </div>
-    <div class="dock-item" data-app="linkedin" title="LinkedIn">
-        <div class="dock-icon-wrap dock-linkedin"><svg viewBox="0 0 32 32"><path fill="white" d="M27.5 3h-23A1.5 1.5 0 0 0 3 4.5v23A1.5 1.5 0 0 0 4.5 29h23a1.5 1.5 0 0 0 1.5-1.5v-23A1.5 1.5 0 0 0 27.5 3zM11.5 25h-4v-13h4v13zm-2-14.8c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM25 25h-4v-6.5c0-1.5 0-3.5-2.1-3.5s-2.4 1.7-2.4 3.4V25h-4V12h3.8v1.8h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6V25z"/></svg></div>
+    <div class="dock-item" data-app="linkedin">
+        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/linkedin.svg" alt="LinkedIn" class="dock-img"></div>
         <div class="dock-tooltip">LinkedIn</div>
     </div>
-    <div class="dock-item" data-app="scholar" title="Google Scholar">
-        <div class="dock-icon-wrap dock-scholar"><svg viewBox="0 0 32 32"><path fill="white" d="M16 7l-10 7 10 7 10-7-10-7zm0 2.828L22.172 14 16 18.172 9.828 14 16 9.828zM8 16v6c0 2.209 3.582 4 8 4s8-1.791 8-4v-6l-8 5.6L8 16z"/></svg></div>
+    <div class="dock-item" data-app="scholar">
+        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/scholar.svg" alt="Google Scholar" class="dock-img"></div>
         <div class="dock-tooltip">Scholar</div>
     </div>
-    <div class="dock-item" data-app="medium" title="Medium">
-        <div class="dock-icon-wrap dock-medium"><svg viewBox="0 0 32 32"><path fill="white" d="M9.5 11c1.933 0 3.5 1.567 3.5 3.5S11.433 18 9.5 18 6 16.433 6 14.5 7.567 11 9.5 11zm8.5.5c.966 0 1.75 1.343 1.75 3s-.784 3-1.75 3-1.75-1.343-1.75-3 .784-3 1.75-3zm5.5.75c.345 0 .625 1.119.625 2.5s-.28 2.5-.625 2.5-.625-1.119-.625-2.5.28-2.5.625-2.5z"/></svg></div>
+    <div class="dock-item" data-app="medium">
+        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/medium.svg" alt="Medium" class="dock-img"></div>
         <div class="dock-tooltip">Medium</div>
     </div>
     <div class="dock-separator"></div>
-    <div class="dock-item" data-app="tools" title="Tools" id="tools-icon">
-        <div class="dock-icon-wrap dock-tools-icon">
-            <svg viewBox="0 0 32 32" fill="none">
-                <rect x="2" y="2" width="28" height="28" rx="7" fill="rgba(255,255,255,0.13)"/>
-                <path d="M9 9l4.5 4.5M23 9l-4.5 4.5M9 23l4.5-4.5M23 23l-4.5-4.5" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
-                <circle cx="16" cy="16" r="3" stroke="white" stroke-width="2" fill="none" opacity="0.85"/>
-                <circle cx="9" cy="9" r="2.2" fill="white" opacity="0.7"/>
-                <circle cx="23" cy="9" r="2.2" fill="white" opacity="0.7"/>
-                <circle cx="9" cy="23" r="2.2" fill="white" opacity="0.7"/>
-                <circle cx="23" cy="23" r="2.2" fill="white" opacity="0.7"/>
-            </svg>
-        </div>
+    <div class="dock-item" data-app="tools" id="tools-icon">
+        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/tools.svg" alt="Tools" class="dock-img"></div>
         <div class="dock-tooltip">Tools</div>
     </div>
     <div class="dock-separator"></div>
-    <div class="dock-item" data-app="terminal" title="Terminal">
-        <div class="dock-icon-wrap dock-terminal"><svg viewBox="0 0 32 32"><rect width="28" height="20" x="2" y="6" rx="3" fill="white" opacity="0.15"/><path fill="white" d="M7 12l4 3-4 3v-6zm6 4h6v2h-6v-2z"/></svg></div>
+    <div class="dock-item" data-app="terminal">
+        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/terminal.svg" alt="Terminal" class="dock-img"></div>
         <div class="dock-tooltip">Terminal</div>
         <div class="dock-dot"></div>
     </div>
     <div class="dock-separator"></div>
-    <div class="dock-item" data-app="trash" title="Trash">
-        <div class="dock-icon-wrap dock-trash">
-            <svg viewBox="0 0 32 32" fill="none">
-                <path d="M7 11.5h18l-1.5 14a2 2 0 0 1-2 1.8H10.5a2 2 0 0 1-2-1.8L7 11.5z" fill="rgba(255,255,255,0.22)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
-                <path d="M5 11.5h22" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M13 11.5V9.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
-                <line x1="13" y1="15" x2="13" y2="23" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-                <line x1="16" y1="15" x2="16" y2="23" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-                <line x1="19" y1="15" x2="19" y2="23" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-            </svg>
-        </div>
+    <div class="dock-item" data-app="trash">
+        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/trash.svg" alt="Trash" class="dock-img"></div>
         <div class="dock-tooltip">Trash</div>
     </div>
 </div>

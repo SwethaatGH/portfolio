@@ -3,82 +3,91 @@
 // ─────────────────────────────────────────────────
 const portfolioData = {
     professional: [
-        { title:"Deep Learning Research Intern", company:"IIIT Bangalore", date:"Dec 2024 – Apr 2025",
-          description:"Architected full-stack gaze tracking application & data management pipeline processing real-time eye movement data from 200+ study participants for cognitive research applications. Designed PostgreSQL schema for spatio-temporal data.",
-          tech:["Django","PostgreSQL","Python"] },
-        { title:"Web Scraping Engineering Intern", company:"IIM Calcutta", date:"Jan 2024 – May 2024",
-          description:"Designed web scraping system with REST API layer to collect 500K+ real-time tourism data points from fragmented sources.",
-          tech:["Selenium","BeautifulSoup4","REST API","Python"] },
-        { title:"Application Development Intern", company:"Suguna Groups", date:"Jan 2024 – Apr 2024",
-          description:"Implemented AJAX-powered real-time asset management system automating IT provisioning workflow for 10K+ employees.",
-          tech:["PHP","MySQL","AJAX"] },
-        { title:"Data Science Intern", company:"Sree Annapoorna Hotels", date:"Nov 2023 – Dec 2023",
-          description:"Analyzed 200K+ customer reviews from 30+ hotel branches using Power BI and Tableau dashboards.",
-          tech:["Power BI","Tableau","Streamlit","SQLite"] },
-        { title:"UI/UX Design Intern", company:"Pricol Limited", date:"Jun 2023 – Jul 2023",
-          description:"Designed interactive UI mockups for employee travel management application, improving visual consistency & navigation flow.",
-          tech:["Figma","User Research","Prototyping"] }
-    ],
+    { title:"Teaching Assistant, CSC 505 (Algorithms)", company:"NC State University Graduate School", date:"May 2026 – Aug 2026",
+      description:"Supported graduate-level Design and Analysis of Algorithms under Dr. Steffen Heber, developing grading rubrics and reference solutions, and grading homework, quizzes and exams with targeted feedback on complexity analysis and implementation.",
+      tech:["Algorithms","Teaching"] },
+    { title:"Research Assistant", company:"CAMCORE", date:"Apr 2026 – Aug 2026",
+      description:"Maintain a 5TB+ geospatial climate database across 6 sources, building agentic ETL pipelines for autonomous data detection, validation and ingestion. Deployed production AWS Lightsail infrastructure, expanding data access to 300+ researchers.",
+      tech:["AWS Lightsail","ETL","Geospatial Data"] },
+    { title:"Research Assistant", company:"STAC Lab, NC State Computer Science", date:"Jan 2026 – Aug 2026",
+      description:"Built a multi-modal geospatial deep learning pipeline (SRF, U-Net, ResNet) fusing 35M+ Landsat/land-cover/OSM raster samples and 1B+ LiDAR points for high-resolution Land Surface Temperature prediction, cutting RMSE 28% over baseline.",
+      tech:["PyTorch","U-Net","ResNet","Geospatial ML"] },
+    { title:"Deep Learning Research Intern", company:"IIIT Bangalore", date:"Dec 2024 – Apr 2025",
+      description:"Engineered a real-time eye-gaze capture system processing 7.2M+ frames across 200+ sessions, cutting post-processing time 50%. Built a DETR pipeline predicting gaze coordinates from heatmap video, improving accuracy 22% over an RNN baseline.",
+      tech:["PyTorch","DETR","Computer Vision"] },
+    { title:"Software Development Intern", company:"IIM Calcutta", date:"Jan 2024 – May 2024",
+      description:"Built a Selenium + REST API pipeline extracting 500K+ real-time tourism records from heterogeneous, dynamically rendered sources, with a multi-stage pipeline for schema mapping, deduplication, validation and normalization.",
+      tech:["Selenium","REST API","Python"] },
+    { title:"Software Development Intern", company:"Suguna Group", date:"Jan 2024 – Apr 2024",
+      description:"Engineered a company-wide IT asset provisioning system automating onboarding through return, with asynchronous AJAX modules for real-time asset tracking across 10K+ employees, 30+ departments and 30K+ assets.",
+      tech:["PHP","MySQL","AJAX"] },
+    { title:"UI/UX Designer", company:"Pricol Limited", date:"Jun 2023 – Jul 2023",
+      description:"Designed end-to-end user flows, wireframes and interactive prototypes for an enterprise employee travel management application, collaborating across engineering teams to translate requirements into feasible designs.",
+      tech:["Figma","Prototyping","UX Research"] }
+],
     projects: [
-        { title:"ByteBite — Food Delivery & Sustainability Platform", company:"NC State University", date:"Oct – Dec 2025",
-          description:"Full-stack food delivery and sustainability platform designed to reduce food waste while enhancing customer ordering experience. Features live notifications, instant claim functionality, smart customer matching, personalised recommendation engine and shelter redistribution functionality.",
-          tech:["React","Node.js","PostgreSQL","WebSockets"] },
-        { title:"StackShack — Full-Stack Web Application", company:"NC State University", date:"Oct – Dec 2025",
-          description:"Built a production-style full-stack web application using standard software engineering practices — modular design, GitHub-based collaboration and automated CI pipeline with testing and build validation.",
-          tech:["React","Node.js","GitHub Actions","CI/CD"] },
-        { title:"AdSight — Gaze Prediction for Ad Placement", company:"NC State University", date:"Oct – Nov 2025",
-          description:"Analyzed gaze data to infer customer attention patterns and optimize advertisement placement for improved marketing ROI using transformer-based gaze prediction models.",
-          tech:["PyTorch","Transformers","Data Mining","Python"] },
-        { title:"HeatShield — Real-Time Heatwave Alert System", company:"Personal", date:"Jun 2024",
-          description:"Designed and implemented a real-time heatwave alert system that monitors regional temperature data and sends automated SMS notifications during extreme weather. Built using a containerised backend architecture with 89% accuracy ensemble ML.",
-          tech:["Django","Docker","Ensemble ML","Twilio"] },
-        { title:"Travelog — Corporate Travel Management App", company:"PSG College of Technology", date:"Mar – Apr 2024",
-          description:"Built a full-stack mobile application to streamline official travel management within organisations, enabling employees to request, track and manage business trips and expenses.",
-          tech:["React Native","Node.js","MySQL"] },
-        { title:"SafeSense — Industrial IoT Safety Monitor", company:"PSG College of Technology", date:"Feb – Mar 2024",
-          description:"Developed an embedded IoT-based safety monitoring system that tracks environmental parameters in industrial settings in real time, enabling early detection of hazardous conditions.",
-          tech:["ESP32","I2C","Embedded C","IoT"] },
-        { title:"PSG Podcasts — Campus Audio Platform", company:"PSG College of Technology", date:"Sep – Oct 2023",
-          description:"Application helping clubs and associations centralise audio podcasts of guest lectures, alumni talks and awareness programs for the campus community.",
-          tech:["Java Swing","AWT","MySQL","JUnit"] }
-    ],
+    { title:"Elemental Quest — Multiplayer Platformer & Networking Engine", company:"Personal", date:"Aug 2026 – Present",
+      description:"Designed a modular C++17 game engine with core subsystems for physics, rendering, multithreaded job execution and runtime object management. Integrated a ZeroMQ-based networking layer for authoritative world simulation and synchronized state propagation, validated through a cooperative multiplayer platformer with deterministic simulation and thread-safe update loops.",
+      tech:["C++17","ZeroMQ","Multithreading","Game Engine"] },
+    { title:"ByteBite — Food Delivery & Sustainability Platform", company:"NC State University", date:"Oct – Dec 2025",
+      description:"Full-stack sustainable food delivery platform (React, Node.js, Express, MongoDB/Mongoose) backed by 120+ unit/integration tests in a CI pipeline. Features a cancel-to-redistribute mechanism turning canceled orders into discounted offers or shelter/NGO donations, 3D dish previews, Leaflet-based live delivery tracking, a personalized recommendation engine, and an admin dashboard for surplus inventory.",
+      tech:["React","Node.js","Express","MongoDB","CI/CD"] },
+    { title:"StackShack — Full-Stack Campus Dining Application", company:"NC State University", date:"Oct – Dec 2025",
+      description:"Modular, production-ready campus dining app (Flask, MySQL) with 230+ tests at 85.8% coverage via automated CI. Includes role-based staff/admin management, dynamic-pricing custom builds, real-time order tracking, secure digital wallet/campus card payments, and personalized dietary profiling with automated ingredient suggestions.",
+      tech:["Flask","MySQL","CI/CD","Testing"] },
+    { title:"AdSight — Webcam-Based Gaze Prediction for Ad Placement", company:"NC State University", date:"Oct – Dec 2025",
+      description:"Gaze-estimation pipeline predicting screen-coordinate attention from standard webcam images, trained on MPIIGaze. Benchmarked a CNN baseline against DETR (adapted from object detection to coordinate regression via Hungarian matching), then accumulated predictions into heatmaps to surface high-attention regions for dynamic ad placement.",
+      tech:["PyTorch","DETR","CNN","MPIIGaze"] },
+    { title:"SafeSense — Industrial IoT Safety Monitor", company:"PSG College of Technology", date:"Feb – Mar 2024",
+      description:"Embedded IoT safety system on an ESP32, integrating smoke, voltage and temperature sensors to track hazardous factory-floor conditions in real time, streaming readings to a live web dashboard for early hazard detection.",
+      tech:["ESP32","Embedded C","IoT"] },
+    { title:"Travelog — Corporate Travel Management App", company:"PSG College of Technology", date:"Oct – Nov 2023",
+      description:"Full-stack mobile app for end-to-end organizational travel management, from trip request through approval to expense reconciliation, with distinct employee/admin roles and a relational schema modeling multi-stage approval workflows.",
+      tech:["React Native","Node.js","MySQL"] },
+    { title:"Lyceum — Campus Audio Platform", company:"PSG College of Technology", date:"Sep – Oct 2023",
+      description:"Desktop app (Java Swing/AWT) for centralized club and association audio content management, backed by a SQL schema for metadata, categorization and role-based access control, with JUnit-tested data-access logic.",
+      tech:["Java Swing","AWT","SQL","JUnit"] },
+    { title:"FoliScan — Plant Leaf Disease Classifier", company:"PSG College of Technology", date:"Jun – Jul 2023",
+      description:"CNN image classifier (Keras) for multi-class plant leaf disease detection, served via a stateless Flask REST API handling upload, preprocessing, inference and structured JSON response.",
+      tech:["Keras","CNN","Flask"] },
+    { title:"HeatShield — Real-Time Heatwave Alert System", company:"Personal", date:"Jun – Jul 2023",
+      description:"Django backend polling regional temperature data with a SQL-logged alert history and Twilio-integrated SMS dispatch on threshold-based alerts, containerized with Docker for reproducible, independently scalable deployment.",
+      tech:["Django","Docker","Twilio"] },
+    { title:"UniSphere — Campus Booking & Navigation System", company:"PSG College of Technology", date:"Feb – Mar 2023",
+      description:"Normalized SQLite schema and FastAPI backend (served via uvicorn) for a multi-role campus booking system, with conflict-free scheduling logic and hashlib-based credential hashing for custom authentication.",
+      tech:["SQLite","FastAPI","uvicorn"] }
+],
     research: [
-        { title:"To The Point: From Dynamic Heatmap Video to Gaze Points", company:"Published", date:"2024–2025",
-          description:"Created and annotated heatmap-based gaze dataset (1K+ video frame data points). Proposed deep learning framework that converts temporal heatmap videos into precise gaze point predictions, enabling scalable cognitive load analysis for UX research.",
-          tech:["Eye Tracking","DETR","RNN","YOLO+LSTM"] },
-        { title:"Soil Heat Flux Dynamics Modeling Using Temporal DL", company:"Published", date:"2024",
-          description:"Applied stacking-based ensemble models (TCN, ANN, LSTM) on multi-season soil heat flux datasets (60K+ temporal records) to predict & optimize root-zone temperature for improving sustainable agriculture.",
-          tech:["TCN","LSTM","ANN","TensorFlow"] },
-        { title:"Profecta — A Smart Logistics System", company:"Published", date:"2024",
-          description:"Developed AI-driven logistics optimizer for dynamic routing. Implemented map-based visualizations for route comparisons and real-time decision support.",
-          tech:["AI"] },
-        { title:"Adaptive Personalization of Social Media Feed", company:"Published", date:"2024",
-          description:"Designed feed content recommendation model using fuzzy clustering, eigenvalue-based user profiling & neural networks for adaptive social media personalization.",
-          tech:["Fuzzy Clustering","TF-IDF"] },
-        { title:"Road Navigation & Caption Generation for the Visually Impaired", company:"Submitted", date:"2024",
-          description:"Built real-time navigation system using EfficientNet, YOLOv5 object detection, LSTM-based captioning & audio synthesis to assist visually impaired users.",
-          tech:["EfficientNet","YOLOv5","LSTM"] },
-        { title:"DecentraCheque — Decentralized Smart Cheque Validation", company:"Submitted", date:"2024",
-          description:"Engineered smart contracts-based cheque verification system using Siamese-ResNet model trained on 25K+ cheque images for fraud-resistant validation.",
-          tech:["Blockchain","Siamese-ResNet","Smart Contracts","Python"] },
-        { title:"Modeling Ekman Spiral Using PINNs for Ocean Circulation", company:"Submitted", date:"2024",
-          description:"Modeled oceanic dynamics using Physics-Informed Neural Networks in DeepXDE, trained on simulated ocean current datasets to improve Ekman spiral predictions.",
-          tech:["PINNs","DeepXDE"] }
-    ],
+    { title:"To The Point: From Dynamic Heatmap Videos to Gaze Points", company:"ACM", date:"May 2025",
+      description:"Built and annotated a 1K+ frame heatmap gaze dataset and proposed a DETR-based framework converting temporal heatmap videos into precise gaze-point predictions, outperforming RNN and YOLO+LSTM baselines for scalable cognitive-load analysis.",
+      tech:["Eye Tracking","DETR","RNN","YOLO+LSTM"] },
+    { title:"Soil Heat Flux Dynamics Modeling Using Temporal DL", company:"Springer LLNS", date:"Apr 2025",
+      description:"Developed a stacking ensemble of TCN, LSTM and ANN models on 60K+ multi-season temporal records to predict soil heat flux and optimize plant root-zone temperature for sustainable agriculture.",
+      tech:["TCN","LSTM","ANN","TensorFlow"] },
+    { title:"Profecta — A Smart Logistics System", company:"Taylor & Francis CRC Press", date:"Jul 2024",
+      description:"Built a multi-constraint logistics route optimizer combining Nearest Neighbor, Bidirectional Search and urgency-based heuristics with 6 batch-splitting strategies, reducing penalty cost by up to 78%, plus UX-tested map visualizations for route comparison.",
+      tech:["Route Optimization","Heuristics","Python"] },
+    { title:"DecentraCheque — Decentralized Smart Cheque Validation", company:"Submitted", date:"2024",
+      description:"Engineered a smart-contract-based cheque verification system with a Siamese-ResNet18 (CBAM attention) model trained on 25K+ images for fraud-resistant signature validation (98% precision).",
+      tech:["Blockchain","Siamese-ResNet","Smart Contracts","Python"] },
+    { title:"Modeling Ekman Spiral Using PINNs for Ocean Circulation", company:"Submitted", date:"2024",
+      description:"Modeled oceanic dynamics using Physics-Informed Neural Networks in DeepXDE, trained on simulated ocean current datasets to improve Ekman spiral predictions.",
+      tech:["PINNs","DeepXDE"] }
+],
     hackathons: [
-        { title:"WolfTrace — Campus Incident Intelligence", company:"Hack NC State", date:"2025",
-          description:"Built WolfTrace - a campus incident intelligence workspace to combat misinformation during emergencies. Multi-agent AI pipeline processes multimodal evidence with a RAG framework.",
-          tech:["Next.js","React","FastAPI","Neo4j","Gemini","Groq","Vultr","ElevenLabs"] },
-        { title:"GreenFPO — Satellite-Based Crop Advisory (Finalist among 200+ teams)", company:"NABARD AgriSure Greenathon", date:"2024",
-          description:"Built an intelligent crop advisory platform that transforms raw satellite imagery into actionable insights for Farmer Producer Organisations (FPOs).",
-          tech:["Geospatial Analysis"] },
-        { title:"IntelliCTS — Cheque Parsing System (Top 3 Campus-wide)", company:"Standard Chartered Bank Hackathon", date:"2023",
-          description:"Sophisticated Cheque Truncation System designed to streamline the clearing process through ML and OCR methodologies.",
-          tech:["OCR","TensorFlow","OpenCV"] },
-        { title:"Seal — Blockchain Land Record Management", company:"Smart India Hackathon", date:"2023",
-          description:"Land registry designed to eliminate fraud and disputes in property ownership using smart contracts and an immutable ledger.",
-          tech:["Solidity","Python","React","Node.js"] }
-    ]
+    { title:"WolfTrace — Campus Incident Intelligence", company:"Hack NC State", date:"2026",
+      description:"Noir-styled campus incident intelligence and moderation platform (Next.js 15, TypeScript, React, FastAPI) that transforms raw multi-format tips and multimedia into structured case files via an agentic AI pipeline. Built a Neo4j-backed force-directed evidence graph, a Kanban case wall, a priority-sorted tip triage inbox, and a RAG chatbot (Gemini, Groq) for querying case histories in real time.",
+      tech:["Next.js","TypeScript","FastAPI","Neo4j","RAG","Gemini","Groq"] },
+    { title:"IntelliCTS — Cheque Parsing System (Top 3 Campus-wide)", company:"Standard Chartered Bank Hackathon", date:"2024",
+      description:"Automated cheque-processing system modeled on India's RBI-mandated Cheque Truncation System, using TensorFlow and OCR/ICR to extract and validate structured fields (account number, IFSC, amount, handwritten payee names) from scanned cheques, supporting bulk batch processing.",
+      tech:["TensorFlow","OCR","ICR","Python"] },
+    { title:"GreenFPO — Satellite-Based Crop Advisory (Finalist among 200+ teams)", company:"NABARD AgriSure Greenathon", date:"2024",
+      description:"Intelligent crop advisory platform transforming raw satellite imagery into actionable insights for Farmer Producer Organisations, combining geospatial analysis with ML-driven recommendations to support data-informed agricultural decisions.",
+      tech:["Geospatial Analysis","Python","Machine Learning"] },
+    { title:"Seal — Blockchain Land Record Management", company:"Smart India Hackathon", date:"2023",
+      description:"Land registry platform designed to eliminate fraud and disputes in property ownership, using Solidity smart contracts and an immutable ledger to enforce tamper-proof, verifiable land-title records.",
+      tech:["Solidity","Python","React","Node.js"] }
+]
 };
 
 const trashItems = [
@@ -87,15 +96,23 @@ const trashItems = [
 ];
 
 // ─────────────────────────────────────────────────
+// SHARED ICONS — same artwork as the desktop icons
+// ─────────────────────────────────────────────────
+const FOLDER_ICON = (size) => `<img src="assets/folder.webp" alt="" width="${size}" height="${size}" style="object-fit:contain;">`;
+const PDF_ICON = (size) => `<svg viewBox="0 0 64 64" fill="none" width="${size}" height="${size}"><path d="M16 4h24l12 12v40c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V8c0-2.2 1.8-4 4-4z" fill="white" stroke="#d1d5db" stroke-width="1.5"/><path d="M40 4v12h12L40 4z" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5"/><rect x="20" y="28" width="24" height="2" rx="1" fill="#374151" opacity="0.8"/><rect x="20" y="34" width="20" height="2" rx="1" fill="#374151" opacity="0.6"/><rect x="20" y="40" width="22" height="2" rx="1" fill="#374151" opacity="0.6"/><rect x="20" y="46" width="16" height="2" rx="1" fill="#374151" opacity="0.4"/><text x="32" y="22" font-family="sans-serif" font-size="7" font-weight="700" fill="#111827" text-anchor="middle">PDF</text></svg>`;
+const GMAIL_ICON = (size) => `<svg viewBox="52 42 88 66" width="${size}" height="${size}"><path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg>`;
+
+// ─────────────────────────────────────────────────
 // SPOTLIGHT ICONS — inline SVGs
 // ─────────────────────────────────────────────────
 function getSpotlightIconSVG(iconType) {
     const uid = Math.random().toString(36).slice(2,7);
     const icons = {
-        folder:   `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><defs><linearGradient id="spf${uid}" x1="0" y1="0" x2="0" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><path d="M2 13c0-2 1.6-3.6 3.6-3.6h8.4l2.8 2.8H35c2 0 3.6 1.6 3.6 3.6v14.8c0 2-1.6 3.6-3.6 3.6H5.6C3.6 34.2 2 32.6 2 30.6V13z" fill="url(#spf${uid})"/></svg>`,
-        pdf:      `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><path d="M10 2h14l8 8v25c0 1.4-1.1 2.5-2.5 2.5H10c-1.4 0-2.5-1.1-2.5-2.5V4.5C7.5 3.1 8.6 2 10 2z" fill="#f472b6"/><path d="M24 2v8h8L24 2z" fill="white" opacity="0.3"/><text x="20" y="29" font-family="sans-serif" font-size="8" font-weight="700" fill="white" text-anchor="middle">PDF</text></svg>`,
-        terminal: `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><rect width="40" height="40" rx="9" fill="#1a1a2e"/><path fill="white" d="M8 14l9 7-9 7V21zm11 9h13v3H19v-3z"/></svg>`,
-        contact:  `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><defs><linearGradient id="spct${uid}" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#60a5fa"/></linearGradient></defs><rect x="3" y="9" width="34" height="22" rx="4" fill="url(#spct${uid})"/><path d="M3 14l17 11 17-11" stroke="white" stroke-width="2" fill="none"/></svg>`,
+        // Same artwork as the desktop/dock icons, so Spotlight results match what's on-screen
+        folder:   FOLDER_ICON(30),
+        pdf:      PDF_ICON(28),
+        terminal: `<img src="assets/terminal.svg" alt="" width="28" height="28" style="object-fit:contain;border-radius:7px;">`,
+        contact:  `<img src="assets/contact.webp" alt="" width="30" height="30" style="object-fit:contain;">`,
         location: `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><defs><linearGradient id="sploc${uid}" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#34d399"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><path d="M20 3C13.4 3 8 8.4 8 15c0 8 12 22 12 22s12-14 12-22c0-6.6-5.4-12-12-12zm0 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="url(#sploc${uid})"/></svg>`,
         github:   `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><rect width="40" height="40" rx="9" fill="#24292e"/><path fill="white" d="M20 5C11.7 5 5 11.7 5 20c0 6.6 4.3 12.2 10.2 14.2.7.1 1-.3 1-.7v-2.8c-4.2.9-5-1.8-5-1.8-.7-1.7-1.7-2.2-1.7-2.2-1.3-.9.1-.9.1-.9 1.5.1 2.3 1.5 2.3 1.5 1.3 2.3 3.5 1.6 4.3 1.2.1-.9.5-1.6.9-2-3.3-.4-6.8-1.7-6.8-7.4 0-1.6.6-3 1.5-4-.2-.4-.7-1.9.1-4 0 0 1.3-.4 4.1 1.5a14 14 0 0 1 3.7-.5c1.3 0 2.5.2 3.7.5 2.8-1.9 4.1-1.5 4.1-1.5.8 2 .3 3.6.1 4 .9 1 1.5 2.4 1.5 4 0 5.7-3.5 7-6.8 7.4.5.5 1 1.4 1 2.8v4.1c0 .4.3.8 1 .7C30.7 32.2 35 26.6 35 20c0-8.3-6.7-15-15-15z"/></svg>`,
         linkedin: `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><rect width="40" height="40" rx="9" fill="#0077b5"/><path fill="white" d="M13 29h-4V16h4v13zm-2-14.8c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM30 29h-4v-6.5c0-1.5 0-3.5-2.1-3.5s-2.4 1.7-2.4 3.4V29h-4V16h3.8v1.8h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6V29z"/></svg>`,
@@ -105,16 +122,15 @@ function getSpotlightIconSVG(iconType) {
 
 const spotlightIndex = [
     { title:"Experience",  sub:"IIIT-B · IIM-C · Suguna · Sree Annapoorna · Pricol",    action:"Open",  type:"folder",   key:"professional", iconType:"folder"   },
-    { title:"Projects",    sub:"ByteBite · WolfTrace · AdSight · HeatShield · SafeSense", action:"Open",  type:"folder",   key:"projects",     iconType:"folder"   },
-    { title:"Research",    sub:"Gaze Points · Soil ML · Logistics · PINNs · Vision AI",  action:"Open",  type:"folder",   key:"research",     iconType:"folder"   },
-    { title:"Hackathons",  sub:"NC State · ISRO · NABARD · SCB · Smart India",           action:"Open",  type:"folder",   key:"hackathons",   iconType:"folder"   },
-    { title:"Resume.pdf",  sub:"Download or preview my CV",                              action:"View",  type:"resume",                       iconType:"pdf"      },
+    { title:"Projects",    sub:"Elemental Quest · ByteBite · StackShack · AdSight · SafeSense", action:"Open", type:"folder", key:"projects", iconType:"folder" },
+{ title:"Hackathons",  sub:"WolfTrace · IntelliCTS · NABARD · Smart India",                  action:"Open", type:"folder", key:"hackathons", iconType:"folder" },
+{ title:"Research",    sub:"Gaze Points · Soil ML · Logistics · DecentraCheque · PINNs",      action:"Open", type:"folder", key:"research", iconType:"folder" },
+{ title:"Resume.pdf",  sub:"Download or preview my resume",                          action:"Open",  type:"resume",                       iconType:"pdf"      },
     { title:"Terminal",    sub:"whoami · skills · experience · projects…",               action:"Open",  type:"terminal",                     iconType:"terminal" },
     { title:"Contact",     sub:"Say Hello",                                              action:"Open",  type:"contact",                      iconType:"contact"  },
-    { title:"Education",   sub:"M.S. CS NC State · GPA 4.0 · B.E. CSE · 8.83",         action:"Info",  type:"terminal",                     iconType:"terminal" },
-    { title:"Python",      sub:"Primary language · ML / AI / Backend / Research",       action:"Skills",type:"terminal",                     iconType:"terminal" },
-    { title:"React",       sub:"ByteBite, WolfTrace, Travelog",                         action:"Skills",type:"terminal",                     iconType:"terminal" },
-    { title:"Location",    sub:"India → Raleigh, NC",                                   action:"Info",  type:"info",                         iconType:"location" },
+    { title:"Python",      sub:"Primary language · ML / AI / Backend / Research",       action:"Open",  type:"terminal",                     iconType:"terminal" },
+    { title:"React",       sub:"ByteBite, WolfTrace, Travelog",                         action:"Open",  type:"terminal",                     iconType:"terminal" },
+    { title:"Location",    sub:"India → Raleigh, NC",                                   action:"Open",  type:"info",                         iconType:"location" },
     { title:"GitHub",      sub:"github.com/SwethaatGH",                                 action:"Open",  type:"link", url:"https://github.com/SwethaatGH",                           iconType:"github"   },
     { title:"LinkedIn",    sub:"linkedin.com/in/swetha-manivasagam",                    action:"Open",  type:"link", url:"https://www.linkedin.com/in/swetha-manivasagam/",         iconType:"linkedin" },
 ];
@@ -143,133 +159,132 @@ const terminalCommands = {
     },
 
     whoami: {
-        desc: "About Swetha",
-        fn: () => `<span class="t-head">WHOAMI</span>
+    desc: "About Swetha",
+    fn: () => `<span class="t-head">WHOAMI</span>
 
 <span class="t-highlight">Swetha Manivasagam</span>
-M.S. Computer Science student at NC State University with a background in
-machine learning, full-stack development and data-driven systems.
+MS CS student with published deep learning research experience in
+spatio-temporal modelling and building RESTful APIs, C++ systems,
+data pipelines and cloud infrastructure for large-scale data through
+production deployment.
 
 Currently building, researching and seeking Summer 2026 opportunities.`
-    },
+},
 
-    skills: {
-        desc: "Technical strengths",
-        fn: () => `<span class="t-head">TECHNICAL STRENGTHS</span>
+skills: {
+    desc: "Technical strengths",
+    fn: () => `<span class="t-head">TECHNICAL STRENGTHS</span>
 
 <span class="t-highlight">Languages</span>
-  Python · Java · JavaScript · SQL · PHP · Bash
+  Python · C · C++ · Java · JavaScript · SQL
 
-<span class="t-highlight">ML / AI</span>
-  PyTorch · TensorFlow · Transformers · OpenCV
-  Deep Learning · Ensemble Modeling · Computer Vision
+<span class="t-highlight">AI & ML</span>
+  PyTorch · TensorFlow · Keras · OpenCV · Transformers
 
-<span class="t-highlight">Web / Product Engineering</span>
-  React · Next.js · Django · Flask · Node.js
-  FastAPI · REST APIs
+<span class="t-highlight">Data & Databases</span>
+  Pandas · NumPy · PostgreSQL · MongoDB · Neo4j
+  Streamlit · Tableau · Power BI
 
-<span class="t-highlight">Data / Systems</span>
-  PostgreSQL · MySQL · SQLite · Neo4j
-  Selenium · BeautifulSoup`
-    },
+<span class="t-highlight">Frontend</span>
+  React.js · React Native · Next.js · HTML · CSS
+  Bootstrap · Material Design Lite · Figma
 
+<span class="t-highlight">Backend & DevOps</span>
+  Django · Flask · FastAPI · Express.js · PHP
+  RESTful APIs · JUnit · Linux · Git · Docker · Postman`
+},
     experience: {
-        desc: "Internships and work",
-        fn: () => `<span class="t-head">EXPERIENCE</span>
+    desc: "Internships and work",
+    fn: () => `<span class="t-head">EXPERIENCE</span>
+
+<span class="t-highlight">CAMCORE</span> — Research Assistant
+  Apr 2026 – Aug 2026
+  5TB+ geospatial climate database, agentic ETL pipelines,
+  AWS Lightsail infra serving 300+ researchers.
+
+<span class="t-highlight">STAC Lab, NC State</span> — Research Assistant
+  Jan 2026 – Aug 2026
+  Multi-modal LST prediction pipeline (SRF/U-Net/ResNet),
+  35M+ raster samples, 28% RMSE improvement.
 
 <span class="t-highlight">IIIT Bangalore</span> — Deep Learning Research Intern
   Dec 2024 – Apr 2025
-  Built a full-stack gaze tracking application and data pipeline
-  for cognitive research with 200+ study participants.
+  Real-time gaze capture system (7.2M+ frames), DETR-based
+  gaze prediction pipeline, 22% improvement over RNN baseline.
 
-<span class="t-highlight">IIM Calcutta</span> — Web Scraping Engineering Intern
+<span class="t-highlight">IIM Calcutta</span> — Software Development Intern
   Jan 2024 – May 2024
-  Designed a scraping + REST pipeline collecting 500K+ tourism data points
-  from fragmented sources.
+  Selenium + REST API pipeline collecting 500K+ tourism records.
 
-<span class="t-highlight">Suguna Groups</span> — Application Development Intern
+<span class="t-highlight">Suguna Group</span> — Software Development Intern
   Jan 2024 – Apr 2024
-  Implemented a real-time asset management workflow system
-  supporting IT provisioning for 10K+ employees.
+  AJAX-driven IT asset provisioning system for 10K+ employees.
 
-<span class="t-highlight">Sree Annapoorna Hotels</span> — Data Science Intern
-  Nov 2023 – Dec 2023
-  Analyzed 200K+ customer reviews across 30+ branches using
-  Power BI and Tableau.
-
-<span class="t-highlight">Pricol Limited</span> — UI/UX Design Intern
+<span class="t-highlight">Pricol Limited</span> — UI/UX Designer
   Jun 2023 – Jul 2023
-  Designed interactive mockups for an employee travel management platform.`
-    },
+  UX flows and prototypes for an enterprise travel management app.`
+},
 
-    projects: {
-        desc: "Selected projects",
-        fn: () => `<span class="t-head">SELECTED PROJECTS</span>
+projects: {
+    desc: "Selected projects",
+    fn: () => `<span class="t-head">SELECTED PROJECTS</span>
 
-<span class="t-highlight">ByteBite</span> — Full-stack food delivery + sustainability platform
-  Live notifications, smart matching, shelter redistribution
-  React · Node.js · PostgreSQL · WebSockets
+<span class="t-highlight">Elemental Quest</span> — C++17 multiplayer game engine
+  Physics, rendering, multithreading, ZeroMQ networking
+  C++17 · ZeroMQ
 
-<span class="t-highlight">StackShack</span> — Production-style full-stack application
-  Modular design, CI pipeline, collaborative engineering workflow
-  React · Node.js · GitHub Actions
+<span class="t-highlight">ByteBite</span> — Full-stack food delivery + sustainability
+  Cancel-to-redistribute, live tracking, recommendation engine
+  React · Node.js · Express · MongoDB
 
-<span class="t-highlight">AdSight</span> — Gaze prediction for ad placement
-  Modeled customer attention patterns for better ad positioning
-  PyTorch · Transformers · Data Mining
+<span class="t-highlight">StackShack</span> — Campus dining application
+  230+ tests, 85.8% coverage, CI pipeline
+  Flask · MySQL
 
-<span class="t-highlight">HeatShield</span> — Real-time heatwave alert system
-  Containerized backend + SMS notifications + ensemble ML
-  Django · Docker · Twilio
+<span class="t-highlight">AdSight</span> — Webcam gaze prediction for ad placement
+  MPIIGaze, CNN vs. DETR, Hungarian matching
+  PyTorch · DETR
 
 <span class="t-highlight">SafeSense</span> — Industrial IoT safety monitor
-  Real-time hazard monitoring with embedded sensors and dashboard
-  ESP32 · Embedded C · IoT`
-    },
+  ESP32 + multi-sensor real-time hazard tracking
+  ESP32 · Embedded C`
+},
 
-    research: {
-        desc: "Research papers and themes",
-        fn: () => `<span class="t-head">RESEARCH</span>
+research: {
+    desc: "Research papers and themes",
+    fn: () => `<span class="t-head">RESEARCH</span>
 
-<span class="t-highlight">Core themes</span>
-  Gaze tracking · Temporal deep learning · Scientific ML
-  Assistive vision · Adaptive recommendation · Applied AI systems
+<span class="t-highlight">Published</span>
 
-<span class="t-highlight">Published / Submitted Work</span>
+  To The Point — ACM, 2025
+  Heatmap video → gaze point prediction (DETR)
 
-  To The Point
-  Dynamic heatmap video → gaze point prediction for cognitive analysis
+  Soil Heat Flux Modeling — Springer LLNS, 2025
+  TCN + LSTM + ANN ensemble, 60K+ records
 
-  Soil Heat Flux Dynamics Modeling Using Temporal DL
-  TCN + ANN + LSTM ensemble modeling on 60K+ temporal records
+  Profecta — Taylor & Francis CRC Press, 2024
+  Logistics route optimizer, 78% penalty reduction
 
-  Profecta
-  AI-driven logistics optimization and route analysis
-
-  Adaptive Personalization of Social Media Feed
-  Recommendation modeling using clustering and user profiling
-
-  Road Navigation & Caption Generation for the Visually Impaired
-  Assistive vision with YOLOv5, EfficientNet, and LSTM captioning
+<span class="t-highlight">Submitted</span>
 
   DecentraCheque
-  Blockchain-backed cheque validation with Siamese-ResNet
+  Siamese-ResNet18 cheque signature validation, 98% precision
 
   Modeling Ekman Spiral Using PINNs
-  Physics-Informed Neural Networks for ocean circulation modeling`
-    },
+  Physics-informed ocean circulation modeling`
+},
 
     education: {
         desc: "Academic background",
         fn: () => `<span class="t-head">EDUCATION</span>
 
 <span class="t-highlight">North Carolina State University</span>
-  M.S. Computer Science
+  Masters in Computer Science
   Aug 2025 – May 2027
   GPA: 4.0 / 4.0
 
 <span class="t-highlight">PSG College of Technology</span>
-  B.E. Computer Science & Engineering
+  Bachelor of Engineering in Computer Science & Engineering
   Oct 2021 – May 2025
   CGPA: 8.83 / 10.0`
     },
@@ -320,6 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountdown();
     initWeather();
     initReminders();
+    initTechStack();
     initFolders();
     initTools();
     initTerminal();
@@ -443,10 +459,10 @@ const reminders=[
     {text:'Deploy AdSight',                          done:false},
     {text:'Balsamiq lo-fi prototype',                done:false},
     {text:'Write Medium draft for LiDAR findings',   done:false},
-    {text:'Update DecentraCheque lit survey',        done:false},
+    {text:'Update DecentraCheque lit survey',        done:true},
     {text:'WolfTrace TwelveLabs follow-up',          done:false},
-    {text:'Finish exploring Swin Transformer',       done:false},
-    {text:'Independent study progress meet',         done:false},
+    {text:'Explore Swin Transformer', done:false},
+    {text:'Independent study progress meet',         done:true},
 ];
 function initReminders() {
     const list=document.getElementById('reminder-list'); if(!list) return;
@@ -467,9 +483,20 @@ function renderReminders() {
 }
 
 // ─────────────────────────────────────────────────
-// FOLDERS — each opens independently
+// TECH STACK — click an icon to open its official site
+// ─────────────────────────────────────────────────
+function initTechStack() {
+    document.querySelectorAll('.tech-icon-item[data-url]').forEach(el => {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', () => window.open(el.dataset.url, '_blank', 'noopener'));
+    });
+}
+
+// ─────────────────────────────────────────────────
+// FOLDERS — one window per folder key, reused on reopen
 // ─────────────────────────────────────────────────
 let folderWindowCounter = 0;
+const openFolderWindows = {}; // key -> { win, title }
 
 function createFolderWindow() {
     const win = document.createElement('div');
@@ -488,9 +515,9 @@ function createFolderWindow() {
         </div>
         <div class="window-content"><div class="cards-container"></div></div>`;
     document.body.appendChild(win);
-    win.querySelector('.window-control.close').onclick = () => { win.style.display='none'; };
     initMinMaxForWindow(win);
     makeDraggable(win);
+    makeResizable(win);
     return win;
 }
 
@@ -502,21 +529,37 @@ function initFolders() {
         const el = document.getElementById(id);
         if (!el) return;
         el.addEventListener('click', () => {
+            const existing = openFolderWindows[key];
+            if (existing && document.body.contains(existing.win)) {
+                restoreFolderWindow(key);
+                addRecent(titles[key], id, 'folder', key);
+                return;
+            }
+
             const win = createFolderWindow();
             win.querySelector('.window-title').textContent = titles[key];
             const cardsEl = win.querySelector('.cards-container');
+            const noMeta = key === 'projects';
             portfolioData[key].forEach((item,i) => {
                 const card = document.createElement('div');
-                card.className = 'card'; card.style.animationDelay = `${i*0.06}s`;
-                card.innerHTML = `<div class="card-title">${item.title}</div><div class="card-company">${item.company}</div><div class="card-date">${item.date}</div><div class="card-description">${item.description}</div><div class="card-tech">${item.tech.map(t=>`<span class="tech-tag">${t}</span>`).join('')}</div>`;
+                card.className = 'card' + (noMeta ? ' card-no-meta' : ''); card.style.animationDelay = `${i*0.06}s`;
+                const meta = noMeta ? '' : `<div class="card-company">${item.company}</div><div class="card-date">${item.date}</div>`;
+                card.innerHTML = `<div class="card-title">${item.title}</div>${meta}<div class="card-description">${item.description}</div><div class="card-tech">${item.tech.map(t=>`<span class="tech-tag">${t}</span>`).join('')}</div>`;
                 cardsEl.appendChild(card);
+            });
+
+            win.querySelector('.window-control.close').addEventListener('click', e => {
+                e.stopPropagation();
+                closeFolderWindow(key);
             });
             win.querySelector('.window-control.minimize').addEventListener('click', e => {
                 e.stopPropagation();
                 if (win.style.display==='none') return;
                 win.style.display = 'none';
-                addMinimizedFolderDockItem(win, titles[key]);
+                addMinimizedFolderDockItem(win, titles[key], key);
             });
+
+            openFolderWindows[key] = { win, title: titles[key] };
             openWindowCentered(win);
             addRecent(titles[key], id, 'folder', key);
         });
@@ -524,30 +567,44 @@ function initFolders() {
 
     const orig = document.getElementById('folder-window');
     if (orig) orig.style.display = 'none';
+
 }
 
-function addMinimizedFolderDockItem(win, title) {
+function restoreFolderWindow(key) {
+    const entry = openFolderWindows[key];
+    if (!entry) return;
+    const { win } = entry;
+    if (win._minDockItem) { win._minDockItem.remove(); win._minDockSep?.remove(); win._minDockItem=null; win._minDockSep=null; }
+    openWindowCentered(win);
+}
+
+function closeFolderWindow(key) {
+    const entry = openFolderWindows[key];
+    if (!entry) return;
+    const { win } = entry;
+    win.style.display = 'none';
+    if (win._minDockItem) { win._minDockItem.remove(); win._minDockSep?.remove(); win._minDockItem=null; win._minDockSep=null; }
+    delete openFolderWindows[key];
+}
+
+function addMinimizedFolderDockItem(win, title, key) {
     const dock = document.getElementById('dock');
     if (!dock) return;
-    const uid = Date.now();
     const item = document.createElement('div');
     item.className = 'dock-item minimized-dock-item';
     item.title = title;
     item.innerHTML = `
-        <div class="dock-icon-wrap" style="background:linear-gradient(145deg,#1e3a8a,#2563eb)">
-            <svg viewBox="0 0 32 32" fill="none" width="26" height="26">
-                <defs><linearGradient id="mfi${uid}" x1="0" y1="0" x2="0" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
-                <path d="M2 10c0-1.65 1.35-3 3-3h6l2 2h14c1.65 0 3 1.35 3 3v12c0 1.65-1.35 3-3 3H5c-1.65 0-3-1.35-3-3V10z" fill="url(#mfi${uid})"/>
-            </svg>
-        </div>
+        <div class="dock-icon-wrap">${FOLDER_ICON(40)}</div>
         <div class="dock-tooltip">${title}</div>
         <div class="dock-dot" style="background:rgba(96,165,250,0.9)"></div>`;
     const sep = document.createElement('div');
     sep.className = 'dock-separator minimized-sep';
-    item.addEventListener('click', () => { openWindowCentered(win); item.remove(); sep.remove(); });
+    item.addEventListener('click', () => { restoreFolderWindow(key); });
     const trashItem = dock.querySelector('[data-app="trash"]');
     if (trashItem) { dock.insertBefore(sep, trashItem); dock.insertBefore(item, trashItem); }
     else { dock.appendChild(sep); dock.appendChild(item); }
+    win._minDockItem = item;
+    win._minDockSep = sep;
 }
 
 // ─────────────────────────────────────────────────
@@ -699,13 +756,7 @@ function buildContactForm() {
     return `
     <div class="contact-form-inner">
         <div class="contact-form-header">
-            <div class="contact-form-icon">
-                <svg viewBox="0 0 48 48" fill="none" width="42" height="42">
-                    <defs><linearGradient id="cfhg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#60a5fa"/></linearGradient></defs>
-                    <rect x="4" y="12" width="40" height="26" rx="5" fill="url(#cfhg)" opacity="0.95"/>
-                    <path d="M4 17l20 13 20-13" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-                </svg>
-            </div>
+            <div class="contact-form-icon">${GMAIL_ICON(42)}</div>
             <div>
                 <div class="contact-form-title">Say Hello!</div>
                 <div class="contact-form-sub">I'd love to hear from you</div>
@@ -715,22 +766,12 @@ function buildContactForm() {
             <input type="hidden" name="access_key" value="7e3089cc-f380-4306-a256-6149125b9b31">
             <input type="hidden" name="subject" value="Portfolio Contact — New Message">
             <input type="checkbox" name="botcheck" style="display:none">
-            <div class="cf-field">
-                <label class="cf-label" for="cf-name">Your Name</label>
-                <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Jane Doe" required autocomplete="name">
+            <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your Name" aria-label="Your Name" required autocomplete="name">
+            <input class="cf-input" type="email" id="cf-email" name="email" placeholder="Email Address" aria-label="Email Address" required autocomplete="email">
+            <textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Message" aria-label="Message" required rows="5"></textarea>
+            <div class="cf-actions">
+                <button type="submit" class="cf-submit" id="cf-submit-btn">Send</button>
             </div>
-            <div class="cf-field">
-                <label class="cf-label" for="cf-email">Email Address</label>
-                <input class="cf-input" type="email" id="cf-email" name="email" placeholder="jane@example.com" required autocomplete="email">
-            </div>
-            <div class="cf-field">
-                <label class="cf-label" for="cf-message">Message</label>
-                <textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Hi Swetha, I'd love to connect about…" required rows="5"></textarea>
-            </div>
-            <button type="submit" class="cf-submit" id="cf-submit-btn">
-                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2L1 8.5l5 1.5M14 2l-5 12-3-6.5"/></svg>
-                Send Message
-            </button>
             <div class="cf-status" id="cf-status"></div>
         </form>
     </div>`;
@@ -745,7 +786,7 @@ function setupContactForm() {
         e.preventDefault();
         const formData=new FormData(form);
         const originalHTML=submitBtn.innerHTML;
-        submitBtn.innerHTML=`<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l2 2"/></svg> Sending…`;
+        submitBtn.textContent='Sending…';
         submitBtn.disabled=true;
         if(statusEl){statusEl.textContent='';statusEl.className='cf-status';}
         try {
@@ -774,8 +815,8 @@ function initResume() {
     const icon=document.getElementById('resume-icon');
     const win=document.getElementById('pdf-window');
     const cb=document.getElementById('pdf-close');
-    if(icon) icon.onclick=()=>{openWindowCentered(win);addRecent('Resume.pdf','resume-icon','resume','');};
-    if(cb)   cb.onclick=()=>{if(win)win.style.display='none';};
+    if(icon) icon.onclick=()=>{restoreResumeWindow();addRecent('Resume.pdf','resume-icon','resume','');};
+    if(cb)   cb.onclick=()=>{if(!win)return;win.style.display='none';removeResumeDockItem(win);};
 
     const minBtn=document.getElementById('pdf-minimize');
     if(minBtn) minBtn.addEventListener('click',e=>{
@@ -787,25 +828,31 @@ function initResume() {
     initMinMaxForWindow(win);
 }
 
+function restoreResumeWindow() {
+    const win=document.getElementById('pdf-window');
+    if(!win) return;
+    removeResumeDockItem(win);
+    openWindowCentered(win);
+}
+
+function removeResumeDockItem(win) {
+    win._minDockItem?.remove(); win._minDockSep?.remove();
+    win._minDockItem=null; win._minDockSep=null;
+}
+
 function addMinimizedPDFDockItem(win) {
     const dock=document.getElementById('dock');
-    if(!dock) return;
-    const uid=Date.now();
+    if(!dock||win._minDockItem) return;
     const item=document.createElement('div');
     item.className='dock-item minimized-dock-item';
     item.title='Resume.pdf';
     item.innerHTML=`
-        <div class="dock-icon-wrap" style="background:linear-gradient(145deg,#be185d,#f472b6)">
-            <svg viewBox="0 0 32 32" fill="none" width="26" height="26">
-                <path d="M8 2h12l6 6v20c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2z" fill="rgba(255,255,255,0.9)"/>
-                <path d="M20 2v6h6L20 2z" fill="rgba(255,255,255,0.4)"/>
-                <text x="16" y="24" font-family="sans-serif" font-size="6" font-weight="700" fill="#be185d" text-anchor="middle">PDF</text>
-            </svg>
-        </div>
+        <div class="dock-icon-wrap">${PDF_ICON(36)}</div>
         <div class="dock-tooltip">Resume.pdf</div>
-        <div class="dock-dot" style="background:rgba(244,114,182,0.9)"></div>`;
+        <div class="dock-dot"></div>`;
     const sep=document.createElement('div');sep.className='dock-separator minimized-sep';
-    item.addEventListener('click',()=>{openWindowCentered(win);item.remove();sep.remove();});
+    item.addEventListener('click',restoreResumeWindow);
+    win._minDockItem=item; win._minDockSep=sep;
     const trashItem=dock.querySelector('[data-app="trash"]');
     if(trashItem){dock.insertBefore(sep,trashItem);dock.insertBefore(item,trashItem);}
     else{dock.appendChild(sep);dock.appendChild(item);}
@@ -814,10 +861,9 @@ function addMinimizedPDFDockItem(win) {
 // ─────────────────────────────────────────────────
 // TRASH
 // ─────────────────────────────────────────────────
-function trashIconSVG(type) {
-    if(type==='folder') return `<svg viewBox="0 0 48 48" fill="none" width="40" height="40"><defs><linearGradient id="trf1" x1="0" y1="0" x2="0" y2="48" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#9ca3af"/><stop offset="1" stop-color="#6b7280"/></linearGradient></defs><path d="M3 15c0-2.5 2-4.5 4.5-4.5h9l3 3h21c2.5 0 4.5 2 4.5 4.5v18c0 2.5-2 4.5-4.5 4.5h-33C5 40.5 3 38.5 3 36V15z" fill="url(#trf1)"/></svg>`;
-    if(type==='pdf')    return `<svg viewBox="0 0 48 48" fill="none" width="40" height="40"><path d="M12 3h18l9 9v30c0 1.66-1.34 3-3 3H12c-1.66 0-3-1.34-3-3V6c0-1.66 1.34-3 3-3z" fill="#9ca3af"/><path d="M30 3v9h9L30 3z" fill="white" opacity="0.3"/><text x="24" y="34" font-family="sans-serif" font-size="7" font-weight="700" fill="white" text-anchor="middle" opacity="0.9">PDF</text></svg>`;
-    return '';
+function trashIconSVG() {
+    // Trashed items always show the same folder icon used on the desktop, regardless of what they were
+    return `<img src="assets/folder.webp" alt="" width="40" height="40" style="object-fit:contain;">`;
 }
 function initTrash() {
     const win=document.getElementById('trash-window');
@@ -890,7 +936,7 @@ function initSpotlight() {
         results.innerHTML=`<div class="spotlight-section-label">${query?'Results':'Quick Access'}</div>`+
             matches.map((r,i)=>`<div class="spotlight-result" data-i="${i}">
                 <div class="sr-icon">${getSpotlightIconSVG(r.iconType)}</div>
-                <div class="sr-text"><div class="sr-title">${escHtml(r.title)}</div><div class="sr-sub">${escHtml(r.sub)}</div></div>
+                <div class="sr-text"><div class="sr-title">${escHtml(r.title)}</div></div>
                 <div class="sr-action">${r.action}</div>
             </div>`).join('');
         results.querySelectorAll('.spotlight-result').forEach((el,i)=>{
@@ -980,21 +1026,33 @@ function openWindow(win){openWindowCentered(win);}
 function initMinMaxForWindow(win) {
     const maxBtn=win.querySelector('.window-control.maximize');
     if(!maxBtn) return;
-    let isMaximized=false, savedRect=null;
+    win._maximized=false; win._savedRect=null;
     maxBtn.addEventListener('click',e=>{
         e.stopPropagation();
-        if(!isMaximized){
-            savedRect={left:win.style.left,top:win.style.top,width:win.style.width,height:win.style.height,transform:win.style.transform,borderRadius:win.style.borderRadius};
-            win.style.transform='none';
-            win.style.left='0px'; win.style.top='28px';
-            win.style.width='100vw'; win.style.height='calc(100vh - 28px)';
-            win.style.borderRadius='0';
-            isMaximized=true; maxBtn.classList.add('maximized');
-        } else {
-            if(savedRect){win.style.left=savedRect.left;win.style.top=savedRect.top;win.style.width=savedRect.width;win.style.height=savedRect.height;win.style.transform=savedRect.transform;win.style.borderRadius=savedRect.borderRadius||'';}
-            isMaximized=false; maxBtn.classList.remove('maximized');
-        }
+        toggleMaximize(win);
     });
+}
+function toggleMaximize(win, forceState) {
+    const maxBtn=win.querySelector('.window-control.maximize');
+    const target = forceState !== undefined ? forceState : !win._maximized;
+    if(target && !win._maximized){
+        win._savedRect={left:win.style.left,top:win.style.top,width:win.style.width,height:win.style.height,maxWidth:win.style.maxWidth,maxHeight:win.style.maxHeight,transform:win.style.transform,borderRadius:win.style.borderRadius};
+        win.style.transform='none';
+        win.style.left='0px'; win.style.top='28px';
+        win.style.maxWidth='none'; win.style.maxHeight='none';
+        win.style.width='100vw'; win.style.height='calc(100vh - 28px)';
+        win.style.borderRadius='0';
+        win._maximized=true; maxBtn?.classList.add('maximized');
+    } else if(!target && win._maximized){
+        const savedRect=win._savedRect;
+        if(savedRect){
+            win.style.left=savedRect.left;win.style.top=savedRect.top;
+            win.style.width=savedRect.width;win.style.height=savedRect.height;
+            win.style.maxWidth=savedRect.maxWidth||'';win.style.maxHeight=savedRect.maxHeight||'';
+            win.style.transform=savedRect.transform;win.style.borderRadius=savedRect.borderRadius||'';
+        }
+        win._maximized=false; maxBtn?.classList.remove('maximized');
+    }
 }
 function initMinMax(prefix){const win=document.getElementById(`${prefix}-window`);if(win)initMinMaxForWindow(win);}
 
@@ -1004,14 +1062,13 @@ function initMinMax(prefix){const win=document.getElementById(`${prefix}-window`
 function addMinimizedGenericDockItem(win,title,type) {
     const dock=document.getElementById('dock');
     if(!dock) return;
-    const uid=Date.now();
     const iconSVGs={
-        contact:`<svg viewBox="0 0 32 32" fill="none" width="26" height="26"><defs><linearGradient id="mcdg${uid}" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#60a5fa"/></linearGradient></defs><rect x="2" y="7" width="28" height="18" rx="4" fill="url(#mcdg${uid})"/><path d="M2 11l14 9 14-9" stroke="white" stroke-width="1.5" fill="none"/></svg>`,
+        contact:GMAIL_ICON(34),
     };
     const item=document.createElement('div');
     item.className='dock-item minimized-dock-item';
     item.title=title;
-    item.innerHTML=`<div class="dock-icon-wrap" style="background:rgba(30,30,60,0.85)">${iconSVGs[type]||''}</div><div class="dock-tooltip">${title}</div><div class="dock-dot"></div>`;
+    item.innerHTML=`<div class="dock-icon-wrap">${iconSVGs[type]||''}</div><div class="dock-tooltip">${title}</div><div class="dock-dot"></div>`;
     const sep=document.createElement('div');sep.className='dock-separator minimized-sep';
     item.addEventListener('click',()=>{openWindowCentered(win);item.remove();sep.remove();});
     const trashItem=dock.querySelector('[data-app="trash"]');
@@ -1054,28 +1111,73 @@ function updateRecentsMenu(){
 // ─────────────────────────────────────────────────
 // DRAGGABLE
 // ─────────────────────────────────────────────────
+const MENUBAR_H = 28; // titlebar must never be dragged/resized above this — the menubar sits above it and would swallow clicks
 function makeDraggable(win){
     const bar=win.querySelector('.window-titlebar'); if(!bar) return;
     let sx,sy,ix,iy;
     bar.addEventListener('mousedown',e=>{
         if(e.target.classList.contains('window-control')) return;
+        if(win._maximized) return;
         const rect=win.getBoundingClientRect();
         win.style.left=rect.left+'px'; win.style.top=rect.top+'px'; win.style.transform='none';
         sx=e.clientX; sy=e.clientY; ix=rect.left; iy=rect.top;
         win.style.zIndex=++zTop;
-        const onMove=e=>{win.style.left=(ix+e.clientX-sx)+'px';win.style.top=(iy+e.clientY-sy)+'px';};
+        const onMove=e=>{
+            win.style.left=(ix+e.clientX-sx)+'px';
+            win.style.top=Math.max(MENUBAR_H, iy+e.clientY-sy)+'px';
+        };
         const onUp=()=>{document.removeEventListener('mousemove',onMove);document.removeEventListener('mouseup',onUp);};
         document.addEventListener('mousemove',onMove);
         document.addEventListener('mouseup',onUp);
     });
     win.addEventListener('mousedown',()=>{win.style.zIndex=++zTop;});
 }
-function initDraggable(){document.querySelectorAll('.window').forEach(win=>makeDraggable(win));}
+function initDraggable(){document.querySelectorAll('.window').forEach(win=>{makeDraggable(win);makeResizable(win);});}
+
+// ─────────────────────────────────────────────────
+// RESIZABLE — drag any edge/corner, like macOS windows
+// ─────────────────────────────────────────────────
+function makeResizable(win){
+    if (win._resizable) return;
+    win._resizable = true;
+    const MIN_W=320, MIN_H=220;
+    const dirs=['n','s','e','w','ne','nw','se','sw'];
+    dirs.forEach(dir=>{
+        const handle=document.createElement('div');
+        handle.className=`resize-handle resize-${dir}`;
+        win.appendChild(handle);
+        handle.addEventListener('mousedown',e=>{
+            e.preventDefault(); e.stopPropagation();
+            if(win._maximized) toggleMaximize(win,false);
+            const rect=win.getBoundingClientRect();
+            win.style.transform='none';
+            win.style.left=rect.left+'px'; win.style.top=rect.top+'px';
+            win.style.width=rect.width+'px'; win.style.height=rect.height+'px';
+            win.style.maxWidth='none'; win.style.maxHeight='none';
+            win.style.zIndex=++zTop;
+            const startX=e.clientX, startY=e.clientY;
+            const startLeft=rect.left, startTop=rect.top, startW=rect.width, startH=rect.height;
+            function onMove(e){
+                const dx=e.clientX-startX, dy=e.clientY-startY;
+                let newW=startW, newH=startH, newLeft=startLeft, newTop=startTop;
+                if(dir.includes('e')) newW=Math.max(MIN_W, startW+dx);
+                if(dir.includes('s')) newH=Math.max(MIN_H, startH+dy);
+                if(dir.includes('w')){ newW=Math.max(MIN_W, startW-dx); newLeft=startLeft+(startW-newW); }
+                if(dir.includes('n')){ newH=Math.max(MIN_H, startH-dy); newTop=Math.max(MENUBAR_H, startTop+(startH-newH)); }
+                win.style.width=newW+'px'; win.style.height=newH+'px';
+                win.style.left=newLeft+'px'; win.style.top=Math.max(MENUBAR_H,newTop)+'px';
+            }
+            function onUp(){document.removeEventListener('mousemove',onMove);document.removeEventListener('mouseup',onUp);}
+            document.addEventListener('mousemove',onMove);
+            document.addEventListener('mouseup',onUp);
+        });
+    });
+}
 
 // ─────────────────────────────────────────────────
 // UTILS
 // ─────────────────────────────────────────────────
 function escHtml(s=''){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-console.log('%c✦ Swetha Manivasagam — Portfolio','background:linear-gradient(135deg,#f472b6,#a855f7,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:15px;font-weight:800;');
-console.log('%c⌘+Space to open Spotlight','color:#a855f7;font-size:11px');
+console.log('%c✦ Swetha Manivasagam — Portfolio','background:linear-gradient(135deg,#0a84ff,#60a5fa,#64d2ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:15px;font-weight:800;');
+console.log('%c⌘+Space to open Spotlight','color:#0a84ff;font-size:11px');
