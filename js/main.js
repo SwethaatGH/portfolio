@@ -815,7 +815,9 @@ function initResume() {
     const icon=document.getElementById('resume-icon');
     const win=document.getElementById('pdf-window');
     const cb=document.getElementById('pdf-close');
-    if(icon) icon.onclick=()=>{restoreResumeWindow();addRecent('Resume.pdf','resume-icon','resume','');};
+    // Phone browsers can't render a PDF inside an iframe, so open it directly there
+    const isPhone=()=>window.matchMedia('(max-width:768px)').matches;
+    if(icon) icon.onclick=()=>{if(isPhone())window.open('assets/resume.pdf','_blank');else restoreResumeWindow();addRecent('Resume.pdf','resume-icon','resume','');};
     if(cb)   cb.onclick=()=>{if(!win)return;win.style.display='none';removeResumeDockItem(win);};
 
     const minBtn=document.getElementById('pdf-minimize');
