@@ -1033,3 +1033,86 @@ html, body {
 .tools-window .tool-name { font-family:var(--font-body) !important; }
 .trash-header-area h2 { font-family:var(--font-body) !important; }
 .trash-header-area p  { font-family:var(--font-body) !important; }
+/* ═══════════════════════════════════════════
+   18. MOBILE — phones only; desktop layout is untouched
+═══════════════════════════════════════════ */
+@media (hover:none) {
+    /* Hover lifts "stick" after a tap on touch screens */
+    .dock-item:hover, .widget:hover, .sticky-note-widget:hover, .card:hover,
+    .tech-icon-item:hover, .tool-item:hover, .reminder-item:hover { transform:none !important; }
+    .dock-item:hover .dock-tooltip { opacity:0; }
+    .cursor-glow { display:none; }
+}
+
+@media (max-width:768px) {
+    .cursor-glow { display:none; }
+
+    /* Menubar — drop the decorative status items so it fits one row */
+    .menubar { padding:0 8px; }
+    .theme-toggle-logo { margin-right:4px; }
+    .menubar-item { padding:0 8px; }
+    .now-playing, .menubar-wifi, .menubar-battery { display:none !important; }
+    .menubar-spotlight-bar { min-width:0 !important; padding:4px 8px; }
+    .menubar-spotlight-input { display:none; }
+    .menubar-time { font-size:11.5px; white-space:nowrap; }
+    .menubar-dropdown { min-width:190px; }
+    .dropdown-item { padding:9px 12px; }
+    /* Recents submenu would fly off-screen to the right — show it inline instead */
+    .menubar-submenu { position:static !important; display:block !important; background:transparent !important; border:none !important; box-shadow:none !important; backdrop-filter:none !important; padding:0 0 0 10px !important; min-width:0 !important; }
+    .dropdown-item.has-submenu { flex-direction:column; align-items:stretch; }
+    .submenu-arrow { display:none; }
+
+    /* Desktop becomes one vertical scroll: folders first, then widgets */
+    .desktop { display:flex; flex-direction:column; height:100vh; height:100dvh; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; padding-top:32px; }
+    .desktop-icons { order:-1; position:static !important; display:grid !important; grid-template-columns:repeat(3,1fr); gap:14px 8px !important; padding:14px 12px 4px !important; flex-shrink:0; }
+    .icon-image { width:64px; height:64px; }
+    .icon-label { font-size:12px; }
+
+    .widgets-container { flex:none !important; max-width:100% !important; overflow:visible !important; padding:10px 12px 110px !important; }
+    .widget-row { width:100%; }
+    .sticky-note-widget { width:100%; }
+    .reminders-widget { flex:1 1 auto !important; width:100% !important; max-width:100% !important; }
+    .tech-icons-wrapper { justify-content:center; gap:14px 16px !important; }
+
+    /* Windows open as full-width sheets between the menubar and the dock */
+    .window {
+        top:34px !important; left:6px !important; right:6px !important;
+        width:auto !important; max-width:none !important;
+        height:calc(100vh - 34px - 80px) !important; height:calc(100dvh - 34px - 80px) !important;
+        max-height:none !important; transform:none !important; border-radius:14px !important;
+    }
+    .resize-handle { display:none; }
+    .window-titlebar { cursor:default; padding:0 12px; }
+    .window-controls { gap:10px; }
+    .window-control { width:15px; height:15px; }
+    .window-control.maximize { display:none; }
+    .window-titlebar-end { width:40px; }
+    .window-content { padding:12px; }
+    .cards-container { grid-template-columns:1fr; gap:12px; }
+
+    .terminal-body { padding:10px 12px; }
+    .terminal-entry-out { font-size:11px; line-height:1.7; overflow-x:auto; }
+    /* 16px stops iOS from zooming in when an input is focused */
+    .terminal-input, .cf-input { font-size:16px !important; }
+
+    .contact-form-inner { padding:20px 18px; }
+
+    .tools-grid { grid-template-columns:repeat(auto-fill,minmax(76px,1fr)); gap:14px; padding:16px; }
+    .tool-icon-wrap { width:56px; height:56px; margin:0 auto; }
+    .tool-img { width:40px; height:40px; }
+
+    .spotlight-overlay { padding-top:10vh; }
+
+    /* Dock — smaller icons so every app fits on one row */
+    .dock { bottom:8px; width:max-content; gap:2px !important; padding:6px 8px; max-width:calc(100vw - 16px) !important; border-radius:18px; flex-wrap:wrap; justify-content:center; }
+    .dock-item { width:38px; height:38px; }
+    .dock-icon-wrap { width:36px; height:36px; }
+    .dock-img { width:26px; height:26px; }
+    .dock-separator { display:none; }
+    .dock-dot { bottom:-4px; }
+}
+
+@media (max-width:400px) {
+    .menubar-time { display:none; }
+    .menubar-item { padding:0 7px; }
+}
