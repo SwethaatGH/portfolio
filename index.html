@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swetha Manivasagam — Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/apps.css">
 </head>
 <body>
 
@@ -31,9 +32,9 @@
             </span>
             <span class="menubar-item has-dropdown" id="menu-go">Go
                 <div class="menubar-dropdown" id="dropdown-go">
-                    <div class="dropdown-item" data-goto="professional-icon">Experience</div>
                     <div class="dropdown-item" data-goto="projects-icon">Projects</div>
                     <div class="dropdown-item" data-goto="research-icon">Research</div>
+                    <div class="dropdown-item" data-goto="professional-icon">Experience</div>
                     <div class="dropdown-item" data-goto="hackathons-icon">Hackathons</div>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-item" data-goto="resume-icon">Resume</div>
@@ -99,9 +100,9 @@
                     <div class="sticky-page sticky-page-text">
                         <p class="sticky-heading">About me</p>
                         <p class="sticky-body">I’m Swetha Manivasagam, a Master’s student in Computer Science at NC State, with a research background in spatio-temporal and geospatial deep learning. I value clarity and detail.</p>
-                        <p class="sticky-body">I co-authored a paper accepted at ACM ETRA 2025 on predicting gaze points from heatmap video, and I currently work on land surface temperature prediction models that beat baseline U-Nets by 28%, fusing satellite imagery, LiDAR and spectral data. </p>
+                        <p class="sticky-body">I co-authored a paper at ACM ETRA 2025 on predicting gaze points from heatmap video. At NC State's STAC Lab, I built land surface temperature models that fuse satellite imagery, LiDAR and spectral data, cutting error by 28% over the baseline. </p>
                         <p class="sticky-body">At CAMCORE, I maintained an AWS Lightsail hosted website and a 5TB+ climate database and built the pipelines that keep it updated automatically, work that now supports 300+ researchers. </p>
-                        <p class="sticky-body">I like the full stack of a problem: the model, the pipeline that feeds it and the system that puts it in front of people. Outside research, I build things for fun, a C++ multiplayer game engine, a Neo4j-based incident intelligence tool with a RAG chatbot, a food-waste platform with live notifications and smart matching. </p>
+                        <p class="sticky-body"> I like the full stack of a problem: the model, the pipeline that feeds it and the system that puts it in front of people. Lately that's meant AdaptiBoard, a brain-controlled communication board; CausalCI, which investigates CI regressions with AI; and Elemental Quest, a multiplayer game on a C++ engine I wrote from scratch. I also placed second at two NC State hackathons this year.</p>
                         <p class="sticky-body">I'm graduating in May 2027 and looking for new grad roles in software engineering or applied ML, ideally somewhere I can keep working across both.</p>
                         <p class="sticky-body sticky-hint">Scroll for a photo ↓</p>
                     </div>
@@ -124,35 +125,24 @@
             </div>
         </div>
 
-        <div class="tech-stack-row">
-            <div class="tech-icons-wrapper" id="tech-icons-wrapper">
-                <div class="tech-icon-item" data-url="https://www.python.org/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" loading="lazy"><span class="tech-icon-label">Python</span></div>
-                <div class="tech-icon-item" data-url="https://www.java.com/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" loading="lazy"><span class="tech-icon-label">Java</span></div>
-                <div class="tech-icon-item" data-url="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy"><span class="tech-icon-label">JavaScript</span></div>
-                <div class="tech-icon-item" data-url="https://www.mysql.com/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy"><span class="tech-icon-label">SQL</span></div>
-                <div class="tech-icon-item" data-url="https://www.gnu.org/software/bash/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" alt="Bash" loading="lazy"><span class="tech-icon-label">Bash</span></div>
-                <div class="tech-icon-item" data-url="https://flask.palletsprojects.com/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" loading="lazy"><span class="tech-icon-label">Flask</span></div>
-                <div class="tech-icon-item" data-url="https://react.dev/"><img class="tech-icon-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" loading="lazy"><span class="tech-icon-label">React</span></div>
-            </div>
-        </div>
     </div>
 
     <!-- DESKTOP ICONS (no My Journey) -->
     <div class="desktop-icons">
-        <div class="desktop-icon folder-icon" id="professional-icon">
-            <div class="icon-image"><img src="assets/folder.webp" alt="Folder" class="folder-img"></div>
-            <div class="icon-label">Experience</div>
-        </div>
-        <div class="desktop-icon folder-icon" id="projects-icon">
-            <div class="icon-image"><img src="assets/folder.webp" alt="Folder" class="folder-img"></div>
+        <div class="desktop-icon app-icon" id="projects-icon">
+            <div class="icon-image"><img src="assets/app_icons/appstore.png" alt="App Store" class="folder-img app-img"></div>
             <div class="icon-label">Projects</div>
         </div>
         <div class="desktop-icon folder-icon" id="research-icon">
             <div class="icon-image"><img src="assets/folder.webp" alt="Folder" class="folder-img"></div>
             <div class="icon-label">Research</div>
         </div>
-        <div class="desktop-icon folder-icon" id="hackathons-icon">
-            <div class="icon-image"><img src="assets/folder.webp" alt="Folder" class="folder-img"></div>
+        <div class="desktop-icon app-icon" id="professional-icon">
+            <div class="icon-image"><img src="assets/app_icons/activitymonitor.png" alt="Activity Monitor" class="folder-img app-img"></div>
+            <div class="icon-label">Experience</div>
+        </div>
+        <div class="desktop-icon app-icon" id="hackathons-icon">
+            <div class="icon-image"><img src="assets/app_icons/maps.png" alt="Maps" class="folder-img app-img"></div>
             <div class="icon-label">Hackathons</div>
         </div>
         <div class="desktop-icon" id="contact-icon">
@@ -162,8 +152,8 @@
             <div class="icon-label">Contact</div>
         </div>
         <div class="desktop-icon file-icon" id="resume-icon">
-            <div class="icon-image"><svg viewBox="0 0 64 64" fill="none"><path d="M16 4h24l12 12v40c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V8c0-2.2 1.8-4 4-4z" fill="white" stroke="#d1d5db" stroke-width="1.5"/><path d="M40 4v12h12L40 4z" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5"/><rect x="20" y="28" width="24" height="2" rx="1" fill="#374151" opacity="0.8"/><rect x="20" y="34" width="20" height="2" rx="1" fill="#374151" opacity="0.6"/><rect x="20" y="40" width="22" height="2" rx="1" fill="#374151" opacity="0.6"/><rect x="20" y="46" width="16" height="2" rx="1" fill="#374151" opacity="0.4"/><text x="32" y="22" font-family="sans-serif" font-size="7" font-weight="700" fill="#111827" text-anchor="middle">PDF</text></svg></div>
-            <div class="icon-label">Resume.pdf</div>
+            <div class="icon-image"><img src="assets/app_icons/pdf.png" alt="PDF document" class="folder-img pdf-img"></div>
+            <div class="icon-label">Resume</div>
         </div>
     </div>
 </div>
@@ -182,13 +172,13 @@
 <div class="window terminal-window" id="terminal-window" style="display:none">
     <div class="window-titlebar terminal-titlebar">
         <div class="window-controls"><div class="window-control close" id="terminal-close"></div><div class="window-control minimize" id="terminal-minimize"></div><div class="window-control maximize" id="terminal-maximize"></div></div>
-        <div class="window-title terminal-title">swetha@portfolio — zsh</div>
+        <div class="window-title terminal-title">swetha — -zsh — 80×24</div>
         <div class="window-titlebar-end"></div>
     </div>
     <div class="terminal-body">
         <div class="terminal-history" id="terminal-history"></div>
         <div class="terminal-input-line">
-            <span class="t-prompt">swetha</span><span class="t-at">@</span><span class="t-machine">portfolio</span><span class="t-sep"> % </span>
+            <span class="t-prompt">swetha</span><span class="t-at">@</span><span class="t-machine">portfolio</span><span class="t-sep"> ~ % </span>
             <div class="terminal-input-wrap">
                 <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input">
                 <div class="terminal-autocomplete" id="terminal-autocomplete"></div>
@@ -240,60 +230,41 @@
 <!-- DOCK -->
 <div class="dock" id="dock">
     <div class="dock-item" data-app="github">
-        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/github.svg" alt="GitHub" class="dock-img"></div>
+        <div class="dock-icon-wrap dock-app-icon"><img src="assets/social/github.svg" alt="GitHub" class="dock-img"></div>
         <div class="dock-tooltip">GitHub</div>
         <div class="dock-dot"></div>
     </div>
     <div class="dock-item" data-app="linkedin">
-        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/linkedin.svg" alt="LinkedIn" class="dock-img"></div>
+        <div class="dock-icon-wrap dock-app-icon"><img src="assets/social/linkedin.svg" alt="LinkedIn" class="dock-img"></div>
         <div class="dock-tooltip">LinkedIn</div>
     </div>
     <div class="dock-item" data-app="scholar">
-        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/scholar.svg" alt="Google Scholar" class="dock-img"></div>
+        <div class="dock-icon-wrap dock-app-icon"><img src="assets/social/scholar.svg" alt="Google Scholar" class="dock-img"></div>
         <div class="dock-tooltip">Scholar</div>
     </div>
     <div class="dock-item" data-app="medium">
-        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/medium.svg" alt="Medium" class="dock-img"></div>
+        <div class="dock-icon-wrap dock-app-icon"><img src="assets/social/medium.svg" alt="Medium" class="dock-img"></div>
         <div class="dock-tooltip">Medium</div>
     </div>
     <div class="dock-separator"></div>
     <div class="dock-item" data-app="tools" id="tools-icon">
-        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/tools.svg" alt="Tools" class="dock-img"></div>
+        <div class="dock-icon-wrap dock-app-icon"><img src="assets/app_icons/apps.png" alt="Apps" class="dock-img"></div>
         <div class="dock-tooltip">Tools</div>
     </div>
     <div class="dock-separator"></div>
     <div class="dock-item" data-app="terminal">
-        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/terminal.svg" alt="Terminal" class="dock-img"></div>
+        <div class="dock-icon-wrap dock-app-icon"><img src="assets/app_icons/terminal.png" alt="Terminal" class="dock-img"></div>
         <div class="dock-tooltip">Terminal</div>
         <div class="dock-dot"></div>
     </div>
     <div class="dock-separator"></div>
     <div class="dock-item" data-app="trash">
-        <div class="dock-icon-wrap dock-brand-icon"><img src="assets/trash.svg" alt="Trash" class="dock-img"></div>
+        <div class="dock-icon-wrap dock-app-icon"><img src="assets/app_icons/trash-full.png" alt="Trash" class="dock-img"></div>
         <div class="dock-tooltip">Trash</div>
     </div>
 </div>
 
-<!-- TRASH WINDOW -->
-<div class="window trash-window" id="trash-window" style="display:none">
-    <div class="window-titlebar">
-        <div class="window-controls"><div class="window-control close" id="trash-close"></div><div class="window-control minimize" id="trash-minimize"></div><div class="window-control maximize" id="trash-maximize"></div></div>
-        <div class="window-title">Trash</div>
-        <div class="window-titlebar-end"></div>
-    </div>
-    <div class="window-content trash-content" id="trash-content"></div>
-</div>
-
-<!-- TOOLS WINDOW -->
-<div class="window tools-window" id="tools-window" style="display:none">
-    <div class="window-titlebar">
-        <div class="window-controls"><div class="window-control close" id="tools-close"></div><div class="window-control minimize" id="tools-minimize"></div><div class="window-control maximize" id="tools-maximize"></div></div>
-        <div class="window-title">Tools &amp; Software</div>
-        <div class="window-titlebar-end"></div>
-    </div>
-    <div class="window-content tools-content" id="tools-content"></div>
-</div>
-
+<script src="js/apps.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

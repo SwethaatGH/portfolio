@@ -2,93 +2,167 @@
 // DATA
 // ─────────────────────────────────────────────────
 const portfolioData = {
+    // ── EXPERIENCE (rendered as processes in Activity Monitor — js/apps.js) ──
+    // proc / org / dur are the short labels shown in the table; category: Research | Teaching | Industry
     professional: [
-    { title:"Teaching Assistant, CSC 505 (Algorithms)", company:"NC State University Graduate School", date:"May 2026 – Aug 2026",
-      description:"Supported graduate-level Design and Analysis of Algorithms under Dr. Steffen Heber, developing grading rubrics and reference solutions, and grading homework, quizzes and exams with targeted feedback on complexity analysis and implementation.",
-      tech:["Algorithms","Teaching"] },
-    { title:"Research Assistant", company:"CAMCORE", date:"Apr 2026 – Aug 2026",
-      description:"Maintain a 5TB+ geospatial climate database across 6 sources, building agentic ETL pipelines for autonomous data detection, validation and ingestion. Deployed production AWS Lightsail infrastructure, expanding data access to 300+ researchers.",
-      tech:["AWS Lightsail","ETL","Geospatial Data"] },
-    { title:"Research Assistant", company:"STAC Lab, NC State Computer Science", date:"Jan 2026 – Aug 2026",
+    { proc:"Research Assistant", org:"STAC Lab", dur:"Jan–Aug 2026", category:"Research",
+      title:"Research Assistant", company:"STAC Lab, NC State Computer Science", date:"Jan 2026 – Aug 2026",
       description:"Built a multi-modal geospatial deep learning pipeline (SRF, U-Net, ResNet) fusing 35M+ Landsat/land-cover/OSM raster samples and 1B+ LiDAR points for high-resolution Land Surface Temperature prediction, cutting RMSE 28% over baseline.",
       tech:["PyTorch","U-Net","ResNet","Geospatial ML"] },
-    { title:"Deep Learning Research Intern", company:"IIIT Bangalore", date:"Dec 2024 – Apr 2025",
+    { proc:"Research Assistant", org:"CAMCORE", dur:"Apr–Aug 2026", category:"Research",
+      title:"Research Assistant", company:"CAMCORE", date:"Apr 2026 – Aug 2026",
+      description:"Maintain a 5TB+ geospatial climate database across 6 sources, building agentic ETL pipelines for autonomous data detection, validation and ingestion. Deployed production AWS Lightsail infrastructure, expanding data access to 300+ researchers.",
+      tech:["AWS Lightsail","ETL","Geospatial Data"] },
+    { proc:"Teaching Assistant", org:"NC State", dur:"May–Aug 2026", category:"Teaching",
+      title:"Teaching Assistant, CSC 505 (Algorithms)", company:"NC State University Graduate School", date:"May 2026 – Aug 2026",
+      description:"Supported graduate-level Design and Analysis of Algorithms under Dr. Steffen Heber, developing grading rubrics and reference solutions, and grading homework, quizzes and exams with targeted feedback on complexity analysis and implementation.",
+      tech:["Algorithms","Teaching"] },
+    { proc:"Deep Learning Research Intern", org:"IIIT Bangalore", dur:"Dec 2024–Apr 2025", category:"Research",
+      title:"Deep Learning Research Intern", company:"IIIT Bangalore", date:"Dec 2024 – Apr 2025",
       description:"Engineered a real-time eye-gaze capture system processing 7.2M+ frames across 200+ sessions, cutting post-processing time 50%. Built a DETR pipeline predicting gaze coordinates from heatmap video, improving accuracy 22% over an RNN baseline.",
       tech:["PyTorch","DETR","Computer Vision"] },
-    { title:"Software Development Intern", company:"IIM Calcutta", date:"Jan 2024 – May 2024",
+    { proc:"Software Development Intern", org:"IIM Calcutta", dur:"Jan–May 2024", category:"Industry",
+      title:"Software Development Intern", company:"IIM Calcutta", date:"Jan 2024 – May 2024",
       description:"Built a Selenium + REST API pipeline extracting 500K+ real-time tourism records from heterogeneous, dynamically rendered sources, with a multi-stage pipeline for schema mapping, deduplication, validation and normalization.",
       tech:["Selenium","REST API","Python"] },
-    { title:"Software Development Intern", company:"Suguna Group", date:"Jan 2024 – Apr 2024",
+    { proc:"Software Development Intern", org:"Suguna Group", dur:"Jan–Apr 2024", category:"Industry",
+      title:"Software Development Intern", company:"Suguna Group", date:"Jan 2024 – Apr 2024",
       description:"Engineered a company-wide IT asset provisioning system automating onboarding through return, with asynchronous AJAX modules for real-time asset tracking across 10K+ employees, 30+ departments and 30K+ assets.",
       tech:["PHP","MySQL","AJAX"] },
-    { title:"UI/UX Designer", company:"Pricol Limited", date:"Jun 2023 – Jul 2023",
+    { proc:"UI/UX Designer", org:"Pricol Limited", dur:"Jun–Jul 2023", category:"Industry",
+      title:"UI/UX Designer", company:"Pricol Limited", date:"Jun 2023 – Jul 2023",
       description:"Designed end-to-end user flows, wireframes and interactive prototypes for an enterprise employee travel management application, collaborating across engineering teams to translate requirements into feasible designs.",
       tech:["Figma","Prototyping","UX Research"] }
 ],
+    // ── PROJECTS (rendered by the App Store window — js/apps.js) ──
+    // banner: path to an image of your choice (e.g. 'assets/banners/causalci.jpg'); '' shows a gradient placeholder
+    // live:   deployed URL → shows the GET button.  tech: names must match a key in TECH_ICONS (js/apps.js)
     projects: [
-    { title:"Elemental Quest — Multiplayer Platformer & Networking Engine", company:"Personal", date:"Aug 2026 – Present",
-      description:"Designed a modular C++17 game engine with core subsystems for physics, rendering, multithreaded job execution and runtime object management. Integrated a ZeroMQ-based networking layer for authoritative world simulation and synchronized state propagation, validated through a cooperative multiplayer platformer with deterministic simulation and thread-safe update loops.",
-      tech:["C++17","ZeroMQ","Multithreading","Game Engine"] },
-    { title:"ByteBite — Food Delivery & Sustainability Platform", company:"NC State University", date:"Oct – Dec 2025",
-      description:"Full-stack sustainable food delivery platform (React, Node.js, Express, MongoDB/Mongoose) backed by 120+ unit/integration tests in a CI pipeline. Features a cancel-to-redistribute mechanism turning canceled orders into discounted offers or shelter/NGO donations, 3D dish previews, Leaflet-based live delivery tracking, a personalized recommendation engine, and an admin dashboard for surplus inventory.",
+    { id:"causalci", name:"CausalCI", subtitle:"AI-powered regression investigation", category:"Developer Tools",
+      icon:"assets/project_icons/causalci.svg", banner:"", featured:true, colors:["#1b2c57","#070d1f"],
+      live:"https://causalci-9i2j.onrender.com", github:"", date:"2026", madeAt:"Personal",
+      metrics:[["65.8%","culprit in top 3"],["97.9%","bisection accuracy"],["184","mined regressions"],["9","OSS repositories"]],
+      description:"CausalCI is an automated regression root-cause platform that identifies the commit that broke a CI build. It ranks suspect commits with a logistic-regression model trained on 184 mined regressions across 9 open-source repositories: the culprit lands in the top 3 for 65.8% of them, against 49.5% for the best baseline (leave-one-repo-out, 95% CIs).\n\nIt then confirms the culprit with flaky-test-aware Bayesian bisection, which reached 97.9% accuracy versus 61% for git bisect in simulation, running the repo's own tests in gVisor-isolated sandboxes. Call-graph analysis covers TypeScript (via the type checker) and Python, Go and Java (via tree-sitter), and an MCP server exposes it all to AI coding agents.",
+      tech:["TypeScript","React","Fastify","Redis","Docker","gVisor","Kubernetes","Helm","KEDA","Terraform","Google Cloud","GitHub Actions","Prometheus","Grafana","Gemma","MCP"] },
+    { id:"elementalquest", name:"Elemental Quest", subtitle:"Multiplayer game", category:"Games",
+      icon:"assets/project_icons/elementalquest.svg", banner:"", featured:true, colors:["#3a1d7a","#120a30"],
+      live:"https://elemental-quest.onrender.com", github:"", date:"Aug 2026 – Present", madeAt:"Personal",
+      metrics:[["C++17","engine core"],["ZeroMQ","networking"],["Multi","threaded jobs"]],
+      description:"A multiplayer platformer running on a modular C++17 game engine I designed from scratch, with core subsystems for physics, rendering, multithreaded job execution and runtime object management.\n\nA ZeroMQ-based networking layer runs an authoritative world simulation and keeps every client's state synchronized, so all players see the same world.",
+      tech:["C++","ZeroMQ","Multithreading"] },
+    { id:"adaptiboard", name:"AdaptiBoard", subtitle:"Brain-controlled communication", category:"Accessibility",
+      icon:"assets/project_icons/adaptiboard.svg", banner:"", featured:true, colors:["#8b5cf6","#3b1fa8"],
+      live:"https://adaptiboard.onrender.com", github:"", date:"Nov 2026", madeAt:"Personal",
+      metrics:[["EEG","gaze selection"],["0","calibration needed"],["Real-time","WebSocket streaming"]],
+      description:"AdaptiBoard is a brain-controlled, context-aware AAC communication board that lets people with speech and motor impairments communicate through EEG-based gaze selection.\n\nIt uses BrainFlow and NumPy/SciPy (FBCCA) for calibration-free SSVEP detection, turning visual attention into navigation commands. Groq (Llama 3.3), Whisper and edge-tts power context-aware response suggestions, personalized language prediction, grammar correction and natural speech synthesis, alongside gaze-activated emergency alerts for caregivers.",
+      tech:["React","TypeScript","FastAPI","WebSockets","BrainFlow","NumPy","SciPy","Groq","Llama 3.3","Whisper","edge-tts"] },
+    { id:"bytebite", name:"ByteBite", subtitle:"Food delivery & sustainability", category:"Food & Drink",
+      icon:"assets/project_icons/bytebite.svg", banner:"", colors:["#ffae42","#f0571f"],
+      live:"", github:"", date:"Oct – Dec 2025", madeAt:"NC State University",
+      metrics:[["120+","unit & integration tests"]],
+      description:"A full-stack sustainable food delivery platform backed by 120+ unit and integration tests in a CI pipeline. Its cancel-to-redistribute mechanism turns cancelled orders into discounted offers instead of food waste.",
       tech:["React","Node.js","Express","MongoDB","CI/CD"] },
-    { title:"StackShack — Full-Stack Campus Dining Application", company:"NC State University", date:"Oct – Dec 2025",
-      description:"Modular, production-ready campus dining app (Flask, MySQL) with 230+ tests at 85.8% coverage via automated CI. Includes role-based staff/admin management, dynamic-pricing custom builds, real-time order tracking, secure digital wallet/campus card payments, and personalized dietary profiling with automated ingredient suggestions.",
-      tech:["Flask","MySQL","CI/CD","Testing"] },
-    { title:"AdSight — Webcam-Based Gaze Prediction for Ad Placement", company:"NC State University", date:"Oct – Dec 2025",
-      description:"Gaze-estimation pipeline predicting screen-coordinate attention from standard webcam images, trained on MPIIGaze. Benchmarked a CNN baseline against DETR (adapted from object detection to coordinate regression via Hungarian matching), then accumulated predictions into heatmaps to surface high-attention regions for dynamic ad placement.",
-      tech:["PyTorch","DETR","CNN","MPIIGaze"] },
-    { title:"SafeSense — Industrial IoT Safety Monitor", company:"PSG College of Technology", date:"Feb – Mar 2024",
-      description:"Embedded IoT safety system on an ESP32, integrating smoke, voltage and temperature sensors to track hazardous factory-floor conditions in real time, streaming readings to a live web dashboard for early hazard detection.",
-      tech:["ESP32","Embedded C","IoT"] },
-    { title:"Travelog — Corporate Travel Management App", company:"PSG College of Technology", date:"Oct – Nov 2023",
-      description:"Full-stack mobile app for end-to-end organizational travel management, from trip request through approval to expense reconciliation, with distinct employee/admin roles and a relational schema modeling multi-stage approval workflows.",
+    { id:"stackshack", name:"StackShack", subtitle:"Campus dining application", category:"Food & Drink",
+      icon:"assets/project_icons/stackshack.svg", banner:"", colors:["#ff453a","#b0122a"],
+      live:"", github:"", date:"Oct – Dec 2025", madeAt:"NC State University",
+      metrics:[["230+","tests"],["85.8%","coverage"]],
+      description:"A modular, production-ready campus dining app with 230+ tests at 85.8% coverage via automated CI. It includes role-based staff and admin management, dynamic-pricing custom builds, real-time order tracking and a secure digital wallet.",
+      tech:["Flask","Python","MySQL","CI/CD"] },
+    { id:"adsight", name:"AdSight", subtitle:"Webcam gaze prediction for ads", category:"Machine Learning",
+      icon:"assets/project_icons/adsight.svg", banner:"", colors:["#2c7cf6","#0c2f8a"],
+      live:"", github:"", date:"Oct – Dec 2025", madeAt:"NC State University",
+      metrics:[["MPIIGaze","dataset"],["CNN vs DETR","benchmarked"]],
+      description:"A gaze-estimation pipeline that predicts where on screen a viewer is looking from standard webcam images, trained on MPIIGaze, to inform ad placement. It benchmarks a CNN baseline against DETR, adapted from object detection to coordinate regression via Hungarian matching.",
+      tech:["PyTorch","Python","DETR","MPIIGaze"] },
+    { id:"safesense", name:"SafeSense", subtitle:"Industrial IoT safety monitor", category:"Utilities",
+      icon:"assets/project_icons/safesense.svg", banner:"", colors:["#3a3a3c","#0d0d0f"],
+      live:"", github:"", date:"Feb – Mar 2024", madeAt:"PSG College of Technology",
+      metrics:[["3","sensor types"],["Live","web dashboard"]],
+      description:"An embedded IoT safety system on an ESP32 that integrates smoke, voltage and temperature sensors to track hazardous factory-floor conditions in real time, streaming readings to a live web dashboard for early hazard detection.",
+      tech:["ESP32","C","IoT"] },
+    { id:"travelog", name:"Travelog", subtitle:"Corporate travel management", category:"Travel",
+      icon:"assets/project_icons/travelog.svg", banner:"", colors:["#5ac8fa","#0a6fd6"],
+      live:"", github:"", date:"Oct – Nov 2023", madeAt:"PSG College of Technology",
+      metrics:[["2","user roles"]],
+      description:"A full-stack mobile app for end-to-end organizational travel management, from trip request through approval to expense reconciliation, with distinct employee and admin roles and a relational schema modelling multi-stage approval workflows.",
       tech:["React Native","Node.js","MySQL"] },
-    { title:"Lyceum — Campus Audio Platform", company:"PSG College of Technology", date:"Sep – Oct 2023",
-      description:"Desktop app (Java Swing/AWT) for centralized club and association audio content management, backed by a SQL schema for metadata, categorization and role-based access control, with JUnit-tested data-access logic.",
-      tech:["Java Swing","AWT","SQL","JUnit"] },
-    { title:"FoliScan — Plant Leaf Disease Classifier", company:"PSG College of Technology", date:"Jun – Jul 2023",
-      description:"CNN image classifier (Keras) for multi-class plant leaf disease detection, served via a stateless Flask REST API handling upload, preprocessing, inference and structured JSON response.",
-      tech:["Keras","CNN","Flask"] },
-    { title:"HeatShield — Real-Time Heatwave Alert System", company:"Personal", date:"Jun – Jul 2023",
-      description:"Django backend polling regional temperature data with a SQL-logged alert history and Twilio-integrated SMS dispatch on threshold-based alerts, containerized with Docker for reproducible, independently scalable deployment.",
-      tech:["Django","Docker","Twilio"] },
-    { title:"UniSphere — Campus Booking & Navigation System", company:"PSG College of Technology", date:"Feb – Mar 2023",
-      description:"Normalized SQLite schema and FastAPI backend (served via uvicorn) for a multi-role campus booking system, with conflict-free scheduling logic and hashlib-based credential hashing for custom authentication.",
-      tech:["SQLite","FastAPI","uvicorn"] }
+    { id:"lyceum", name:"Lyceum", subtitle:"Campus audio platform", category:"Music",
+      icon:"assets/project_icons/lyceum.svg", banner:"", colors:["#bf5af2","#5b1aa8"],
+      live:"", github:"", date:"Sep – Oct 2023", madeAt:"PSG College of Technology",
+      metrics:[["RBAC","access control"]],
+      description:"A desktop app for centralized club and association audio content management, backed by a SQL schema for metadata, categorization and role-based access control, with JUnit-tested data-access logic.",
+      tech:["Java","Swing","SQL","JUnit"] }
 ],
+    // ── RESEARCH (each opens its PDF in a Preview window) ──
     research: [
-    { title:"To The Point: From Dynamic Heatmap Videos to Gaze Points", company:"ACM", date:"May 2025",
-      description:"Built and annotated a 1K+ frame heatmap gaze dataset and proposed a DETR-based framework converting temporal heatmap videos into precise gaze-point predictions, outperforming RNN and YOLO+LSTM baselines for scalable cognitive-load analysis.",
-      tech:["Eye Tracking","DETR","RNN","YOLO+LSTM"] },
-    { title:"Soil Heat Flux Dynamics Modeling Using Temporal DL", company:"Springer LLNS", date:"Apr 2025",
-      description:"Developed a stacking ensemble of TCN, LSTM and ANN models on 60K+ multi-season temporal records to predict soil heat flux and optimize plant root-zone temperature for sustainable agriculture.",
-      tech:["TCN","LSTM","ANN","TensorFlow"] },
-    { title:"Profecta — A Smart Logistics System", company:"Taylor & Francis CRC Press", date:"Jul 2024",
-      description:"Built a multi-constraint logistics route optimizer combining Nearest Neighbor, Bidirectional Search and urgency-based heuristics with 6 batch-splitting strategies, reducing penalty cost by up to 78%, plus UX-tested map visualizations for route comparison.",
+    { title:"To the Point: From Dynamic Heatmap Video to Gaze Points", file:"To the Point.pdf", pdf:"assets/research/to-the-point.pdf", thumb:"assets/research/thumbs/to-the-point.png", company:"ACM ETRA", date:"May 2025", status:"Published",
+      description:"Posed gaze-point recovery from webcam eye-tracking heatmap videos as object detection; published the first annotated dynamic-heatmap dataset (2,463 frames) and compared Faster R-CNN, YOLOv8+LSTM and DETR. DETR performed best (mean IoU 0.39 vs. 0.17 baseline).",
+      tech:["DETR","Faster R-CNN","YOLOv8","Eye Tracking"] },
+    { title:"A Benchmark Dataset of Dynamic Attention Map Videos With Hotspot Annotations", file:"DAM Benchmark Dataset.pdf", pdf:"assets/research/dam-dataset.pdf", thumb:"assets/research/thumbs/dam-dataset.png", company:"OSF (dataset)", date:"Nov 2026", status:"Published",
+      description:"Benchmark of 11 dynamic attention map videos (6,000 frames) with 5,277 COCO bounding boxes marking the latest-changing gaze hotspot, plus a 500-frame gaze ground-truth test set. DOI 10.17605/OSF.IO/HGRE6.",
+      tech:["COCO","Eye Tracking","Video Saliency"] },
+    { title:"Soil Heat Flux Dynamics Modeling Using Temporal Deep Learning", file:"Soil Heat Flux.pdf", pdf:"assets/research/soil-heat-flux.pdf", thumb:"assets/research/thumbs/soil-heat-flux.png", company:"Springer LNNS", date:"Apr 2025", status:"Published",
+      description:"Stacked TCN + ANN ensemble forecasting soil heat flux (MAE 0.1559, R² 0.945, beating TCN, ANN and LSTM), feeding a Bayesian optimizer that keeps root-zone temperature within 18–25 °C (99.44% accuracy within ±3.45 °C).",
+      tech:["TCN","ANN","Bayesian Optimization","Python"] },
+    { title:"Profecta: A Smart Logistics System", file:"Profecta.pdf", pdf:"assets/research/profecta.pdf", thumb:"assets/research/thumbs/profecta.png", company:"Taylor & Francis CRC Press", date:"Jul 2024", status:"Published",
+      description:"Multi-constraint route planner combining 6 order-splitting strategies with Nearest Neighbour, Bidirectional Search and Most-Urgent-Destination heuristics; cut daily penalty cost 78% vs. LVP and 33% vs. CVRP with Gurobi.",
       tech:["Route Optimization","Heuristics","Python"] },
-    { title:"DecentraCheque — Decentralized Smart Cheque Validation", company:"Submitted", date:"2024",
-      description:"Engineered a smart-contract-based cheque verification system with a Siamese-ResNet18 (CBAM attention) model trained on 25K+ images for fraud-resistant signature validation (98% precision).",
-      tech:["Blockchain","Siamese-ResNet","Smart Contracts","Python"] },
-    { title:"Modeling Ekman Spiral Using PINNs for Ocean Circulation", company:"Submitted", date:"2024",
-      description:"Modeled oceanic dynamics using Physics-Informed Neural Networks in DeepXDE, trained on simulated ocean current datasets to improve Ekman spiral predictions.",
+    { title:"DecentraCheque: Decentralized Smart Cheque Validation", file:"DecentraCheque.pdf", pdf:"assets/research/decentracheque.pdf", thumb:"assets/research/thumbs/decentracheque.png", company:"Manuscript", date:"2025", status:"Yet to be published",
+      description:"End-to-end cheque validation: Gemini OCR, Solidity smart-contract checks, and a Logistic Siamese Regression model (ResNet-18 + CBAM) for signature verification at 81% accuracy (vs. 65.1% next best) with outcomes recorded on Ethereum.",
+      tech:["Siamese-ResNet","CBAM","Solidity","Ethereum"] },
+    { title:"Modeling Ekman Spiral Using PINNs for Ocean Circulation", file:"Ekman Spiral PINNs.pdf", pdf:"assets/research/ekman-pinns.pdf", thumb:"assets/research/thumbs/ekman-pinns.png", company:"Work in progress", date:"2024", status:"Ongoing",
+      description:"Ongoing research modeling wind-driven ocean currents with Physics-Informed Neural Networks in DeepXDE, with the Ekman equations built into the training loss. No results yet.",
       tech:["PINNs","DeepXDE"] }
 ],
+    // ── HACKATHONS (pins on the Maps globe — js/apps.js) ──
+    // Entries marked [placeholder] / "verify" need your details: project, venue city, team, links.
     hackathons: [
-    { title:"WolfTrace — Campus Incident Intelligence", company:"Hack NC State", date:"2026",
-      description:"Noir-styled campus incident intelligence and moderation platform (Next.js 15, TypeScript, React, FastAPI) that transforms raw multi-format tips and multimedia into structured case files via an agentic AI pipeline. Built a Neo4j-backed force-directed evidence graph, a Kanban case wall, a priority-sorted tip triage inbox, and a RAG chatbot (Gemini, Groq) for querying case histories in real time.",
-      tech:["Next.js","TypeScript","FastAPI","Neo4j","RAG","Gemini","Groq"] },
-    { title:"IntelliCTS — Cheque Parsing System (Top 3 Campus-wide)", company:"Standard Chartered Bank Hackathon", date:"2024",
-      description:"Automated cheque-processing system modeled on India's RBI-mandated Cheque Truncation System, using TensorFlow and OCR/ICR to extract and validate structured fields (account number, IFSC, amount, handwritten payee names) from scanned cheques, supporting bulk batch processing.",
-      tech:["TensorFlow","OCR","ICR","Python"] },
-    { title:"GreenFPO — Satellite-Based Crop Advisory (Finalist among 200+ teams)", company:"NABARD AgriSure Greenathon", date:"2024",
-      description:"Intelligent crop advisory platform transforming raw satellite imagery into actionable insights for Farmer Producer Organisations, combining geospatial analysis with ML-driven recommendations to support data-informed agricultural decisions.",
-      tech:["Geospatial Analysis","Python","Machine Learning"] },
-    { title:"Seal — Blockchain Land Record Management", company:"Smart India Hackathon", date:"2023",
-      description:"Land registry platform designed to eliminate fraud and disputes in property ownership, using Solidity smart contracts and an immutable ledger to enforce tamper-proof, verifiable land-title records.",
-      tech:["Solidity","Python","React","Node.js"] }
+    { id:"brainio", name:"BR41N.IO Hackathon", award:"Second Place", rank:2, date:"Nov 2026",
+      issuer:"Neurotech @ NC State", assoc:"North Carolina State University",
+      project:"AdaptiBoard", projectId:"adaptiboard", // verify: is AdaptiBoard the BR41N.IO project?
+      about:"Brain-computer interface hackathon run by Neurotech @ NC State. [Add a line about the challenge and your team.]",
+      place:"NC State University", city:"Raleigh, NC", lat:35.7847, lng:-78.6821, photo:"" },
+    { id:"hackncstate", name:"Hack_NCState", award:"Second Place", rank:2, date:"Feb 2026",
+      issuer:"Hack_NCState", assoc:"North Carolina State University",
+      project:"WolfTrace — Campus Incident Intelligence",
+      about:"Noir-styled campus incident intelligence and moderation platform (Next.js 15, TypeScript, FastAPI) that turns raw multi-format tips and multimedia into structured case files via an agentic AI pipeline, with a Neo4j-backed graph view.",
+      tech:["Next.js","TypeScript","FastAPI","Neo4j","Gemini","Groq"],
+      place:"NC State University", city:"Raleigh, NC", lat:35.7847, lng:-78.6821, photo:"" },
+    { id:"besthackathoner", name:"Best Hackathoner", award:"Best Hackathoner", rank:1, date:"Apr 2025",
+      issuer:"Department of Computer Science", assoc:"PSG College of Technology",
+      project:"Awarded for overall hackathon performance",
+      about:"Department-level recognition for consistent wins and finalist finishes across hackathons during my undergraduate years.",
+      place:"PSG College of Technology", city:"Coimbatore, India", lat:11.0247, lng:77.0028, photo:"" },
+    { id:"ksp", name:"KSP Datathon", award:"Finalist", rank:4, date:"Nov 2023",
+      issuer:"Karnataka State Police", assoc:"PSG College of Technology",
+      project:"[Project name — placeholder]",
+      about:"[Add what you built for the Karnataka State Police datathon.]",
+      place:"[Venue — placeholder]", city:"Bengaluru, India", lat:12.9716, lng:77.5946, photo:"" },
+    { id:"nabard", name:"NABARD AgriSure Greenathon", award:"Finalist", rank:4, date:"Nov 2023",
+      issuer:"NABARD", assoc:"PSG College of Technology",
+      project:"GreenFPO — Satellite-Based Crop Advisory",
+      about:"Intelligent crop advisory platform turning raw satellite imagery into actionable insights for Farmer Producer Organisations, combining geospatial analysis with ML-driven recommendations. Finalist among 200+ teams.",
+      tech:["Python","Machine Learning","Geospatial"],
+      place:"[Venue — placeholder]", city:"Mumbai, India", lat:19.0760, lng:72.8777, photo:"" },
+    { id:"socgen", name:"Societe Generale AI/ML Hackathon", award:"Special Mention", rank:3, date:"Aug 2023",
+      issuer:"Societe Generale", assoc:"PSG College of Technology",
+      project:"[Project name — placeholder]",
+      about:"[Add what you built for the Societe Generale AI/ML hackathon.]",
+      place:"[Venue — placeholder]", city:"Chennai, India", lat:13.0827, lng:80.2707, photo:"" },
+    { id:"scb", name:"Standard Chartered Bank AI/ML Hackathon", award:"Runner Up", rank:2, date:"Mar 2023",
+      issuer:"Standard Chartered Bank", assoc:"PSG College of Technology",
+      project:"IntelliCTS — Cheque Parsing System",
+      about:"Automated cheque processing modelled on India's RBI-mandated Cheque Truncation System, using TensorFlow and OCR/ICR to extract and validate account number, IFSC, amount and handwritten payee names from scanned cheques.",
+      tech:["TensorFlow","Python","OCR"],
+      place:"PSG College of Technology", city:"Coimbatore, India", lat:11.0247, lng:77.0028, photo:"" }
 ]
 };
+
+// Notification banners (top-right). delay = ms after page load.
+const notificationsData = [
+    { app:"Safari", icon:"assets/app_icons/safari.png", title:"Elemental Quest", body:"All players joined — the match is starting.", delay:2600, action:{ type:"project", id:"elementalquest" } },
+    { app:"Calendar", icon:"assets/app_icons/calendar.svg", title:"Upcoming Hackathon", body:"[Hackathon name] · [Date] — placeholder", delay:7000, action:{ type:"maps" } },
+];
 
 const trashItems = [
     { iconType:'folder', title:'portfolio_old', sub:'old version portfolio' },
@@ -99,19 +173,20 @@ const trashItems = [
 // SHARED ICONS — same artwork as the desktop icons
 // ─────────────────────────────────────────────────
 const FOLDER_ICON = (size) => `<img src="assets/folder.webp" alt="" width="${size}" height="${size}" style="object-fit:contain;">`;
-const PDF_ICON = (size) => `<svg viewBox="0 0 64 64" fill="none" width="${size}" height="${size}"><path d="M16 4h24l12 12v40c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V8c0-2.2 1.8-4 4-4z" fill="white" stroke="#d1d5db" stroke-width="1.5"/><path d="M40 4v12h12L40 4z" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5"/><rect x="20" y="28" width="24" height="2" rx="1" fill="#374151" opacity="0.8"/><rect x="20" y="34" width="20" height="2" rx="1" fill="#374151" opacity="0.6"/><rect x="20" y="40" width="22" height="2" rx="1" fill="#374151" opacity="0.6"/><rect x="20" y="46" width="16" height="2" rx="1" fill="#374151" opacity="0.4"/><text x="32" y="22" font-family="sans-serif" font-size="7" font-weight="700" fill="#111827" text-anchor="middle">PDF</text></svg>`;
+const PDF_ICON = (size) => `<img src="assets/app_icons/pdf.png" alt="" width="${size}" height="${size}" style="object-fit:contain;">`;
 const GMAIL_ICON = (size) => `<svg viewBox="52 42 88 66" width="${size}" height="${size}"><path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg>`;
 
 // ─────────────────────────────────────────────────
 // SPOTLIGHT ICONS — inline SVGs
 // ─────────────────────────────────────────────────
 function getSpotlightIconSVG(iconType) {
+    if (iconType && iconType.startsWith('img:')) return `<img src="${iconType.slice(4)}" alt="" width="28" height="28" style="object-fit:contain;">`;
     const uid = Math.random().toString(36).slice(2,7);
     const icons = {
         // Same artwork as the desktop/dock icons, so Spotlight results match what's on-screen
         folder:   FOLDER_ICON(30),
         pdf:      PDF_ICON(28),
-        terminal: `<img src="assets/terminal.svg" alt="" width="28" height="28" style="object-fit:contain;border-radius:7px;">`,
+        terminal: `<img src="assets/app_icons/terminal.png" alt="" width="30" height="30" style="object-fit:contain;">`,
         contact:  `<img src="assets/contact.webp" alt="" width="30" height="30" style="object-fit:contain;">`,
         location: `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><defs><linearGradient id="sploc${uid}" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#34d399"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><path d="M20 3C13.4 3 8 8.4 8 15c0 8 12 22 12 22s12-14 12-22c0-6.6-5.4-12-12-12zm0 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="url(#sploc${uid})"/></svg>`,
         github:   `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><rect width="40" height="40" rx="9" fill="#24292e"/><path fill="white" d="M20 5C11.7 5 5 11.7 5 20c0 6.6 4.3 12.2 10.2 14.2.7.1 1-.3 1-.7v-2.8c-4.2.9-5-1.8-5-1.8-.7-1.7-1.7-2.2-1.7-2.2-1.3-.9.1-.9.1-.9 1.5.1 2.3 1.5 2.3 1.5 1.3 2.3 3.5 1.6 4.3 1.2.1-.9.5-1.6.9-2-3.3-.4-6.8-1.7-6.8-7.4 0-1.6.6-3 1.5-4-.2-.4-.7-1.9.1-4 0 0 1.3-.4 4.1 1.5a14 14 0 0 1 3.7-.5c1.3 0 2.5.2 3.7.5 2.8-1.9 4.1-1.5 4.1-1.5.8 2 .3 3.6.1 4 .9 1 1.5 2.4 1.5 4 0 5.7-3.5 7-6.8 7.4.5.5 1 1.4 1 2.8v4.1c0 .4.3.8 1 .7C30.7 32.2 35 26.6 35 20c0-8.3-6.7-15-15-15z"/></svg>`,
@@ -121,15 +196,14 @@ function getSpotlightIconSVG(iconType) {
 }
 
 const spotlightIndex = [
-    { title:"Experience",  sub:"IIIT-B · IIM-C · Suguna · Sree Annapoorna · Pricol",    action:"Open",  type:"folder",   key:"professional", iconType:"folder"   },
-    { title:"Projects",    sub:"Elemental Quest · ByteBite · StackShack · AdSight · SafeSense", action:"Open", type:"folder", key:"projects", iconType:"folder" },
-{ title:"Hackathons",  sub:"WolfTrace · IntelliCTS · NABARD · Smart India",                  action:"Open", type:"folder", key:"hackathons", iconType:"folder" },
-{ title:"Research",    sub:"Gaze Points · Soil ML · Logistics · DecentraCheque · PINNs",      action:"Open", type:"folder", key:"research", iconType:"folder" },
-{ title:"Resume.pdf",  sub:"Download or preview my resume",                          action:"Open",  type:"resume",                       iconType:"pdf"      },
-    { title:"Terminal",    sub:"whoami · skills · experience · projects…",               action:"Open",  type:"terminal",                     iconType:"terminal" },
+    { title:"Experience",  sub:"Activity Monitor · STAC Lab · CAMCORE · NC State · IIIT-B · IIM-C", action:"Open", type:"folder", key:"professional", iconType:"img:assets/app_icons/activitymonitor.png" },
+    { title:"Projects",    sub:"CausalCI · Elemental Quest · AdaptiBoard · ByteBite · StackShack", action:"Open", type:"folder", key:"projects", iconType:"img:assets/app_icons/appstore.png" },
+    { title:"Hackathons",  sub:"BR41N.IO · Hack_NCState · Standard Chartered · NABARD · KSP",    action:"Open", type:"folder", key:"hackathons", iconType:"img:assets/app_icons/maps.png" },
+{ title:"Research",    sub:"Gaze Points · DAM Dataset · Soil ML · Logistics · DecentraCheque · PINNs",      action:"Open", type:"folder", key:"research", iconType:"folder" },
+{ title:"Resume",      sub:"Download or preview my resume",                          action:"Open",  type:"resume",                       iconType:"pdf"      },
+    { title:"Terminal",    sub:"whoami · skills · education · experience…",               action:"Open",  type:"terminal",                     iconType:"terminal" },
     { title:"Contact",     sub:"Say Hello",                                              action:"Open",  type:"contact",                      iconType:"contact"  },
-    { title:"Python",      sub:"Primary language · ML / AI / Backend / Research",       action:"Open",  type:"terminal",                     iconType:"terminal" },
-    { title:"React",       sub:"ByteBite, WolfTrace, Travelog",                         action:"Open",  type:"terminal",                     iconType:"terminal" },
+    { title:"Tools",       sub:"Languages · frameworks · cloud · ML — every tool I use",  action:"Open",  type:"tools",                        iconType:"img:assets/app_icons/apps.png" },
     { title:"Location",    sub:"India → Raleigh, NC",                                   action:"Open",  type:"info",                         iconType:"location" },
     { title:"GitHub",      sub:"github.com/SwethaatGH",                                 action:"Open",  type:"link", url:"https://github.com/SwethaatGH",                           iconType:"github"   },
     { title:"LinkedIn",    sub:"linkedin.com/in/swetha-manivasagam",                    action:"Open",  type:"link", url:"https://www.linkedin.com/in/swetha-manivasagam/",         iconType:"linkedin" },
@@ -138,147 +212,46 @@ const spotlightIndex = [
 // ─────────────────────────────────────────────────
 // TERMINAL COMMANDS
 // ─────────────────────────────────────────────────
+const termOpen = (label, fn) => { setTimeout(fn, 250); return `Opening <span class="t-highlight">${label}</span>…`; };
 const terminalCommands = {
     help: {
         desc: "List commands",
-        fn: () => `<span class="t-head">AVAILABLE COMMANDS</span>
+        fn: () => `<span class="t-head">Available commands</span>
 
   whoami         quick introduction
-  skills         technical strengths
-  experience     internships and industry work
-  projects       selected builds
-  research       papers and research themes
+  skills         every language, framework and tool
   education      academic background
-  contact        contact options
+  experience     open Activity Monitor (experience)
+  projects       open the App Store (projects)
+  hackathons     open Maps (hackathons)
+  research       open the Research folder
+  open contact   send me a message
   github         open GitHub
   linkedin       open LinkedIn
   scholar        open Google Scholar
   medium         open Medium
-  clear          clear terminal
-  hot-chocolate  ...`
+  clear          clear the terminal`
     },
 
     whoami: {
     desc: "About Swetha",
-    fn: () => `<span class="t-head">WHOAMI</span>
-
-<span class="t-highlight">Swetha Manivasagam</span>
-MS CS student with published deep learning research experience in
+    fn: () => `<span class="t-highlight">Swetha Manivasagam</span>
+MCS student with published deep learning research experience in
 spatio-temporal modelling and building RESTful APIs, C++ systems,
 data pipelines and cloud infrastructure for large-scale data through
 production deployment.
 
-Currently building, researching and seeking Summer 2026 opportunities.`
+Currently seeking SDE/ MLE New Grad 2027 opportunities.`
 },
 
-skills: {
-    desc: "Technical strengths",
-    fn: () => `<span class="t-head">TECHNICAL STRENGTHS</span>
-
-<span class="t-highlight">Languages</span>
-  Python · C · C++ · Java · JavaScript · SQL
-
-<span class="t-highlight">AI & ML</span>
-  PyTorch · TensorFlow · Keras · OpenCV · Transformers
-
-<span class="t-highlight">Data & Databases</span>
-  Pandas · NumPy · PostgreSQL · MongoDB · Neo4j
-  Streamlit · Tableau · Power BI
-
-<span class="t-highlight">Frontend</span>
-  React.js · React Native · Next.js · HTML · CSS
-  Bootstrap · Material Design Lite · Figma
-
-<span class="t-highlight">Backend & DevOps</span>
-  Django · Flask · FastAPI · Express.js · PHP
-  RESTful APIs · JUnit · Linux · Git · Docker · Postman`
-},
-    experience: {
-    desc: "Internships and work",
-    fn: () => `<span class="t-head">EXPERIENCE</span>
-
-<span class="t-highlight">CAMCORE</span> — Research Assistant
-  Apr 2026 – Aug 2026
-  5TB+ geospatial climate database, agentic ETL pipelines,
-  AWS Lightsail infra serving 300+ researchers.
-
-<span class="t-highlight">STAC Lab, NC State</span> — Research Assistant
-  Jan 2026 – Aug 2026
-  Multi-modal LST prediction pipeline (SRF/U-Net/ResNet),
-  35M+ raster samples, 28% RMSE improvement.
-
-<span class="t-highlight">IIIT Bangalore</span> — Deep Learning Research Intern
-  Dec 2024 – Apr 2025
-  Real-time gaze capture system (7.2M+ frames), DETR-based
-  gaze prediction pipeline, 22% improvement over RNN baseline.
-
-<span class="t-highlight">IIM Calcutta</span> — Software Development Intern
-  Jan 2024 – May 2024
-  Selenium + REST API pipeline collecting 500K+ tourism records.
-
-<span class="t-highlight">Suguna Group</span> — Software Development Intern
-  Jan 2024 – Apr 2024
-  AJAX-driven IT asset provisioning system for 10K+ employees.
-
-<span class="t-highlight">Pricol Limited</span> — UI/UX Designer
-  Jun 2023 – Jul 2023
-  UX flows and prototypes for an enterprise travel management app.`
-},
-
-projects: {
-    desc: "Selected projects",
-    fn: () => `<span class="t-head">SELECTED PROJECTS</span>
-
-<span class="t-highlight">Elemental Quest</span> — C++17 multiplayer game engine
-  Physics, rendering, multithreading, ZeroMQ networking
-  C++17 · ZeroMQ
-
-<span class="t-highlight">ByteBite</span> — Full-stack food delivery + sustainability
-  Cancel-to-redistribute, live tracking, recommendation engine
-  React · Node.js · Express · MongoDB
-
-<span class="t-highlight">StackShack</span> — Campus dining application
-  230+ tests, 85.8% coverage, CI pipeline
-  Flask · MySQL
-
-<span class="t-highlight">AdSight</span> — Webcam gaze prediction for ad placement
-  MPIIGaze, CNN vs. DETR, Hungarian matching
-  PyTorch · DETR
-
-<span class="t-highlight">SafeSense</span> — Industrial IoT safety monitor
-  ESP32 + multi-sensor real-time hazard tracking
-  ESP32 · Embedded C`
-},
-
-research: {
-    desc: "Research papers and themes",
-    fn: () => `<span class="t-head">RESEARCH</span>
-
-<span class="t-highlight">Published</span>
-
-  To The Point — ACM, 2025
-  Heatmap video → gaze point prediction (DETR)
-
-  Soil Heat Flux Modeling — Springer LLNS, 2025
-  TCN + LSTM + ANN ensemble, 60K+ records
-
-  Profecta — Taylor & Francis CRC Press, 2024
-  Logistics route optimizer, 78% penalty reduction
-
-<span class="t-highlight">Submitted</span>
-
-  DecentraCheque
-  Siamese-ResNet18 cheque signature validation, 98% precision
-
-  Modeling Ekman Spiral Using PINNs
-  Physics-informed ocean circulation modeling`
-},
+    skills: {
+        desc: "Every language, framework and tool",
+        fn: () => toolsCatalog.map(g => `<span class="t-highlight">${escHtml(g.group)}</span>\n  ${g.items.map(escHtml).join(' · ')}`).join('\n\n')
+    },
 
     education: {
         desc: "Academic background",
-        fn: () => `<span class="t-head">EDUCATION</span>
-
-<span class="t-highlight">North Carolina State University</span>
+        fn: () => `<span class="t-highlight">North Carolina State University</span>
   Masters in Computer Science
   Aug 2025 – May 2027
   GPA: 4.0 / 4.0
@@ -289,39 +262,23 @@ research: {
   CGPA: 8.83 / 10.0`
     },
 
-    contact: {
-        desc: "Contact info",
-        fn: () => `<span class="t-head">CONTACT</span>
-
-GitHub    github.com/SwethaatGH
-LinkedIn  linkedin.com/in/swetha-manivasagam
-Scholar   scholar.google.com/citations?user=MTwTB64AAAAJ
-Medium    medium.com/@swethawritescompsci
-
-Type <span class="t-highlight">open contact</span> to send a message directly from the site.`
-    },
+    experience: { desc:"Open Activity Monitor",  fn:() => termOpen('Activity Monitor', openActivityMonitor) },
+    projects:   { desc:"Open the App Store",     fn:() => termOpen('App Store', () => openAppStore()) },
+    hackathons: { desc:"Open Maps",              fn:() => termOpen('Maps', () => openMaps()) },
+    research:   { desc:"Open the Research folder", fn:() => termOpen('Research', () => openResearchFinder()) },
 
     github:   { desc:"Open GitHub",         fn:()=>{ window.open('https://github.com/SwethaatGH','_blank'); return 'Opening GitHub…'; }},
     linkedin: { desc:"Open LinkedIn",       fn:()=>{ window.open('https://www.linkedin.com/in/swetha-manivasagam/','_blank'); return 'Opening LinkedIn…'; }},
     scholar:  { desc:"Open Google Scholar", fn:()=>{ window.open('https://scholar.google.com/citations?user=MTwTB64AAAAJ&hl=en','_blank'); return 'Opening Google Scholar…'; }},
     medium:   { desc:"Open Medium",         fn:()=>{ window.open('https://medium.com/@swethawritescompsci/','_blank'); return 'Opening Medium…'; }},
     clear:    { desc:"Clear terminal",      fn:()=>'CLEAR' },
-    'hot-chocolate': {
-        desc: "...because sometimes you just need a break",
-        fn: () => `     )  )
-    (  (
-   _____)_____
-  |           |
-  |        |
-  |___________|
-
-Hot chocolate ready. Back to building.`
-    }
 };
 
 function getWelcomeMessage() {
-    return `<span class="t-head">SWETHA'S TERMINAL</span>
-type <span class="t-highlight">help</span> to see available commands.`;
+    const d=new Date(Date.now()-36e5*3), pad=n=>String(n).padStart(2,'0');
+    const stamp=d.toLocaleDateString('en-US',{weekday:'short'})+' '+d.toLocaleDateString('en-US',{month:'short'})+' '+String(d.getDate()).padStart(2,' ')+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+    return `Last login: ${stamp} on ttys000
+Type <span class="t-highlight">help</span> to see available commands.`;
 }
 
 // ─────────────────────────────────────────────────
@@ -335,7 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountdown();
     initWeather();
     initReminders();
-    initTechStack();
     initFolders();
     initTools();
     initTerminal();
@@ -347,6 +303,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMenubar();
     initDraggable();
     updateRecentsMenu();
+    extendSpotlight();
+    initNotifications();
 });
 
 // ─────────────────────────────────────────────────
@@ -526,43 +484,7 @@ function initFolders() {
     const titles = {professional:'Experience',projects:'Projects',research:'Research',hackathons:'Hackathons'};
 
     Object.entries(map).forEach(([id,key]) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.addEventListener('click', () => {
-            const existing = openFolderWindows[key];
-            if (existing && document.body.contains(existing.win)) {
-                restoreFolderWindow(key);
-                addRecent(titles[key], id, 'folder', key);
-                return;
-            }
-
-            const win = createFolderWindow();
-            win.querySelector('.window-title').textContent = titles[key];
-            const cardsEl = win.querySelector('.cards-container');
-            const noMeta = key === 'projects';
-            portfolioData[key].forEach((item,i) => {
-                const card = document.createElement('div');
-                card.className = 'card' + (noMeta ? ' card-no-meta' : ''); card.style.animationDelay = `${i*0.06}s`;
-                const meta = noMeta ? '' : `<div class="card-company">${item.company}</div><div class="card-date">${item.date}</div>`;
-                card.innerHTML = `<div class="card-title">${item.title}</div>${meta}<div class="card-description">${item.description}</div><div class="card-tech">${item.tech.map(t=>`<span class="tech-tag">${t}</span>`).join('')}</div>`;
-                cardsEl.appendChild(card);
-            });
-
-            win.querySelector('.window-control.close').addEventListener('click', e => {
-                e.stopPropagation();
-                closeFolderWindow(key);
-            });
-            win.querySelector('.window-control.minimize').addEventListener('click', e => {
-                e.stopPropagation();
-                if (win.style.display==='none') return;
-                win.style.display = 'none';
-                addMinimizedFolderDockItem(win, titles[key], key);
-            });
-
-            openFolderWindows[key] = { win, title: titles[key] };
-            openWindowCentered(win);
-            addRecent(titles[key], id, 'folder', key);
-        });
+        document.getElementById(id)?.addEventListener('click', () => openAppFolder(key));
     });
 
     const orig = document.getElementById('folder-window');
@@ -610,41 +532,9 @@ function addMinimizedFolderDockItem(win, title, key) {
 // ─────────────────────────────────────────────────
 // TOOLS WINDOW
 // ─────────────────────────────────────────────────
-const toolsData=[
-    {name:'VS Code',img:'assets/dock_tools/vscode.png'},{name:'IntelliJ',img:'assets/dock_tools/intellij.png'},
-    {name:'PyTorch',img:'assets/dock_tools/pytorch.jpg'},{name:'Pandas',img:'assets/dock_tools/pandas.svg'},
-    {name:'NumPy',img:'assets/dock_tools/numpy.svg'},{name:'Tableau',img:'assets/dock_tools/tableau.svg'},
-    {name:'Power BI',img:'assets/dock_tools/powerbi.jpeg'},{name:'GitHub',img:'assets/dock_tools/github.jpeg'},
-    {name:'MySQL WB',img:'assets/dock_tools/mysqlwb.webp'},{name:'Postman',img:'assets/dock_tools/postman.jpeg'},
-    {name:'Overleaf',img:'assets/dock_tools/overleaf.jpg'},{name:'Microsoft 365',img:'assets/dock_tools/microsoft365.png'},
-    {name:'Notion',img:'assets/dock_tools/notion.png'},{name:'Figma',img:'assets/dock_tools/figma.png'},
-    {name:'AnyDesk',img:'assets/dock_tools/anydesk.png'},
-];
 function initTools() {
-    const win=document.getElementById('tools-window');
-    const cont=document.getElementById('tools-content');
-    const closeB=document.getElementById('tools-close');
-    const icon=document.getElementById('tools-icon');
-    if (!cont) return;
-    cont.innerHTML=`<div class="tools-grid">${toolsData.map(t=>`<div class="tool-item"><div class="tool-icon-wrap"><img src="${t.img}" alt="${t.name}" class="tool-img"></div><div class="tool-name">${t.name}</div></div>`).join('')}</div>`;
-    if (icon) icon.addEventListener('click', () => openWindowCentered(win));
-    if (closeB) closeB.onclick = () => { if(win) win.style.display='none'; };
-
-    const minBtn = document.getElementById('tools-minimize');
-    if (minBtn) minBtn.addEventListener('click', e => {
-        e.stopPropagation();
-        if (!win||win.style.display==='none') return;
-        win.style.display='none';
-        const toolsDockItem = document.getElementById('tools-icon');
-        if (toolsDockItem) {
-            let dot=toolsDockItem.querySelector('.dock-dot');
-            if (!dot) { dot=document.createElement('div'); dot.className='dock-dot'; toolsDockItem.appendChild(dot); }
-            dot.style.background='rgba(255,255,255,0.9)';
-        }
-        function restoreFn() { openWindowCentered(win); }
-        document.getElementById('tools-icon')?.addEventListener('click', restoreFn, {once:true});
-    });
-    initMinMaxForWindow(win);
+    // Tools live in the full-screen Apps launcher (js/apps.js → openLaunchpad)
+    document.getElementById('tools-window')?.remove();
 }
 
 // ─────────────────────────────────────────────────
@@ -668,7 +558,7 @@ function initTerminal() {
 
     function addOutput(cmd,out) {
         const entry=document.createElement('div'); entry.className='terminal-entry';
-        if (cmd) { entry.innerHTML=`<div class="terminal-entry-cmd"><span class="t-prompt">swetha</span><span class="t-at">@</span><span class="t-machine">portfolio</span><span class="t-sep"> % </span><span class="t-cmd-text">${escHtml(cmd)}</span></div><div class="terminal-entry-out">${out}</div>`; }
+        if (cmd) { entry.innerHTML=`<div class="terminal-entry-cmd"><span class="t-prompt">swetha</span><span class="t-at">@</span><span class="t-machine">portfolio</span><span class="t-sep"> ~ % </span><span class="t-cmd-text">${escHtml(cmd)}</span></div><div class="terminal-entry-out">${out}</div>`; }
         else { entry.innerHTML=`<div class="terminal-entry-out">${out}</div>`; }
         hist.appendChild(entry); hist.scrollTop=hist.scrollHeight;
     }
@@ -678,23 +568,23 @@ function initTerminal() {
         if (!cmd) return;
         termHistory.unshift(raw.trim()); histIdx=-1; inputBuf='';
         if (cmd==='clear') { hist.innerHTML=''; addOutput('',getWelcomeMessage()); return; }
-        const openMatch=raw.trim().toLowerCase().match(/^open\s+(\w+)$/);
+        const openMatch=cmd.match(/^open\s+(\w+)$/);
         if (openMatch) {
             const t=openMatch[1];
-            if(['professional','experience'].includes(t)){addOutput(raw.trim(),'<span class="t-highlight">Opening Experience…</span>');setTimeout(()=>document.getElementById('professional-icon')?.click(),200);return;}
-            if(t==='projects'){addOutput(raw.trim(),'<span class="t-highlight">Opening Projects…</span>');setTimeout(()=>document.getElementById('projects-icon')?.click(),200);return;}
-            if(t==='research'){addOutput(raw.trim(),'<span class="t-highlight">Opening Research…</span>');setTimeout(()=>document.getElementById('research-icon')?.click(),200);return;}
-            if(t==='hackathons'){addOutput(raw.trim(),'<span class="t-highlight">Opening Hackathons…</span>');setTimeout(()=>document.getElementById('hackathons-icon')?.click(),200);return;}
-            if(t==='contact'){addOutput(raw.trim(),'<span class="t-highlight">Opening Contact…</span>');setTimeout(openContact,200);return;}
+            const targets={experience:'experience',professional:'experience',projects:'projects',research:'research',hackathons:'hackathons'};
+            if(targets[t]){addOutput(raw.trim(),terminalCommands[targets[t]].fn());return;}
+            if(t==='contact'){addOutput(raw.trim(),termOpen('Mail', openContact));return;}
+            if(t==='tools'){addOutput(raw.trim(),termOpen('Apps', openLaunchpad));return;}
         }
         const def=terminalCommands[cmd];
         if (def) { const r=def.fn(); if(r==='CLEAR'){hist.innerHTML='';addOutput('',getWelcomeMessage());return;} addOutput(raw.trim(),r); }
-        else { addOutput(raw.trim(),`<span style="color:#888">command not found: ${escHtml(cmd)}</span>\ntype <span class="t-highlight">help</span> for commands.`); }
+        else { addOutput(raw.trim(),`zsh: command not found: ${escHtml(cmd)}\nType <span class="t-highlight">help</span> for commands.`); }
     }
 
-    const allCmds=[...Object.keys(terminalCommands),'open professional','open projects','open research','open hackathons','open contact'];
+    const allCmds=[...Object.keys(terminalCommands),'open contact','open tools'];
+    const extraDesc={'open contact':'Send a message','open tools':'Open the Apps launcher'};
     let acItems=[], acSel=-1;
-    function showAc(val){if(!val){hideAc();return;}const m=allCmds.filter(c=>c.startsWith(val.toLowerCase())&&c!==val.toLowerCase());if(!m.length){hideAc();return;}acItems=m.slice(0,6);acSel=-1;ac.innerHTML=acItems.map((x,i)=>`<div class="autocomplete-item" data-i="${i}"><span>${escHtml(x)}</span><span class="autocomplete-hint">${terminalCommands[x]?.desc||''}</span></div>`).join('');ac.classList.add('open');ac.querySelectorAll('.autocomplete-item').forEach(el=>{el.addEventListener('mousedown',e=>{e.preventDefault();input.value=acItems[+el.dataset.i];hideAc();input.focus();});});}
+    function showAc(val){if(!val){hideAc();return;}const m=allCmds.filter(c=>c.startsWith(val.toLowerCase())&&c!==val.toLowerCase());if(!m.length){hideAc();return;}acItems=m.slice(0,6);acSel=-1;ac.innerHTML=acItems.map((x,i)=>`<div class="autocomplete-item" data-i="${i}"><span>${escHtml(x)}</span><span class="autocomplete-hint">${terminalCommands[x]?.desc||extraDesc[x]||''}</span></div>`).join('');ac.classList.add('open');ac.querySelectorAll('.autocomplete-item').forEach(el=>{el.addEventListener('mousedown',e=>{e.preventDefault();input.value=acItems[+el.dataset.i];hideAc();input.focus();});});}
     function hideAc(){ac.classList.remove('open');acItems=[];acSel=-1;}
     function updateAcSel(){ac.querySelectorAll('.autocomplete-item').forEach((el,i)=>el.classList.toggle('selected',i===acSel));if(acSel>=0)input.value=acItems[acSel];}
 
@@ -753,10 +643,11 @@ function initContact() {
 }
 
 function buildContactForm() {
+    const field=(id,label,input)=>`<div class="cf-field" data-field="${id}">${input}<div class="cf-err" id="cf-err-${id}" aria-live="polite"></div></div>`;
     return `
     <div class="contact-form-inner">
         <div class="contact-form-header">
-            <div class="contact-form-icon">${GMAIL_ICON(42)}</div>
+            <div class="contact-form-icon"><img src="assets/app_icons/mail.png" alt="" width="46" height="46"></div>
             <div>
                 <div class="contact-form-title">Say Hello!</div>
                 <div class="contact-form-sub">I'd love to hear from you</div>
@@ -765,43 +656,81 @@ function buildContactForm() {
         <form id="web3form" novalidate>
             <input type="hidden" name="access_key" value="7e3089cc-f380-4306-a256-6149125b9b31">
             <input type="hidden" name="subject" value="Portfolio Contact — New Message">
-            <input type="checkbox" name="botcheck" style="display:none">
-            <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your Name" aria-label="Your Name" required autocomplete="name">
-            <input class="cf-input" type="email" id="cf-email" name="email" placeholder="Email Address" aria-label="Email Address" required autocomplete="email">
-            <textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Message" aria-label="Message" required rows="5"></textarea>
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+            ${field('name','Your Name',`<input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your Name" aria-label="Your Name" aria-describedby="cf-err-name" required maxlength="80" autocomplete="name">`)}
+            ${field('email','Email Address',`<input class="cf-input" type="email" id="cf-email" name="email" placeholder="Email Address" aria-label="Email Address" aria-describedby="cf-err-email" required maxlength="254" autocomplete="email">`)}
+            ${field('message','Message',`<textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Message" aria-label="Message" aria-describedby="cf-err-message" required rows="5" maxlength="5000"></textarea>`)}
             <div class="cf-actions">
                 <button type="submit" class="cf-submit" id="cf-submit-btn">Send</button>
             </div>
-            <div class="cf-status" id="cf-status"></div>
         </form>
     </div>`;
+}
+
+// Returns an error message for a field, or '' when it is valid
+function validateContactField(id, raw) {
+    const v=(raw||'').trim();
+    if (id==='name') {
+        if (!v) return 'Please enter your name.';
+        if (v.length<2) return 'Your name looks too short.';
+        if (!/^[\p{L}][\p{L}\p{M} .,'’-]*$/u.test(v)) return 'Use letters only — no numbers or symbols.';
+    }
+    if (id==='email') {
+        if (!v) return 'Please enter your email address.';
+        if (!/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[A-Za-z]{2,}$/.test(v)) return 'Enter a valid email address, like name@example.com.';
+    }
+    if (id==='message') {
+        if (!v) return 'Please write a message.';
+        if (v.length<10) return 'Your message is a little short — add a few more words.';
+    }
+    return '';
 }
 
 function setupContactForm() {
     const form=document.getElementById('web3form');
     if (!form) return;
+    const win=document.getElementById('contact-window');
     const submitBtn=form.querySelector('#cf-submit-btn');
-    const statusEl=document.getElementById('cf-status');
+    const ids=['name','email','message'];
+    const inputOf=id=>form.querySelector('#cf-'+id);
+    const show=(id,msg)=>{
+        const el=inputOf(id), err=form.querySelector('#cf-err-'+id);
+        el.classList.toggle('cf-invalid',!!msg); el.setAttribute('aria-invalid',msg?'true':'false');
+        err.innerHTML=msg?`<svg viewBox="0 0 16 16" width="12" height="12"><circle cx="8" cy="8" r="7.5" fill="#ff3b30"/><path d="M8 4.2v4.6" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><circle cx="8" cy="11.4" r="1" fill="#fff"/></svg>${escHtml(msg)}`:'';
+    };
+    // Validate on blur, and clear errors as soon as the field becomes valid
+    ids.forEach(id=>{
+        const el=inputOf(id);
+        el.addEventListener('blur',()=>{ if(el.value.trim()) show(id,validateContactField(id,el.value)); });
+        el.addEventListener('input',()=>{ if(el.classList.contains('cf-invalid')) show(id,validateContactField(id,el.value)); });
+    });
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        let first=null;
+        ids.forEach(id=>{ const msg=validateContactField(id,inputOf(id).value); show(id,msg); if(msg&&!first) first=id; });
+        if (first) {
+            inputOf(first).focus();
+            submitBtn.classList.remove('cf-shake'); void submitBtn.offsetWidth; submitBtn.classList.add('cf-shake');
+            return;
+        }
+        const name=inputOf('name').value.trim(), email=inputOf('email').value.trim();
         const formData=new FormData(form);
-        const originalHTML=submitBtn.innerHTML;
+        ids.forEach(id=>formData.set(id,inputOf(id).value.trim()));
         submitBtn.textContent='Sending…';
         submitBtn.disabled=true;
-        if(statusEl){statusEl.textContent='';statusEl.className='cf-status';}
         try {
-            const response=await fetch('https://api.web3forms.com/submit',{method:'POST',body:formData});
-            const data=await response.json();
-            if(response.ok){
-                if(statusEl){statusEl.textContent='✓ Message sent! I\'ll get back to you soon.';statusEl.className='cf-status cf-success';}
-                form.reset();
+            const response=await fetch('https://api.web3forms.com/submit',{method:'POST',body:formData,headers:{Accept:'application/json'}});
+            const data=await response.json().catch(()=>({}));
+            if(response.ok && data.success!==false){
+                form.reset(); ids.forEach(id=>show(id,''));
+                showMacAlert(win,{icon:'assets/app_icons/mail.png',title:'Message Sent',text:`Thanks, ${name.split(/\s+/)[0]}! Your message is on its way. I’ll reply to ${email} soon.`,buttons:[{label:'OK',primary:true}]});
             } else {
-                if(statusEl){statusEl.textContent='✗ '+(data.message||'Something went wrong. Please try again.');statusEl.className='cf-status cf-error';}
+                showMacAlert(win,{icon:'assets/app_icons/mail.png',title:'Message Not Sent',text:data.message||'Something went wrong on the server. Please try again in a moment.',buttons:[{label:'OK',primary:true}]});
             }
         } catch(error) {
-            if(statusEl){statusEl.textContent='✗ Network error. Please try again.';statusEl.className='cf-status cf-error';}
+            showMacAlert(win,{icon:'assets/app_icons/mail.png',title:'You appear to be offline',text:'Your message couldn’t be sent. Check your internet connection and try again.',buttons:[{label:'OK',primary:true}]});
         } finally {
-            submitBtn.innerHTML=originalHTML;
+            submitBtn.textContent='Send';
             submitBtn.disabled=false;
         }
     });
@@ -817,7 +746,7 @@ function initResume() {
     const cb=document.getElementById('pdf-close');
     // Phone browsers can't render a PDF inside an iframe, so open it directly there
     const isPhone=()=>window.matchMedia('(max-width:768px)').matches;
-    if(icon) icon.onclick=()=>{if(isPhone())window.open('assets/resume.pdf','_blank');else restoreResumeWindow();addRecent('Resume.pdf','resume-icon','resume','');};
+    if(icon) icon.onclick=()=>{if(isPhone())window.open('assets/resume.pdf','_blank');else restoreResumeWindow();addRecent('Resume','resume-icon','resume','');};
     if(cb)   cb.onclick=()=>{if(!win)return;win.style.display='none';removeResumeDockItem(win);};
 
     const minBtn=document.getElementById('pdf-minimize');
@@ -847,10 +776,10 @@ function addMinimizedPDFDockItem(win) {
     if(!dock||win._minDockItem) return;
     const item=document.createElement('div');
     item.className='dock-item minimized-dock-item';
-    item.title='Resume.pdf';
+    item.title='Resume';
     item.innerHTML=`
         <div class="dock-icon-wrap">${PDF_ICON(36)}</div>
-        <div class="dock-tooltip">Resume.pdf</div>
+        <div class="dock-tooltip">Resume</div>
         <div class="dock-dot"></div>`;
     const sep=document.createElement('div');sep.className='dock-separator minimized-sep';
     item.addEventListener('click',restoreResumeWindow);
@@ -863,18 +792,9 @@ function addMinimizedPDFDockItem(win) {
 // ─────────────────────────────────────────────────
 // TRASH
 // ─────────────────────────────────────────────────
-function trashIconSVG() {
-    // Trashed items always show the same folder icon used on the desktop, regardless of what they were
-    return `<img src="assets/folder.webp" alt="" width="40" height="40" style="object-fit:contain;">`;
-}
 function initTrash() {
-    const win=document.getElementById('trash-window');
-    const cont=document.getElementById('trash-content');
-    const closeB=document.getElementById('trash-close');
-    if(!cont) return;
-    cont.innerHTML=`<div class="trash-flat-list">${trashItems.map(item=>`<div class="trash-item"><div class="trash-item-icon-img">${trashIconSVG(item.iconType)}</div><div class="trash-item-info"><div class="trash-item-title">${item.title}</div><div class="trash-item-sub">${item.sub}</div></div></div>`).join('')}</div>`;
-    if(closeB) closeB.onclick=()=>{if(win)win.style.display='none';};
-    initMinMaxForWindow(win);
+    // Trash opens in the Finder window (js/apps.js → openResearchFinder('trash'))
+    document.getElementById('trash-window')?.remove();
 }
 
 // ─────────────────────────────────────────────────
@@ -885,9 +805,10 @@ function initDock() {
     document.querySelectorAll('.dock-item').forEach(item=>{
         const app=item.dataset.app; if(!app) return;
         item.addEventListener('click',()=>{
+            if(app!=='tools') closeLaunchpad();
             if(app==='terminal') openTerminalWindow();
-            else if(app==='trash') openWindowCentered(document.getElementById('trash-window'));
-            else if(app==='tools') openWindowCentered(document.getElementById('tools-window'));
+            else if(app==='trash') openResearchFinder('trash');
+            else if(app==='tools') openLaunchpad();
             else if(links[app]) window.open(links[app],'_blank');
         });
     });
@@ -949,9 +870,13 @@ function initSpotlight() {
 function handleSpotlightAction(r) {
     if(r.type==='folder'&&r.key) document.getElementById(r.key+'-icon')?.click();
     else if(r.type==='terminal') openTerminalWindow();
+    else if(r.type==='tools')    openLaunchpad();
     else if(r.type==='contact')  openContact();
     else if(r.type==='resume')   document.getElementById('resume-icon')?.click();
     else if(r.type==='link'&&r.url) window.open(r.url,'_blank');
+    else if(r.type==='app')   openProjectApp(r.id);
+    else if(r.type==='paper') openPaper(r.idx);
+    else if(r.type==='hack')  openMaps(r.id);
 }
 
 // ─────────────────────────────────────────────────
@@ -998,6 +923,8 @@ function initMenubar() {
 // ─────────────────────────────────────────────────
 let zTop=1000;
 
+// Centre vertically in the space between the menu bar (28px) and the dock (~96px)
+function centerTop(vh,winH){ return Math.round(28+Math.max(6,(vh-28-96-winH)/2)); }
 function openWindowCentered(win) {
     if(!win) return;
     win.style.display='block';
@@ -1009,11 +936,11 @@ function openWindowCentered(win) {
         if(win.style.transform&&win.style.transform!=='none'&&win.style.transform.includes('translate')) {
             win.style.transform='none';
             win.style.left=Math.max(0,(vw-winW)/2)+'px';
-            win.style.top=Math.max(28,(vh-winH)/2)+'px';
+            win.style.top=centerTop(vh,winH)+'px';
         } else if(!win.style.left||win.style.left==='0px'||win.style.left==='') {
             win.style.transform='none';
             win.style.left=Math.max(0,(vw-winW)/2)+'px';
-            win.style.top=Math.max(28,(vh-winH)/2)+'px';
+            win.style.top=centerTop(vh,winH)+'px';
         }
         win.style.animation='none';
         void win.offsetHeight;
