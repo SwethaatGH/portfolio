@@ -22,6 +22,51 @@ const TECH_ICONS = {
     'Google Cloud':'googlecloud.svg', 'AWS':'amazonwebservices.svg', 'GitHub Actions':'githubactions.svg', 'Prometheus':'prometheus.svg', 'Grafana':'grafana.svg',
     'Linux':'linux.svg', 'Git':'git.svg', 'ZeroMQ':'zeromq.svg', 'ESP32':'espressif.svg', 'JUnit':'junit.svg', 'Selenium':'selenium.svg',
     'LaTeX':'latex.svg', 'Ethereum':'ethereum.svg',
+    // concept glyphs (assets/tech/g-*.svg) and extra brand marks
+    'Tree-sitter':'g-treesitter.svg',
+    'Multithreading':'g-multithreading.svg',
+    'Networking':'g-networking.svg',
+    'Game Engine':'g-gameengine.svg',
+    'WebSockets':'g-websockets.svg',
+    'BrainFlow':'g-brainflow.svg',
+    'edge-tts':'g-tts.svg',
+    'EEG':'g-eeg.svg',
+    'Agentic Workflows':'g-agentic.svg',
+    'RAG':'g-rag.svg',
+    'Mongoose':'mongoose.svg',
+    'Leaflet':'leaflet.svg',
+    'Software Testing':'g-testing.svg',
+    'CI/CD':'g-cicd.svg',
+    'Requirements Engineering':'g-requirements.svg',
+    'DETR':'meta.svg',
+    'CNN':'g-cnn.svg',
+    'MPIIGaze':'g-gaze.svg',
+    'Computer Vision':'g-vision.svg',
+    'OCR':'g-ocr.svg',
+    'IoT':'g-iot.svg',
+    'Embedded Systems':'g-embedded.svg',
+    'Microprocessors':'g-cpu.svg',
+    'Sensors':'g-sensors.svg',
+    'Java Swing':'java.svg',
+    'Java AWT':'java.svg',
+    'SQL':'g-sql.svg',
+    'Package Management':'g-package.svg',
+    'U-Net':'g-unet.svg',
+    'ResNet':'g-resnet.svg',
+    'Geospatial ML':'g-geoml.svg',
+    'AWS Lightsail':'amazonwebservices.svg',
+    'ETL':'g-etl.svg',
+    'Geospatial Data':'g-geodata.svg',
+    'Algorithms':'g-algorithms.svg',
+    'Teaching':'g-teaching.svg',
+    'REST API':'g-restapi.svg',
+    'AJAX':'g-ajax.svg',
+    'Prototyping':'g-prototyping.svg',
+    'UX Research':'g-uxresearch.svg',
+    'Geospatial':'g-geoml.svg',
+    'Machine Learning':'g-cnn.svg',
+    'Express.js':'express.svg',
+    'React.js':'react.svg',
     // apps already in assets/dock_tools
     'VS Code':'assets/dock_tools/vscode.png', 'IntelliJ':'assets/dock_tools/intellij.png', 'GitHub':'assets/dock_tools/github.jpeg',
     'MySQL Workbench':'assets/dock_tools/mysqlwb.webp', 'Postman':'assets/dock_tools/postman.jpeg', 'Overleaf':'assets/dock_tools/overleaf.jpg',
@@ -45,15 +90,15 @@ function techIconHTML(name, cls = 'tech-ico') {
 // ─────────────────────────────────────────────────
 const toolsCatalog = [
     { group:'Languages',            items:['Python','C','C++','Java','JavaScript','TypeScript','Bash','PHP','Solidity','HTML5','CSS3'] },
-    { group:'Frontend',             items:['React','React Native','Next.js','Bootstrap'] },
-    { group:'Backend',              items:['Node.js','Express','Flask','Django','FastAPI','Fastify'] },
-    { group:'Data & Databases',     items:['MySQL','PostgreSQL','MongoDB','Neo4j','Redis','SQLite','Pandas','NumPy','SciPy','Streamlit','Tableau','Power BI'] },
-    { group:'Machine Learning',     items:['PyTorch','TensorFlow','Keras','OpenCV','Hugging Face'] },
-    { group:'AI Models & APIs',     items:['Groq','Llama','Gemini','Gemma','Whisper','MCP','Twilio'] },
-    { group:'Cloud & DevOps',       items:['Docker','Kubernetes','Helm','KEDA','Terraform','gVisor','Google Cloud','AWS','GitHub Actions','Prometheus','Grafana','Linux','Git'] },
-    { group:'Systems & Hardware',   items:['ZeroMQ','ESP32'] },
-    { group:'Testing',              items:['JUnit','Selenium','Postman'] },
-    { group:'Apps & Productivity',  items:['VS Code','IntelliJ','GitHub','MySQL Workbench','Figma','Overleaf','Notion','Microsoft 365','AnyDesk'] },
+    { group:'Frontend',             items:['React','React Native','Next.js','Bootstrap','Java Swing','Java AWT','Leaflet'] },
+    { group:'Backend',              items:['Node.js','Express','Flask','Django','FastAPI','Fastify','REST API','WebSockets','AJAX','Mongoose'] },
+    { group:'Data & Databases',     items:['SQL','MySQL','PostgreSQL','MongoDB','Neo4j','Redis','SQLite','ETL','Geospatial Data','Pandas','NumPy','SciPy','Streamlit','Tableau','Power BI'] },
+    { group:'Machine Learning',     items:['PyTorch','TensorFlow','Keras','OpenCV','Hugging Face','CNN','ResNet','U-Net','DETR','Computer Vision','OCR','Geospatial ML'] },
+    { group:'AI Models & APIs',     items:['Groq','Llama','Gemini','Gemma','Whisper','edge-tts','MCP','RAG','Agentic Workflows','Twilio'] },
+    { group:'Cloud & DevOps',       items:['Docker','Kubernetes','Helm','KEDA','Terraform','gVisor','Google Cloud','AWS','AWS Lightsail','GitHub Actions','CI/CD','Prometheus','Grafana','Linux','Git','Package Management'] },
+    { group:'Systems & Hardware',   items:['Multithreading','Networking','Game Engine','ZeroMQ','Tree-sitter','ESP32','Embedded Systems','Microprocessors','Sensors','IoT','EEG','BrainFlow'] },
+    { group:'Testing & Process',    items:['Software Testing','JUnit','Selenium','Postman','Requirements Engineering','Algorithms'] },
+    { group:'Apps & Productivity',  items:['Figma','Prototyping','UX Research','VS Code','IntelliJ','GitHub','MySQL Workbench','Overleaf','Notion','Microsoft 365','AnyDesk'] },
 ];
 // Tools open in a full-screen "Apps" launcher (macOS Apps / Launchpad),
 // keeping the category sections. Click the background or press Esc to close.
@@ -233,7 +278,8 @@ function renderAppStore() {
     const scroll = win.querySelector('.as-scroll');
     win.querySelectorAll('.as-nav-item').forEach(b => b.classList.toggle('active', !asState.query && b.dataset.view === asState.view));
     const all = portfolioData.projects;
-    const featured = all.filter(p => p.featured);
+    const FEATURED_ORDER = ['elementalquest', 'adaptiboard', 'causalci'];
+    const featured = all.filter(p => p.featured).sort((a, b) => FEATURED_ORDER.indexOf(a.id) - FEATURED_ORDER.indexOf(b.id));
     let html = '';
 
     if (asState.detail) {
@@ -262,9 +308,10 @@ function renderAppStore() {
     bindAppStore(scroll);
 }
 
-function asBannerStyle(p) {
-    return p.banner
-        ? `background-image:url('${p.banner}');background-size:cover;background-position:center;`
+function asBannerStyle(p, tile = false) {
+    const img = tile ? (p.bannerTile || p.banner) : p.banner;
+    return img
+        ? `background-image:url('${img}');background-size:cover;background-position:center;`
         : `background:radial-gradient(120% 140% at 85% 10%, ${p.colors[0]} 0%, ${p.colors[1]} 70%);`;
 }
 function asGetBtn(p, cls = '') {
@@ -274,7 +321,7 @@ function asGetBtn(p, cls = '') {
 }
 function asTileHTML(p) {
     return `<article class="as-tile" data-open="${p.id}">
-        <div class="as-tile-banner" style="${asBannerStyle(p)}">
+        <div class="as-tile-banner" style="${asBannerStyle(p, true)}">
             ${p.banner ? '' : `<img class="as-banner-art" src="${p.icon}" alt="">`}
             <div class="as-tile-copy"><span>${escHtml(p.category)}</span><b>${escHtml(p.subtitle)}</b></div>
         </div>
@@ -324,7 +371,7 @@ function asDetailHTML(p) {
                 <h1>${escHtml(p.name)}</h1>
                 <div class="as-sub">${escHtml(p.subtitle)}</div>
                 <div class="as-detail-actions">
-                    ${p.live ? `<button class="as-get big" data-live="${p.live}">GET</button><span class="as-note">Hosted on Render · first load can take ~30s</span>`
+                    ${p.live ? `<button class="as-get big" data-live="${p.live}">GET</button>${p.live.includes('onrender.com') ? '<span class="as-note">Hosted on Render · first load can take ~30s</span>' : ''}`
                              : `<span class="as-note">Not publicly deployed</span>`}
                     ${p.github ? `<a class="as-link" href="${p.github}" target="_blank" rel="noopener">Source code ↗</a>` : ''}
                 </div>
@@ -358,18 +405,34 @@ function bindAppStore(scroll) {
 // ═════════════════════════════════════════════════
 const GLOBE_SRC = 'https://cdn.jsdelivr.net/npm/globe.gl@2.41.6/dist/globe.gl.min.js';
 const MAP_TEXTURES = { satellite:'assets/maps/earth-blue-marble.jpg', night:'assets/maps/earth-night.jpg' };
-// 1 = winner / top honour, 2 = second place / runner-up, 3 = special mention, 4 = finalist
-const RANK_COLORS = { 1:'#ff9f0a', 2:'#5e5ce6', 3:'#0a84ff', 4:'#30d158' };
+// One pin colour for every hackathon (Apple Maps red); each event gets its own icon
+const PIN_COLOR = '#ff3b30';
 const PIN_GLYPH = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 3h10v2h3v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 14.9V17h3v3H8v-3h3v-2.1A5 5 0 0 1 8.3 12H8a4 4 0 0 1-4-4V5h3zm0 4H6v1a2 2 0 0 0 1 1.7zm10 0v2.7A2 2 0 0 0 18 8V7z"/></svg>`;
+const HACK_GLYPHS = {
+    trophy: PIN_GLYPH,
+    brain:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 3.5a7 7 0 0 0-6.9 5.8L4.8 12.6c-.2.4 0 .8.4.9l1.6.5V17a2 2 0 0 0 2 2H11v2.5h7v-4.2a7 7 0 0 0-4.5-13.8z"/><path d="M8.8 10.5h1.6l1.1-2.2 1.6 4.4 1.1-2.2h1.6"/></svg>`,
+    magnifier:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/><path d="M8 9.2a3 3 0 0 1 2.6-1.7" stroke-width="1.6"/></svg>`,
+    globe:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z"/></svg>`,
+};
+// Round icon used in the sidebar, callouts and card: glyph on red, or the company logo on white
+function hackIconHTML(h, cls = 'mp-hicon') {
+    const ic = h.icon || 'trophy';
+    if (ic.includes('/')) return `<span class="${cls} logo"><img src="${ic}" alt="" loading="lazy"></span>`;
+    return `<span class="${cls}">${HACK_GLYPHS[ic] || PIN_GLYPH}</span>`;
+}
+const isRemote = h => h.lat == null || h.lng == null;
 let globe = null, globeIdleTimer = null, mapsStyle = null, pendingFocus = null, activeLoc = null;
 
 function hackGroups() {
     const groups = {};
-    portfolioData.hackathons.forEach(h => {
+    portfolioData.hackathons.filter(h => !isRemote(h)).forEach(h => {
         const k = `${h.lat},${h.lng}`;
         (groups[k] ||= { lat:h.lat, lng:h.lng, place:h.place, city:h.city, items:[] }).items.push(h);
     });
-    return Object.values(groups).map(g => ({ ...g, best:Math.min(...g.items.map(i => i.rank)) }));
+    return Object.values(groups);
+}
+function remoteGroup() {
+    return { remote:true, place:'Remote', city:'Online', items:portfolioData.hackathons.filter(isRemote) };
 }
 
 function openMaps(hackId) {
@@ -388,6 +451,7 @@ function openMaps(hackId) {
                     <div class="mp-seg" role="tablist">
                         <button data-style="satellite">Satellite</button><button data-style="night">Night</button>
                     </div>
+                    <button class="mp-remote" aria-label="Show remote hackathons">${HACK_GLYPHS.globe}<span>Remote</span><b>${portfolioData.hackathons.filter(isRemote).length}</b></button>
                     <div class="mp-hint">Drag or scroll to spin</div>
                 </div>
             </div>`,
@@ -398,6 +462,8 @@ function openMaps(hackId) {
         const input = win.querySelector('.mp-search input');
         input.addEventListener('input', () => renderMapsList(input.value.trim()));
         win.querySelectorAll('.mp-seg button').forEach(b => b.addEventListener('click', () => setMapStyle(b.dataset.style)));
+        win.querySelector('.mp-remote').addEventListener('click', () => { closeCallouts(); renderMapsList('', remoteGroup()); });
+        win.querySelector('.mp-globe').addEventListener('pointerdown', () => closeCallouts());
         renderMapsList('');
         showAppWindow('maps');
         initGlobe();
@@ -470,92 +536,121 @@ function setMapStyle(style) {
     appWindows.maps?.querySelectorAll('.mp-seg button').forEach(b => b.classList.toggle('active', b.dataset.style === style));
     globe?.globeImageUrl(MAP_TEXTURES[style]);
 }
+// Pins at the same spot become one pin with a count; clicking it opens an
+// Apple Maps-style callout on the map listing each event, so none are hidden.
 function makePin(g) {
     const el = document.createElement('div');
     el.className = 'mp-pin';
     el.dataset.loc = `${g.lat},${g.lng}`;
     if (el.dataset.loc === activeLoc) el.classList.add('active');
-    el.style.setProperty('--pin', RANK_COLORS[g.best] || '#ff3b30');
-    el.innerHTML = `<div class="mp-pin-inner"><div class="mp-pin-head">${PIN_GLYPH}${g.items.length > 1 ? `<span class="mp-pin-count">${g.items.length}</span>` : ''}</div>
-        <div class="mp-pin-label">${escHtml(g.city.split(',')[0])}</div></div>`;
+    el.style.setProperty('--pin', PIN_COLOR);
+    const multi = g.items.length > 1;
+    const head = multi ? `<span class="mp-pin-num">${g.items.length}</span>` : (HACK_GLYPHS[g.items[0].icon] || PIN_GLYPH);
+    el.innerHTML = `<div class="mp-pin-inner">
+        ${multi ? `<div class="mp-callout" role="menu">
+            <div class="mp-callout-head">${escHtml(g.place)}<span>${g.items.length} hackathons</span></div>
+            ${g.items.map(h => `<button class="mp-callout-item" role="menuitem" data-hack="${h.id}">${hackIconHTML(h)}<span><b>${escHtml(h.name)}</b><small>${escHtml(h.award)} · ${escHtml(h.date)}</small></span></button>`).join('')}
+        </div>` : ''}
+        <div class="mp-pin-head${multi ? ' multi' : ''}">${head}</div>
+        <div class="mp-pin-label">${escHtml(multi ? g.city.split(',')[0] : g.items[0].name)}</div></div>`;
     el.addEventListener('pointerdown', e => e.stopPropagation());
-    el.addEventListener('click', e => {
+    el.addEventListener('wheel', e => e.stopPropagation(), { passive:true });
+    el.querySelectorAll('.mp-callout-item').forEach(b => b.addEventListener('click', e => {
+        e.stopPropagation(); openHackCard(b.dataset.hack);
+    }));
+    el.querySelector('.mp-pin-head').addEventListener('click', e => {
         e.stopPropagation();
-        if (g.items.length === 1) openHackCard(g.items[0].id);
-        else renderMapsList('', g);
+        if (!multi) { closeCallouts(); openHackCard(g.items[0].id); return; }
+        const open = !el.classList.contains('callout-open');
+        closeCallouts();
+        el.classList.toggle('callout-open', open);
+        if (open) renderMapsList('', g);
     });
     return el;
 }
+function closeCallouts(except) {
+    document.querySelectorAll('.mp-pin.callout-open').forEach(p => { if (p !== except) p.classList.remove('callout-open'); });
+}
 function focusGlobe(lat, lng) {
     markActivePin(lat, lng);
+    if (lat == null) return;
     if (!globe) { pendingFocus = [lat, lng]; return; }
     globe._pauseSpin?.();
     globe.pointOfView({ lat, lng, altitude:globe.pointOfView().altitude }, 1100);
 }
 
 function markActivePin(lat, lng) {
-    activeLoc = lat === undefined ? null : `${lat},${lng}`;
-    document.querySelectorAll('.mp-pin').forEach(p => p.classList.toggle('active', p.dataset.loc === `${lat},${lng}`));
+    activeLoc = lat == null ? null : `${lat},${lng}`;
+    document.querySelectorAll('.mp-pin').forEach(p => p.classList.toggle('active', p.dataset.loc === activeLoc));
 }
 
 function renderMapsList(query, group) {
-    const panel = appWindows.maps.querySelector('.mp-panel');
+    const win = appWindows.maps;
+    const panel = win.querySelector('.mp-panel');
     let items = group ? group.items : portfolioData.hackathons;
     if (query) {
         const q = query.toLowerCase();
-        items = items.filter(h => [h.name, h.award, h.project, h.city, h.issuer, h.date].join(' ').toLowerCase().includes(q));
+        items = items.filter(h => [h.name, h.award, h.project, h.city, h.place, h.issuer, h.date, h.track].join(' ').toLowerCase().includes(q));
     }
-    const wins = portfolioData.hackathons.filter(h => h.rank <= 2).length;
+    const all = portfolioData.hackathons;
+    const podium = all.filter(h => h.rank <= 2).length;
     panel.innerHTML = `
         ${group ? `<button class="mp-back">${AS_ICONS.back}<span>All Hackathons</span></button>` : ''}
         <div class="mp-list-head">
             <h2>${group ? escHtml(group.place) : 'Hackathons'}</h2>
-            <span>${group ? escHtml(group.city) + ' · ' + group.items.length + ' events' : `${portfolioData.hackathons.length} awards · ${wins} top-2 finishes`}</span>
+            <span>${group ? `${escHtml(group.city)} · ${group.items.length} hackathons` : `${all.length} hackathons · ${podium} podium finishes`}</span>
         </div>
         <div class="mp-list">${items.map(h => `
             <button class="mp-item" data-hack="${h.id}">
-                <span class="mp-item-pin" style="--pin:${RANK_COLORS[h.rank] || '#ff3b30'}">${PIN_GLYPH}</span>
-                <span class="mp-item-text"><b>${escHtml(h.name)}</b><span>${escHtml(h.award)} · ${escHtml(h.date)}</span><span class="mp-item-loc">${escHtml(h.city)}</span></span>
+                ${hackIconHTML(h)}
+                <span class="mp-item-text"><b>${escHtml(h.name)}</b><span>${escHtml(h.award)} · ${escHtml(h.date)}</span><span class="mp-item-loc">${isRemote(h) ? 'Remote' : escHtml(h.city)}</span></span>
             </button>`).join('') || '<div class="as-empty">No matches.</div>'}
         </div>`;
-    panel.querySelector('.mp-back')?.addEventListener('click', () => renderMapsList(''));
+    panel.querySelector('.mp-back')?.addEventListener('click', () => { closeCallouts(); renderMapsList(''); });
     panel.querySelectorAll('[data-hack]').forEach(b => b.addEventListener('click', () => openHackCard(b.dataset.hack)));
     panel.scrollTop = 0;
-    if (group) focusGlobe(group.lat, group.lng); else markActivePin();
+    win.querySelector('.mp-remote')?.classList.toggle('active', !!group?.remote);
+    if (group && !group.remote) focusGlobe(group.lat, group.lng); else markActivePin();
 }
 
 function openHackCard(id) {
     const h = portfolioData.hackathons.find(x => x.id === id);
     if (!h || !appWindows.maps) return;
-    const panel = appWindows.maps.querySelector('.mp-panel');
-    const color = RANK_COLORS[h.rank] || '#ff3b30';
+    const win = appWindows.maps;
+    const panel = win.querySelector('.mp-panel');
     const proj = h.projectId && portfolioData.projects.find(p => p.id === h.projectId);
+    const remote = isRemote(h);
     const rows = [
-        ['Project', h.project], ['Date', h.date], ['Issued by', h.issuer],
-        ['Associated with', h.assoc], ['Location', `${h.place} · ${h.city}`],
-    ];
+        ['Project', h.project], ['Track', h.track], ['Date', h.date], ['Issued by', h.issuer],
+        ['Associated with', h.assoc], ['Location', remote ? 'Remote (online)' : `${h.place} · ${h.city}`],
+    ].filter(([, v]) => v);
+    const banner = h.banner
+        ? `<div class="mp-photo${h.bannerFit === 'contain' ? ' logo' : ''}" style="background-image:url('${h.banner}')"></div>`
+        : `<div class="mp-photo" style="--pin:${PIN_COLOR}"><div class="mp-photo-art">${HACK_GLYPHS[h.icon] || PIN_GLYPH}</div></div>`;
     panel.innerHTML = `
         <button class="mp-back">${AS_ICONS.back}<span>All Hackathons</span></button>
         <div class="mp-card">
-            <div class="mp-photo" style="${h.photo ? `background-image:url('${h.photo}')` : `--pin:${color}`}">
-                ${h.photo ? '' : `<div class="mp-photo-art">${PIN_GLYPH}</div>`}
-            </div>
-            <h2 class="mp-title">${escHtml(h.name)}</h2>
-            <div class="mp-subtitle">Hackathon · ${escHtml(h.city)}</div>
+            ${banner}
+            <div class="mp-card-title">${hackIconHTML(h, 'mp-hicon big')}<div><h2 class="mp-title">${escHtml(h.name)}</h2>
+            <div class="mp-subtitle">Hackathon · ${remote ? 'Remote' : escHtml(h.city)}</div></div></div>
             <div class="mp-actions">
-                <div class="mp-award" style="--pin:${color}">${PIN_GLYPH}<span>${escHtml(h.award)}</span></div>
+                <div class="mp-award">${PIN_GLYPH}<span>${escHtml(h.award)}</span></div>
                 ${proj ? `<button class="mp-btn primary" data-project="${proj.id}">View Project</button>` : ''}
+                ${h.link ? `<a class="mp-btn${proj ? '' : ' primary'}" href="${h.link}" target="_blank" rel="noopener">${escHtml(h.linkLabel || 'Open')}</a>` : ''}
             </div>
             <div class="mp-section">
                 ${rows.map(([k, v]) => `<div class="mp-row"><span>${k}</span><b>${escHtml(v)}</b></div>`).join('')}
             </div>
-            <div class="mp-section"><h3>About</h3><p>${escHtml(h.about)}</p></div>
+            ${h.event ? `<div class="mp-section"><h3>About the Event</h3><p>${escHtml(h.event)}</p></div>` : ''}
+            ${h.about ? `<div class="mp-section"><h3>${h.event ? 'About the Project' : 'About'}</h3>${h.about.split(/\n\n+/).map(t => `<p>${escHtml(t)}</p>`).join('')}</div>` : ''}
             ${h.tech?.length ? `<div class="mp-section"><h3>Built With</h3><div class="mp-tech">${h.tech.map(t => `<span class="mp-chip">${techIconHTML(t)}${escHtml(t)}</span>`).join('')}</div></div>` : ''}
         </div>`;
-    panel.querySelector('.mp-back').addEventListener('click', () => renderMapsList(''));
+    panel.querySelector('.mp-back').addEventListener('click', () => { closeCallouts(); renderMapsList(''); });
     panel.querySelector('[data-project]')?.addEventListener('click', e => openProjectApp(e.currentTarget.dataset.project));
     panel.scrollTop = 0;
-    focusGlobe(h.lat, h.lng);
+    win.querySelector('.mp-remote')?.classList.toggle('active', remote);
+    if (remote) { closeCallouts(); markActivePin(); }
+    else focusGlobe(h.lat, h.lng);
 }
 
 // ═════════════════════════════════════════════════
@@ -748,7 +843,7 @@ function showNotification(n) {
 function extendSpotlight() {
     portfolioData.projects.forEach(p => spotlightIndex.push({ title:p.name, sub:`${p.subtitle} · ${p.tech.slice(0, 4).join(', ')}`, action:'Open', type:'app', id:p.id, iconType:'img:' + p.icon }));
     portfolioData.research.forEach((p, i) => spotlightIndex.push({ title:p.file, sub:p.title, action:'Open', type:'paper', idx:i, iconType:'img:' + SYS_ICONS.preview }));
-    portfolioData.hackathons.forEach(h => spotlightIndex.push({ title:h.name, sub:`${h.award} · ${h.project}`, action:'Show', type:'hack', id:h.id, iconType:'img:' + SYS_ICONS.maps }));
+    portfolioData.hackathons.forEach(h => spotlightIndex.push({ title:h.name, sub:[h.award, h.project, h.date].filter(Boolean).join(' · '), action:'Show', type:'hack', id:h.id, iconType:'img:' + SYS_ICONS.maps }));
 }
 
 // ═════════════════════════════════════════════════

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26283f"/><stop offset="1" stop-color="#07070d"/></linearGradient>
+<linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".20"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity=".28"/></filter>
+<filter id="ish" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity=".32"/></filter>
+<clipPath id="sq"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+<radialGradient id="moon" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fff4cf"/><stop offset=".6" stop-color="#ffcc66"/><stop offset="1" stop-color="#e89a2c"/></radialGradient>
+<radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset=".55" stop-color="#ffcc66" stop-opacity=".35"/><stop offset="1" stop-color="#ffcc66" stop-opacity="0"/></radialGradient>
+<filter id="eye" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>
+</defs>
+<g filter="url(#sh)"><rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/></g>
+<g clip-path="url(#sq)">
+<g fill="#fff" opacity=".55"><circle cx="220" cy="230" r="4"/><circle cx="300" cy="170" r="3"/><circle cx="820" cy="250" r="4"/><circle cx="760" cy="180" r="3"/><circle cx="190" cy="420" r="3"/><circle cx="860" cy="420" r="3"/></g>
+<circle cx="512" cy="430" r="300" fill="url(#halo)"/>
+<circle cx="512" cy="430" r="215" fill="url(#moon)"/>
+<g filter="url(#ish)" stroke="#2a0608" stroke-width="3" stroke-linejoin="round">
+<polygon points="318,330 420,500 300,540" fill="#c4161c"/>
+<polygon points="706,330 604,500 724,540" fill="#9e1015"/>
+<polygon points="340,380 395,495 322,515" fill="#5c0a0e"/>
+<polygon points="684,380 629,495 702,515" fill="#5c0a0e"/>
+<polygon points="300,540 420,500 512,520 430,640" fill="#e0262c"/>
+<polygon points="724,540 604,500 512,520 594,640" fill="#b3161c"/>
+<polygon points="420,500 512,470 604,500 512,520" fill="#ff4b4f"/>
+<polygon points="300,540 430,640 370,700 318,640" fill="#a8121a"/>
+<polygon points="724,540 594,640 654,700 706,640" fill="#7e0c12"/>
+<polygon points="430,640 512,520 594,640 512,690" fill="#d81f26"/>
+<polygon points="370,700 430,640 512,690 470,800" fill="#c01820"/>
+<polygon points="654,700 594,640 512,690 554,800" fill="#8f1016"/>
+<polygon points="470,800 512,690 554,800 512,860" fill="#6e0b10"/>
+</g>
+<polygon points="478,812 512,790 546,812 512,840" fill="#1a0204"/>
+<g filter="url(#eye)"><polygon points="410,585 470,600 452,618" fill="#ffd60a"/><polygon points="614,585 554,600 572,618" fill="#ffd60a"/></g>
+<polygon points="410,585 470,600 452,618" fill="#fff3a0"/><polygon points="614,585 554,600 572,618" fill="#fff3a0"/>
+</g>
+<rect x="100" y="100" width="824" height="824" rx="185" fill="url(#gloss)"/>
+<rect x="101.5" y="101.5" width="821" height="821" rx="183.5" fill="none" stroke="#fff" stroke-opacity=".10" stroke-width="3"/>
+</svg>

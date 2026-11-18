@@ -539,3 +539,53 @@
     .am-bottom { gap:24px; padding:9px 12px; }
     .am-inspector { top:8px; left:8px; right:8px; bottom:8px; width:auto; }
 }
+
+/* ═════════════════ MAPS — single pin colour, event icons, callouts, remote ═════════════════ */
+.mp-hicon { width:32px; height:32px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+            background:linear-gradient(180deg,#ff5f57,#ff3b30); color:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.18); }
+.mp-hicon svg { width:17px; height:17px; }
+.mp-hicon.logo { background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.15), inset 0 0 0 0.5px rgba(0,0,0,0.12); overflow:hidden; }
+.mp-hicon.logo img { width:74%; height:74%; object-fit:contain; }
+.mp-hicon.big { width:44px; height:44px; }
+.mp-hicon.big svg { width:23px; height:23px; }
+.mp-card-title { display:flex; align-items:center; gap:12px; }
+.mp-card-title > div { min-width:0; }
+.mp-award { background:var(--as-pill) !important; color:var(--text-1) !important; }
+.mp-award svg { color:#ff9f0a; }
+a.mp-btn { display:inline-flex; align-items:center; text-decoration:none; }
+.mp-photo { --pin:#ff3b30; }
+.mp-photo.logo { background-color:#fff; background-size:auto 62%; background-repeat:no-repeat; box-shadow:inset 0 0 0 1px var(--hair); }
+
+/* pins: one red, glyph or count in the head */
+.mp-pin-head { background:linear-gradient(180deg,#ff5f57,#ff3b30) !important; }
+.mp-pin-num { font-size:12px; font-weight:700; color:#fff; line-height:1; }
+.mp-pin-head.multi { width:28px; height:28px; }
+.mp-pin-label { max-width:160px; overflow:hidden; text-overflow:ellipsis; }
+/* callout: Apple Maps-style bubble above a stacked pin, one row per event */
+.mp-callout { position:absolute; left:50%; bottom:calc(100% + 6px); transform:translateX(-50%) translateY(6px) scale(.96); transform-origin:50% 100%;
+              width:250px; padding:6px; border-radius:14px; background:var(--alert-bg, rgba(246,246,248,0.97));
+              box-shadow:0 12px 32px rgba(0,0,0,0.35), 0 0 0 0.5px rgba(0,0,0,0.15); opacity:0; visibility:hidden; pointer-events:none;
+              transition:opacity .18s, transform .22s var(--spring), visibility .18s; z-index:3; }
+.mp-callout::after { content:''; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:8px solid transparent; border-top-color:var(--alert-bg, rgba(246,246,248,0.97)); }
+.mp-pin.callout-open { z-index:5; position:relative; }
+.mp-pin.callout-open .mp-callout { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%); }
+.mp-pin.callout-open .mp-pin-label { opacity:0 !important; }
+.mp-callout-head { display:flex; justify-content:space-between; align-items:baseline; padding:4px 8px 6px; font-size:12.5px; font-weight:700; color:var(--text-1); }
+.mp-callout-head span { font-size:11px; font-weight:500; color:var(--text-3); }
+.mp-callout-item { display:flex; align-items:center; gap:10px; width:100%; padding:7px 8px; border:none; border-radius:9px; background:transparent; font:inherit; text-align:left; cursor:pointer; }
+.mp-callout-item:hover { background:var(--side-active); }
+.mp-callout-item .mp-hicon { width:28px; height:28px; }
+.mp-callout-item .mp-hicon svg { width:15px; height:15px; }
+.mp-callout-item b { display:block; font-size:12.5px; font-weight:600; color:var(--text-1); line-height:1.25; white-space:normal; }
+.mp-callout-item small { font-size:11px; color:var(--text-2); }
+/* "Remote" chip on the map for events with no location */
+.mp-remote { position:absolute; top:12px; left:12px; display:flex; align-items:center; gap:6px; height:28px; padding:0 10px 0 8px; border-radius:14px;
+             border:1px solid rgba(255,255,255,0.18); background:rgba(40,40,46,0.6); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+             color:#fff; font:inherit; font-size:12px; font-weight:500; cursor:pointer; z-index:2; }
+.mp-remote svg { width:15px; height:15px; }
+.mp-remote b { min-width:18px; height:18px; padding:0 5px; border-radius:9px; background:#ff3b30; font-size:11px; display:flex; align-items:center; justify-content:center; }
+.mp-remote:hover, .mp-remote.active { background:rgba(255,255,255,0.28); }
+@media (max-width:768px) {
+    .mp-callout { width:220px; }
+    .mp-remote { top:10px; left:10px; }
+}

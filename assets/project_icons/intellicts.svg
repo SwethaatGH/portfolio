@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0fb36b"/><stop offset="1" stop-color="#0a5fb4"/></linearGradient>
+<linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".20"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity=".28"/></filter>
+<filter id="ish" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity=".32"/></filter>
+<clipPath id="sq"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+<linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7ef3ff" stop-opacity="0"/><stop offset=".5" stop-color="#7ef3ff" stop-opacity=".55"/><stop offset="1" stop-color="#7ef3ff" stop-opacity="0"/></linearGradient>
+</defs>
+<g filter="url(#sh)"><rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/></g>
+<g clip-path="url(#sq)">
+<g filter="url(#ish)" transform="rotate(-8 512 512)">
+<rect x="190" y="360" width="644" height="320" rx="28" fill="#fdfcf7"/>
+<rect x="190" y="360" width="644" height="64" rx="28" fill="#e7f4ec"/>
+<rect x="190" y="400" width="644" height="24" fill="#e7f4ec"/>
+<rect x="230" y="378" width="150" height="26" rx="8" fill="#0a5fb4" opacity=".75"/>
+<rect x="640" y="458" width="150" height="46" rx="10" fill="none" stroke="#9aa3ad" stroke-width="6"/>
+<text x="715" y="492" font-family="Helvetica Neue,Arial" font-weight="700" font-size="30" fill="#2c3e50" text-anchor="middle">₹ 370</text>
+<path d="M240 486c40-26 70 18 104-6s52 20 88-8 50 16 80-4" fill="none" stroke="#2c3e50" stroke-width="6" stroke-linecap="round"/>
+<rect x="240" y="540" width="370" height="14" rx="7" fill="#c9ced6"/>
+<path d="M590 610c30-40 60 20 90-14s30 22 70-8" fill="none" stroke="#1d3c8f" stroke-width="7" stroke-linecap="round"/>
+<g font-family="Courier New,monospace" font-size="26" fill="#6b7280"><text x="240" y="650">⑈249960⑈ 641016006⑆</text></g>
+</g>
+<rect x="150" y="470" width="724" height="120" fill="url(#beam)" transform="rotate(-8 512 512)"/>
+<g stroke="#fff" stroke-width="16" stroke-linecap="round" fill="none">
+<path d="M190 300h-40v60M834 300h40v60M190 760h-40v-60M834 760h40v-60" transform="translate(0 -20)"/></g>
+</g>
+<rect x="100" y="100" width="824" height="824" rx="185" fill="url(#gloss)"/>
+<rect x="101.5" y="101.5" width="821" height="821" rx="183.5" fill="none" stroke="#fff" stroke-opacity=".10" stroke-width="3"/>
+</svg>
