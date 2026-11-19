@@ -146,10 +146,12 @@ function openLaunchpad() {
     ov.querySelector('.lp-scroll').scrollTop = 0;
     ov.classList.add('open');
     document.body.classList.add('lp-open');
+    setRoute('tools');
     if (!window.matchMedia('(max-width:768px)').matches) setTimeout(() => ov.querySelector('.lp-search input').focus(), 60);
 }
 function closeLaunchpad() {
     const ov = document.getElementById('launchpad');
+    if (ov?.classList.contains('open')) clearRoute('tools');
     ov?.classList.remove('open');
     document.body.classList.remove('lp-open');
 }
@@ -158,6 +160,8 @@ function closeLaunchpad() {
 // APP WINDOWS — one reusable window per key
 // ─────────────────────────────────────────────────
 const appWindows = {};
+// window key → Dock item that launches it (those windows minimize into their own Dock icon)
+const DOCK_APP_FOR = { appstore:'projects', maps:'hackathons', activity:'experience' };
 const SYS_ICONS = {
     appstore:'assets/app_icons/appstore.png', maps:'assets/app_icons/maps.png',
     preview:'assets/app_icons/preview.png', safari:'assets/app_icons/safari.png',
@@ -191,12 +195,13 @@ function createAppWindow({ key, title, cls, dockIcon, html, onShow, onHide }) {
     const clearDock = () => { win._minDockItem?.remove(); win._minDockSep?.remove(); win._minDockItem = null; win._minDockSep = null; };
     win.querySelector('.window-control.close').addEventListener('click', e => {
         e.stopPropagation(); win.style.display = 'none'; clearDock(); win._onHide?.();
+        clearRoute(currentRouteFor(key).split('/')[0]);
     });
     win.querySelector('.window-control.minimize').addEventListener('click', e => {
         e.stopPropagation();
         if (win.style.display === 'none') return;
         win.style.display = 'none'; win._onHide?.();
-        if (win._minDockItem) return;
+        if (win._minDockItem || DOCK_APP_FOR[key]) return;
         const dock = document.getElementById('dock');
         const item = document.createElement('div');
         item.className = 'dock-item minimized-dock-item';
@@ -217,6 +222,7 @@ function showAppWindow(key) {
     win._clearDock?.();
     openWindowCentered(win);
     win._onShow?.();
+    setRoute(currentRouteFor(key));
     return win;
 }
 
@@ -306,6 +312,7 @@ function renderAppStore() {
     scroll.innerHTML = html;
     scroll.scrollTop = 0;
     bindAppStore(scroll);
+    if (win.style.display !== 'none') setRoute(currentRouteFor('appstore'));
 }
 
 function asBannerStyle(p, tile = false) {
@@ -374,6 +381,7 @@ function asDetailHTML(p) {
                     ${p.live ? `<button class="as-get big" data-live="${p.live}">GET</button>${p.live.includes('onrender.com') ? '<span class="as-note">Hosted on Render · first load can take ~30s</span>' : ''}`
                              : `<span class="as-note">Not publicly deployed</span>`}
                     ${p.github ? `<a class="as-link" href="${p.github}" target="_blank" rel="noopener">Source code ↗</a>` : ''}
+                    <button class="as-share" data-share="projects/${p.id}" aria-label="Copy link to ${escHtml(p.name)}" title="Copy link">${SHARE_ICON}</button>
                 </div>
             </div>
         </div>
@@ -397,6 +405,7 @@ function bindAppStore(scroll) {
         btn.textContent = 'OPEN';
     }));
     scroll.querySelector('[data-back]')?.addEventListener('click', () => { asState.detail = null; renderAppStore(); });
+    scroll.querySelector('[data-share]')?.addEventListener('click', e => { e.stopPropagation(); copyShareLink(e.currentTarget.dataset.share, e.currentTarget); });
     scroll.querySelector('[data-goto-view]')?.addEventListener('click', e => { asState.view = e.currentTarget.dataset.gotoView; renderAppStore(); });
 }
 
@@ -435,7 +444,9 @@ function remoteGroup() {
     return { remote:true, place:'Remote', city:'Online', items:portfolioData.hackathons.filter(isRemote) };
 }
 
+let mapsRouteId = null;
 function openMaps(hackId) {
+    mapsRouteId = hackId || null;
     if (!appWindows.maps) {
         createAppWindow({
             key:'maps', title:'Maps — Hackathons', cls:'maps-window', dockIcon:imgIcon(SYS_ICONS.maps, 40),
@@ -611,6 +622,7 @@ function renderMapsList(query, group) {
     panel.scrollTop = 0;
     win.querySelector('.mp-remote')?.classList.toggle('active', !!group?.remote);
     if (group && !group.remote) focusGlobe(group.lat, group.lng); else markActivePin();
+    if (win.style.display !== 'none') { if (!group) mapsRouteId = null; setRoute('hackathons'); }
 }
 
 function openHackCard(id) {
@@ -637,6 +649,7 @@ function openHackCard(id) {
                 <div class="mp-award">${PIN_GLYPH}<span>${escHtml(h.award)}</span></div>
                 ${proj ? `<button class="mp-btn primary" data-project="${proj.id}">View Project</button>` : ''}
                 ${h.link ? `<a class="mp-btn${proj ? '' : ' primary'}" href="${h.link}" target="_blank" rel="noopener">${escHtml(h.linkLabel || 'Open')}</a>` : ''}
+                <button class="mp-btn mp-share" data-share="hackathons/${h.id}" aria-label="Copy link to ${escHtml(h.name)}" title="Copy link">${SHARE_ICON}</button>
             </div>
             <div class="mp-section">
                 ${rows.map(([k, v]) => `<div class="mp-row"><span>${k}</span><b>${escHtml(v)}</b></div>`).join('')}
@@ -647,6 +660,9 @@ function openHackCard(id) {
         </div>`;
     panel.querySelector('.mp-back').addEventListener('click', () => { closeCallouts(); renderMapsList(''); });
     panel.querySelector('[data-project]')?.addEventListener('click', e => openProjectApp(e.currentTarget.dataset.project));
+    panel.querySelector('[data-share]')?.addEventListener('click', e => copyShareLink(e.currentTarget.dataset.share, e.currentTarget));
+    mapsRouteId = id;
+    setRoute('hackathons/' + id);
     panel.scrollTop = 0;
     win.querySelector('.mp-remote')?.classList.toggle('active', remote);
     if (remote) { closeCallouts(); markActivePin(); }
@@ -676,14 +692,15 @@ const fdState = { place:'research', back:[], fwd:[] };
 // Each Finder location → list of { name, sub, icon(html), thumb?, open() }
 function fdItems(place) {
     const pdf = 'assets/app_icons/pdf.png';
-    const desktop = [
-        { name:'Projects',   icon:imgIcon(SYS_ICONS.appstore, 64), open:() => openAppStore() },
-        { name:'Research',   icon:FOLDER_ICON(64), open:() => fdGo('research') },
-        { name:'Experience', icon:imgIcon(SYS_ICONS.activity, 64), open:() => openActivityMonitor() },
-        { name:'Hackathons', icon:imgIcon(SYS_ICONS.maps, 64), open:() => openMaps() },
-        { name:'Contact',    icon:imgIcon('assets/contact.webp', 64), open:() => openContact() },
+    const everything = [
         { name:'Resume',     sub:'PDF Document', icon:imgIcon(pdf, 64), open:() => document.getElementById('resume-icon')?.click() },
+        { name:'Research',   icon:FOLDER_ICON(64), open:() => fdGo('research') },
+        { name:'Projects',   icon:imgIcon(SYS_ICONS.appstore, 64), open:() => openAppStore() },
+        { name:'Hackathons', icon:imgIcon(SYS_ICONS.maps, 64), open:() => openMaps() },
+        { name:'Experience', icon:imgIcon(SYS_ICONS.activity, 64), open:() => openActivityMonitor() },
+        { name:'Contact',    icon:imgIcon(SYS_ICONS.mail, 64), open:() => openContact() },
     ];
+    const desktop = everything.slice(0, 2);
     switch (place) {
     case 'research':
         return portfolioData.research.map((p, i) => ({ name:p.file, thumb:p.thumb, status:p.status, sub:`${p.company} · ${p.date}`, title:p.title, open:() => openPaper(i) }));
@@ -706,7 +723,7 @@ function fdItems(place) {
     case 'recents': {
         const map = { 'professional-icon':'Experience', 'projects-icon':'Projects', 'research-icon':'Research', 'hackathons-icon':'Hackathons', 'contact-icon':'Contact', 'resume-icon':'Resume' };
         return (typeof recentItems !== 'undefined' ? recentItems : [])
-            .map(r => desktop.find(d => d.name === (map[r.iconId] || r.label)))
+            .map(r => everything.find(d => d.name === (map[r.iconId] || r.label)))
             .filter(Boolean);
     }
     case 'trash':
@@ -806,6 +823,9 @@ function initNotifications() {
     stack.className = 'notif-stack';
     stack.setAttribute('aria-live', 'polite');
     document.body.appendChild(stack);
+    let seen = false;
+    try { seen = sessionStorage.getItem('portfolio-notified') === '1'; sessionStorage.setItem('portfolio-notified', '1'); } catch (e) {}
+    if (seen) return;
     (typeof notificationsData !== 'undefined' ? notificationsData : []).forEach(n => setTimeout(() => showNotification(n), n.delay || 0));
 }
 function showNotification(n) {
@@ -1047,3 +1067,85 @@ function renderActivityBottom() {
         <div class="am-stat"><span>Uptime</span><b>${uptime} yrs</b></div>
         <div class="am-stat"><span>Status</span><b class="am-run"><i class="am-light"></i>Open to work</b></div>`;
 }
+
+
+// ═════════════════════════════════════════════════
+// DOCK — running-app dots
+// ═════════════════════════════════════════════════
+function updateDockDots() {
+    const open = el => !!el && el.style.display !== 'none' && document.body.contains(el);
+    const state = {
+        projects:open(appWindows.appstore), hackathons:open(appWindows.maps), experience:open(appWindows.activity),
+        mail:open(document.getElementById('contact-window')), tools:document.getElementById('launchpad')?.classList.contains('open'),
+    };
+    Object.entries(state).forEach(([app, on]) => {
+        const item = document.querySelector(`.dock-item[data-app="${app}"]`); if (!item) return;
+        let dot = item.querySelector('.dock-dot');
+        if (on && !dot) { dot = document.createElement('div'); dot.className = 'dock-dot'; item.appendChild(dot); }
+        if (!on && dot) dot.remove();
+    });
+}
+setInterval(updateDockDots, 400);
+
+// ═════════════════════════════════════════════════
+// SHAREABLE LINKS — #projects/causalci, #hackathons/scb, #experience, #research/<paper>, #resume, #contact, #tools
+// The URL follows whatever is open; Back/Forward reopen the previous view; opening a link restores it.
+// ═════════════════════════════════════════════════
+let routeLock = false;
+const paperSlug = p => p.pdf.split('/').pop().replace(/\.pdf$/, '');
+function setRoute(route) {
+    if (routeLock) return;
+    const base = location.href.split('#')[0];
+    const want = route ? base + '#' + route : base;
+    if ((location.hash || '') === (route ? '#' + route : '')) return;
+    history.pushState(null, '', want);
+}
+function clearRoute(prefix) {
+    if (routeLock) return;
+    const cur = location.hash.slice(1);
+    if (cur && cur.split('/')[0] === prefix) history.replaceState(null, '', location.href.split('#')[0]);
+}
+function currentRouteFor(key) {
+    if (key === 'appstore') return asState.detail ? 'projects/' + asState.detail : 'projects';
+    if (key === 'maps') return mapsRouteId ? 'hackathons/' + mapsRouteId : 'hackathons';
+    if (key === 'activity') return 'experience';
+    if (key === 'research') return 'research';
+    if (key.startsWith('paper-')) { const p = portfolioData.research[+key.slice(6)]; return p ? 'research/' + paperSlug(p) : 'research'; }
+    return '';
+}
+function handleRoute() {
+    const [section, id] = decodeURIComponent(location.hash.slice(1)).split('/');
+    routeLock = true;
+    try {
+        if (!section) {
+            Object.values(appWindows).forEach(w => { if (w.style.display !== 'none') { w.style.display = 'none'; w._onHide?.(); } });
+            ['contact-window', 'pdf-window', 'terminal-window'].forEach(i => { const w = document.getElementById(i); if (w) w.style.display = 'none'; });
+            closeLaunchpad();
+        }
+        else if (section === 'projects') openAppStore(portfolioData.projects.some(p => p.id === id) ? id : undefined);
+        else if (section === 'hackathons') { openMaps(); if (id && portfolioData.hackathons.some(h => h.id === id)) openHackCard(id); else if (appWindows.maps) renderMapsList(''); }
+        else if (section === 'experience') openActivityMonitor();
+        else if (section === 'research') {
+            const i = id ? portfolioData.research.findIndex(p => paperSlug(p) === id) : -1;
+            if (i >= 0) openPaper(i); else openResearchFinder();
+        }
+        else if (section === 'resume') document.getElementById('resume-icon')?.click();
+        else if (section === 'contact') openContact();
+        else if (section === 'tools') openLaunchpad();
+        else if (section === 'terminal') openTerminalWindow();
+    } finally { routeLock = false; }
+}
+window.addEventListener('popstate', handleRoute);
+
+// Copy a link to the current view, with a small macOS-style confirmation
+function copyShareLink(route, anchor) {
+    const url = location.href.split('#')[0] + '#' + route;
+    const done = () => {
+        const t = document.createElement('div'); t.className = 'share-toast'; t.textContent = 'Link copied';
+        (anchor?.closest('.window') || document.body).appendChild(t);
+        setTimeout(() => t.classList.add('out'), 1400); setTimeout(() => t.remove(), 1800);
+    };
+    if (navigator.clipboard?.writeText) navigator.clipboard.writeText(url).then(done, () => prompt('Copy this link:', url));
+    else prompt('Copy this link:', url);
+}
+const SHARE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3.5M7.5 8 12 3.5 16.5 8"/><path d="M8 11H6.5A2.5 2.5 0 0 0 4 13.5v5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-5a2.5 2.5 0 0 0-2.5-2.5H16"/></svg>`;

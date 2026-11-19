@@ -169,8 +169,9 @@ const portfolioData = {
 
 // Notification banners (top-right). delay = ms after page load.
 const notificationsData = [
-    { app:"Safari", icon:"assets/app_icons/safari.png", title:"Elemental Quest", body:"All players joined — the match is starting.", delay:2600, action:{ type:"project", id:"elementalquest" } },
-    { app:"Calendar", icon:"assets/app_icons/calendar.svg", title:"Upcoming Hackathon", body:"Hack_NCState 2027 · Feb 6–7, 2027 at NC State", delay:7000, action:{ type:"maps", id:"hackncstate" } },
+    { app:"Tips", icon:"assets/app_icons/tips.png", title:"Welcome to my Mac 👋", body:"Click any app in the Dock to explore.", delay:1200 },
+    { app:"Safari", icon:"assets/app_icons/safari.png", title:"Elemental Quest", body:"All players joined — the match is starting.", delay:4200, action:{ type:"project", id:"elementalquest" } },
+    { app:"Calendar", icon:"assets/app_icons/calendar.svg", title:"Upcoming Hackathon", body:"Hack_NCState 2027 · Feb 6–7, 2027 at NC State", delay:8000, action:{ type:"maps", id:"hackncstate" } },
 ];
 
 const trashItems = [
@@ -196,7 +197,7 @@ function getSpotlightIconSVG(iconType) {
         folder:   FOLDER_ICON(30),
         pdf:      PDF_ICON(28),
         terminal: `<img src="assets/app_icons/terminal.png" alt="" width="30" height="30" style="object-fit:contain;">`,
-        contact:  `<img src="assets/contact.webp" alt="" width="30" height="30" style="object-fit:contain;">`,
+        contact:  `<img src="assets/app_icons/mail.png" alt="" width="30" height="30" style="object-fit:contain;">`,
         location: `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><defs><linearGradient id="sploc${uid}" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#34d399"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><path d="M20 3C13.4 3 8 8.4 8 15c0 8 12 22 12 22s12-14 12-22c0-6.6-5.4-12-12-12zm0 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="url(#sploc${uid})"/></svg>`,
         github:   `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><rect width="40" height="40" rx="9" fill="#24292e"/><path fill="white" d="M20 5C11.7 5 5 11.7 5 20c0 6.6 4.3 12.2 10.2 14.2.7.1 1-.3 1-.7v-2.8c-4.2.9-5-1.8-5-1.8-.7-1.7-1.7-2.2-1.7-2.2-1.3-.9.1-.9.1-.9 1.5.1 2.3 1.5 2.3 1.5 1.3 2.3 3.5 1.6 4.3 1.2.1-.9.5-1.6.9-2-3.3-.4-6.8-1.7-6.8-7.4 0-1.6.6-3 1.5-4-.2-.4-.7-1.9.1-4 0 0 1.3-.4 4.1 1.5a14 14 0 0 1 3.7-.5c1.3 0 2.5.2 3.7.5 2.8-1.9 4.1-1.5 4.1-1.5.8 2 .3 3.6.1 4 .9 1 1.5 2.4 1.5 4 0 5.7-3.5 7-6.8 7.4.5.5 1 1.4 1 2.8v4.1c0 .4.3.8 1 .7C30.7 32.2 35 26.6 35 20c0-8.3-6.7-15-15-15z"/></svg>`,
         linkedin: `<svg viewBox="0 0 40 40" fill="none" width="26" height="26"><rect width="40" height="40" rx="9" fill="#0077b5"/><path fill="white" d="M13 29h-4V16h4v13zm-2-14.8c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM30 29h-4v-6.5c0-1.5 0-3.5-2.1-3.5s-2.4 1.7-2.4 3.4V29h-4V16h3.8v1.8h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6V29z"/></svg>`,
@@ -314,6 +315,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateRecentsMenu();
     extendSpotlight();
     initNotifications();
+    initWindowControls();
+    { const sc=document.getElementById('sticky-scroll'); if(sc){ const f=()=>sc.classList.toggle('at-end',sc.scrollTop+sc.clientHeight>=sc.scrollHeight-4); sc.addEventListener('scroll',f,{passive:true}); f(); } }
+    initDesktopKeys();
+    if (location.hash) handleRoute();
 });
 
 // ─────────────────────────────────────────────────
@@ -321,7 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // ─────────────────────────────────────────────────
 function initTheme() {
     const html = document.documentElement;
-    const saved = localStorage.getItem('portfolio-theme') || 'light';
+    let saved = 'light';
+    try { saved = sessionStorage.getItem('portfolio-theme') || 'light'; } catch (e) {}
     html.setAttribute('data-theme', saved);
     const btn = document.getElementById('theme-toggle');
     if (btn) btn.addEventListener('click', toggleTheme);
@@ -330,7 +336,7 @@ function toggleTheme() {
     const html = document.documentElement;
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
-    localStorage.setItem('portfolio-theme', next);
+    try { sessionStorage.setItem('portfolio-theme', next); } catch (e) {}
 }
 
 // ─────────────────────────────────────────────────
@@ -433,6 +439,8 @@ const reminders=[
 ];
 function initReminders() {
     const list=document.getElementById('reminder-list'); if(!list) return;
+    const head=list.closest('.reminders-widget')?.querySelector('.widget-header');
+    if(head) head.textContent=`Swetha’s to-do for ${new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})}`;
     const content=list.closest('.widget-content')||list.parentElement;
     if(content){content.classList.add('reminders-content');content.style.maxHeight='192px';content.style.overflowY='auto';}
     renderReminders();
@@ -560,6 +568,8 @@ function initTerminal() {
     let welcomed=false;
 
     function openTerminal() {
+        setRoute('terminal');
+        win._minItem?.remove(); win._minSep?.remove(); win._minItem=win._minSep=null;
         openWindowCentered(win);
         setTimeout(()=>input.focus(),80);
         if (!welcomed) { addOutput('',getWelcomeMessage()); welcomed=true; }
@@ -605,18 +615,13 @@ function initTerminal() {
         else if(e.key==='Tab'){e.preventDefault();if(ac.classList.contains('open')&&acItems.length){input.value=acItems[acSel>=0?acSel:0];hideAc();}}
         else if(e.key==='Escape'){hideAc();}
     });
-    if(closeBtn) closeBtn.onclick=()=>{win.style.display='none';hideAc();};
+    if(closeBtn) closeBtn.onclick=()=>{win.style.display='none';hideAc();clearRoute('terminal');};
 
     const minBtn=document.getElementById('terminal-minimize');
     if(minBtn) minBtn.addEventListener('click',e=>{
         e.stopPropagation();
         win.style.display='none'; hideAc();
-        const termDockItem=document.querySelector('.dock-item[data-app="terminal"]');
-        if(termDockItem){
-            let dot=termDockItem.querySelector('.dock-dot');
-            if(!dot){dot=document.createElement('div');dot.className='dock-dot';termDockItem.appendChild(dot);}
-            dot.style.background='rgba(255,255,255,0.9)';
-        }
+        if(!win._minItem||!document.body.contains(win._minItem)) addMinimizedGenericDockItem(win,'Terminal','terminal');
     });
 
     win._open=openTerminal;
@@ -639,14 +644,14 @@ function initContact() {
     }
 
     if(icon) icon.addEventListener('click',()=>{openContact();addRecent('Contact','contact-icon','contact','');});
-    if(closeB) closeB.onclick=()=>{if(win)win.style.display='none';};
+    if(closeB) closeB.onclick=()=>{if(win)win.style.display='none';clearRoute('contact');};
 
     const minBtn=document.getElementById('contact-minimize');
     if(minBtn) minBtn.addEventListener('click',e=>{
         e.stopPropagation();
         if(!win||win.style.display==='none') return;
         win.style.display='none';
-        addMinimizedGenericDockItem(win,'Contact','contact');
+        // Mail is already in the Dock — clicking it restores the window
     });
     initMinMaxForWindow(win);
 }
@@ -744,7 +749,26 @@ function setupContactForm() {
         }
     });
 }
-function openContact(){openWindowCentered(document.getElementById('contact-window'));}
+function openContact(){openWindowCentered(document.getElementById('contact-window'));setRoute('contact');}
+// Traffic lights: labels + tooltips, keyboard access, and double-click a title bar to zoom (like macOS)
+function initWindowControls(){
+    const names={close:'Close',minimize:'Minimize',maximize:'Zoom'};
+    const stamp=root=>root.querySelectorAll?.('.window-control').forEach(c=>{
+        if(c.dataset.ready) return; c.dataset.ready='1';
+        const k=['close','minimize','maximize'].find(x=>c.classList.contains(x));
+        c.setAttribute('role','button'); c.setAttribute('tabindex','0');
+        c.setAttribute('aria-label',names[k]||'Window control'); c.title=names[k]||'';
+    });
+    stamp(document);
+    new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>n.nodeType===1&&stamp(n)))).observe(document.body,{childList:true,subtree:true});
+    document.addEventListener('keydown',e=>{const c=e.target.closest?.('.window-control');if(c&&(e.key==='Enter'||e.key===' ')){e.preventDefault();c.click();}});
+    document.addEventListener('dblclick',e=>{
+        const bar=e.target.closest?.('.window-titlebar'); if(!bar||e.target.closest('.window-control,button,input,a')) return;
+        const win=bar.closest('.window'); if(win?.querySelector('.window-control.maximize')) toggleMaximize(win);
+    });
+}
+// Desktop icons are role="button": Enter / Space open them like a click
+function initDesktopKeys(){document.querySelectorAll('.desktop-icon[role="button"]').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}}));}
 
 // ─────────────────────────────────────────────────
 // RESUME
@@ -756,7 +780,7 @@ function initResume() {
     // Phone browsers can't render a PDF inside an iframe, so open it directly there
     const isPhone=()=>window.matchMedia('(max-width:768px)').matches;
     if(icon) icon.onclick=()=>{if(isPhone())window.open('assets/resume.pdf','_blank');else restoreResumeWindow();addRecent('Resume','resume-icon','resume','');};
-    if(cb)   cb.onclick=()=>{if(!win)return;win.style.display='none';removeResumeDockItem(win);};
+    if(cb)   cb.onclick=()=>{if(!win)return;win.style.display='none';removeResumeDockItem(win);clearRoute('resume');};
 
     const minBtn=document.getElementById('pdf-minimize');
     if(minBtn) minBtn.addEventListener('click',e=>{
@@ -773,6 +797,7 @@ function restoreResumeWindow() {
     if(!win) return;
     removeResumeDockItem(win);
     openWindowCentered(win);
+    setRoute('resume');
 }
 
 function removeResumeDockItem(win) {
@@ -816,6 +841,7 @@ function initDock() {
         item.addEventListener('click',()=>{
             if(app!=='tools') closeLaunchpad();
             if(app==='terminal') openTerminalWindow();
+            else if(app==='mail') {}            // handled by initContact (id="contact-icon")
             else if(app==='trash') openResearchFinder('trash');
             else if(app==='tools') openLaunchpad();
             else if(links[app]) window.open(links[app],'_blank');
@@ -1001,14 +1027,15 @@ function addMinimizedGenericDockItem(win,title,type) {
     const dock=document.getElementById('dock');
     if(!dock) return;
     const iconSVGs={
-        contact:GMAIL_ICON(34),
+        terminal:'<img src="assets/app_icons/terminal.png" alt="" width="40" height="40" style="object-fit:contain;">',
     };
     const item=document.createElement('div');
     item.className='dock-item minimized-dock-item';
     item.title=title;
     item.innerHTML=`<div class="dock-icon-wrap">${iconSVGs[type]||''}</div><div class="dock-tooltip">${title}</div><div class="dock-dot"></div>`;
     const sep=document.createElement('div');sep.className='dock-separator minimized-sep';
-    item.addEventListener('click',()=>{openWindowCentered(win);item.remove();sep.remove();});
+    item.addEventListener('click',()=>{if(win._open)win._open();else openWindowCentered(win);});
+    win._minItem=item; win._minSep=sep;
     const trashItem=dock.querySelector('[data-app="trash"]');
     if(trashItem){dock.insertBefore(sep,trashItem);dock.insertBefore(item,trashItem);}
     else{dock.appendChild(sep);dock.appendChild(item);}

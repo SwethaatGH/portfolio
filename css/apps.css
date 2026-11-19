@@ -589,3 +589,76 @@ a.mp-btn { display:inline-flex; align-items:center; text-decoration:none; }
     .mp-callout { width:220px; }
     .mp-remote { top:10px; left:10px; }
 }
+
+/* ═════════════════ WALLPAPER — plain: warm paper (light), system dark (dark) ═════════════════ */
+[data-theme="light"] .static-wallpaper { background:#eceae6 !important; }
+[data-theme="dark"] .static-wallpaper  { background:#1c1c1e !important; }
+.icon-label { text-shadow:0 1px 2px rgba(255,255,255,0.6); }
+[data-theme="dark"] .icon-label { text-shadow:0 1px 3px rgba(0,0,0,0.6); }
+.desktop-icon:focus-visible { outline:2px solid var(--sys-blue); outline-offset:4px; border-radius:10px; }
+
+/* ═════════════════ STICKY NOTE — single page, no photo ═════════════════ */
+.sticky-heading { font-size:18px !important; }
+.sticky-cta { font-weight:600; color:#4a3d05 !important; margin-bottom:0 !important; }
+
+/* ═════════════════ TO-DO header in sentence case ═════════════════ */
+.reminders-widget .widget-header { text-transform:none !important; letter-spacing:0 !important; font-size:13px !important; font-weight:600 !important; color:rgba(255,255,255,0.85) !important; }
+
+/* ═════════════════ MENU BAR — Resume link + avatar ═════════════════ */
+a.menubar-link { text-decoration:none; color:inherit; }
+.menubar-avatar { display:inline-block; width:22px; height:22px; border-radius:50%; overflow:hidden; box-shadow:0 0 0 1px rgba(0,0,0,0.12); flex-shrink:0; }
+.menubar-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ═════════════════ DOCK — items are buttons now ═════════════════ */
+button.dock-item { border:none; background:none; padding:0; font:inherit; color:inherit; }
+button.dock-item:focus-visible { outline:none; }
+button.dock-item:focus-visible .dock-icon-wrap { box-shadow:0 0 0 3px color-mix(in srgb, var(--sys-blue) 55%, transparent); border-radius:14px; }
+
+/* ═════════════════ NOTIFICATIONS — never on top of the desktop icons ═════════════════ */
+@media (min-width:901px) { .notif-stack { right:128px; } }
+@media (max-width:768px) {
+    .notif-stack { top:auto !important; bottom:86px; flex-direction:column-reverse; }
+    .notif { animation-name:notif-up; }
+    .notif.out { animation-name:notif-down; }
+}
+@keyframes notif-up { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+@keyframes notif-down { to { opacity:0; transform:translateY(30px); } }
+
+/* ═════════════════ SHARE ═════════════════ */
+.as-share { width:32px; height:32px; border:none; border-radius:16px; background:var(--as-pill); color:var(--sys-blue); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
+.as-share svg, .mp-share svg { width:16px; height:16px; }
+.mp-share { width:36px; padding:0; display:inline-flex; align-items:center; justify-content:center; }
+.share-toast { position:absolute; left:50%; bottom:28px; transform:translateX(-50%); z-index:70; padding:8px 16px; border-radius:18px;
+               background:rgba(40,40,46,0.88); color:#fff; font-size:13px; font-weight:500; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+               box-shadow:0 8px 24px rgba(0,0,0,0.25); animation:ma-pop .25s var(--spring); transition:opacity .3s; }
+body > .share-toast { position:fixed; }
+.share-toast.out { opacity:0; }
+
+/* ═════════════════ WINDOW CONTROLS — bigger targets, glyphs on hover, always shown on touch ═════════════════ */
+.window-controls { gap:9px !important; align-items:center; }
+.window-control { position:relative; width:14px !important; height:14px !important; box-shadow:inset 0 0 0 0.5px rgba(0,0,0,0.18) !important;
+                  transform:none !important; filter:none !important; background-repeat:no-repeat; background-position:center; background-size:8px 8px; }
+.window-control::after { content:''; position:absolute; inset:-5px; border-radius:50%; }   /* invisible padding → easier to hit */
+.window-control:focus-visible { outline:2px solid var(--sys-blue); outline-offset:2px; }
+.window-control:active { filter:brightness(0.85) !important; }
+/* glyphs appear when the pointer is anywhere over the three buttons, like macOS */
+.window-controls:hover .window-control.close, .window-control.close:focus-visible {
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 1.5l5 5M6.5 1.5l-5 5' stroke='%234d0000' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.window-controls:hover .window-control.minimize, .window-control.minimize:focus-visible {
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.2 4h5.6' stroke='%23995700' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.window-controls:hover .window-control.maximize, .window-control.maximize:focus-visible {
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.6 4.6V1.6h3zM6.4 3.4v3h-3z' fill='%23006500'/%3E%3C/svg%3E"); }
+.window-controls:hover .window-control.maximize.maximized {
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 1v3H1zM4 7V4h3z' fill='%23006500'/%3E%3C/svg%3E"); }
+/* touch screens have no hover: keep the glyphs visible and make the buttons larger */
+@media (hover:none) {
+    .window-controls { gap:12px !important; }
+    .window-control { width:20px !important; height:20px !important; background-size:10px 10px; }
+    .window-control::after { inset:-8px; }
+    .window-control.close { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 1.5l5 5M6.5 1.5l-5 5' stroke='%234d0000' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E"); }
+    .window-control.minimize { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.2 4h5.6' stroke='%23995700' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E"); }
+}
+
+/* Sticky note scrolls: fade the bottom edge until the end is reached, so it's clear there's more */
+.sticky-scroll { -webkit-mask-image:linear-gradient(to bottom, #000 82%, transparent); mask-image:linear-gradient(to bottom, #000 82%, transparent); }
+.sticky-scroll.at-end { -webkit-mask-image:none; mask-image:none; }
