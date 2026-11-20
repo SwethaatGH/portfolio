@@ -1076,7 +1076,7 @@ function updateDockDots() {
     const open = el => !!el && el.style.display !== 'none' && document.body.contains(el);
     const state = {
         projects:open(appWindows.appstore), hackathons:open(appWindows.maps), experience:open(appWindows.activity),
-        mail:open(document.getElementById('contact-window')), tools:document.getElementById('launchpad')?.classList.contains('open'),
+        mail:open(document.getElementById('contact-window')), terminal:open(document.getElementById('terminal-window')), tools:document.getElementById('launchpad')?.classList.contains('open'),
     };
     Object.entries(state).forEach(([app, on]) => {
         const item = document.querySelector(`.dock-item[data-app="${app}"]`); if (!item) return;

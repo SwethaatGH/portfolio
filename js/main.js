@@ -245,13 +245,8 @@ const terminalCommands = {
 
     whoami: {
     desc: "About Swetha",
-    fn: () => `<span class="t-highlight">Swetha Manivasagam</span>
-MCS student with published deep learning research experience in
-spatio-temporal modelling and building RESTful APIs, C++ systems,
-data pipelines and cloud infrastructure for large-scale data through
-production deployment.
-
-Currently seeking SDE/ MLE New Grad 2027 opportunities.`
+    fn: () => `
+I’m Swetha Manivasagam, an NC State CS Master’s student graduating May 2027. I co-authored an ACM ETRA 2025 paper and develop geospatial deep learning models that outperform U-Nets by 28%. At CAMCORE, I built automated pipelines for a 5TB+ climate database serving 300+ researchers. I enjoy working across ML models, data pipelines and full-stack systems, from C++ game engines to RAG tools. Seeking new grad roles in software engineering or applied ML.`
 },
 
     skills: {
@@ -621,7 +616,7 @@ function initTerminal() {
     if(minBtn) minBtn.addEventListener('click',e=>{
         e.stopPropagation();
         win.style.display='none'; hideAc();
-        if(!win._minItem||!document.body.contains(win._minItem)) addMinimizedGenericDockItem(win,'Terminal','terminal');
+        // the Dock's Terminal icon restores it
     });
 
     win._open=openTerminal;
