@@ -46,7 +46,7 @@ const portfolioData = {
       tech:["TypeScript", "React", "Fastify", "Redis", "Docker", "gVisor", "Kubernetes", "Helm", "KEDA", "Terraform", "Google Cloud", "GitHub Actions", "Prometheus", "Grafana", "Gemma", "MCP", "Tree-sitter"] },
     { id:"elementalquest", name:"Elemental Quest", subtitle:"Multiplayer game", category:"Games",
       icon:"assets/project_icons/elementalquest.svg", banner:"assets/banners/elementalquest.jpg", bannerTile:"assets/banners/elementalquest-tile.jpg", featured:true, colors:["#3a1d7a", "#120a30"],
-      live:"https://elemental-quest.onrender.com", github:"", date:"Aug 2026 \u2013 Present", madeAt:"NC State University",
+      live:"https://swethaatgh.github.io/elemental-quest/", github:"", date:"Aug 2026 \u2013 Present", madeAt:"NC State University",
       metrics:[["C++17", "engine core"], ["ZeroMQ", "networking"], ["Multi", "threaded jobs"]],
       description:"Designed and engineered a modular C++17 game engine and real-time multiplayer system, featuring core subsystems for physics, rendering, multithreaded job execution and runtime object management.\n\nIntegrated a ZeroMQ-based networking architecture supporting authoritative world simulation, asynchronous client communication and synchronized state propagation. Validated the engine's architecture through a cooperative multiplayer platformer featuring deterministic simulation, thread-safe concurrent update loops and strict separation of engine infrastructure from game logic.",
       tech:["C++", "ZeroMQ", "Multithreading", "Networking", "Game Engine"] },
